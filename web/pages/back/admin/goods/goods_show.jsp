@@ -1,18 +1,19 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<jsp:include page="/WEB-INF/pages/plugins/back/back_header.jsp"/>
+<html>
+<head>
+	<jsp:include page="/pages/plugins/basepath.jsp"/>
+	<script type="text/javascript" src="js/pages/back/admin/goods/goods_show.js"></script>
+	<script type="text/javascript" src="js/split_page.js"></script>
+</head>
 <%!
 	public static final String GOODS_EDIT_URL = "" ;
 %>
-<script type="text/javascript" src="js/pages/back/admin/goods/goods_show.js"></script>
-<body class="hold-transition skin-blue sidebar-mini"> 
+<body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		<!-- 导入头部标题栏内容 -->
-		<jsp:include page="/WEB-INF/pages/plugins/back/include_title_head.jsp" />
+		<jsp:include page="/pages/plugins/back/include_title_head.jsp" />
 		<!-- 导入左边菜单项 -->
-		<jsp:include page="/WEB-INF/pages/plugins/back/include_menu_item.jsp">
+		<jsp:include page="/pages/plugins/back/include_menu_item.jsp">
 			<jsp:param name="mi" value="5"/>
 			<jsp:param name="msi" value="52"/>
 		</jsp:include>
@@ -99,17 +100,17 @@
 					</div>
 				</div>
 				<div class="panel-footer" style="height:100px;">
-					<jsp:include page="/WEB-INF/pages/plugins/include_alert.jsp"/>
+					<jsp:include page="/pages/plugins/alert.jsp"/>
 				</div>
 			</div>
 		</div>
 		<!-- 导入公司尾部认证信息 -->
-		<jsp:include page="/WEB-INF/pages/plugins/back/include_title_foot.jsp" />
+		<jsp:include page="/pages/plugins/back/include_title_foot.jsp" />
 		<!-- 导入右边工具设置栏 -->
-		<jsp:include page="/WEB-INF/pages/plugins/back/include_menu_sidebar.jsp" />
+		<jsp:include page="/pages/plugins/back/include_menu_sidebar.jsp" />
 		<div class="control-sidebar-bg"></div>
 	</div>
-	<jsp:include page="/WEB-INF/pages/plugins/back/info/member_info_modal.jsp"/>
-	<jsp:include page="/WEB-INF/pages/plugins/back/info/goods_storage_modal.jsp"/>
-	<jsp:include page="/WEB-INF/pages/plugins/back/include_javascript_foot.jsp" />
-<jsp:include page="/WEB-INF/pages/plugins/back/back_footer.jsp"/>
+	<jsp:include page="/pages/plugins/back/modal/member_info_modal.jsp"/>
+	<jsp:include page="/pages/plugins/back/modal/goods_storage_modal.jsp"/>
+	<jsp:include page="/pages/plugins/back/include_javascript_foot.jsp" />
+<jsp:include page="/pages/plugins/footer.jsp"/>

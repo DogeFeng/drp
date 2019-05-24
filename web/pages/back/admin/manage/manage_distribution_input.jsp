@@ -1,12 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<jsp:include page="/WEB-INF/pages/plugins/back/back_header.jsp"/>
+
+<head>
+	<jsp:include page="/pages/plugins/basepath.jsp"/>
+	<script type="text/javascript" src="js/pages/back/admin/manage/manage_distribution_input.js"></script>
+	<script type="text/javascript" src="js/split_page.js"></script>
+</head>
 <%!
-	public static final String STORAGE_INPUT_URL = "pages/back/admin/manage/distribution_input.action" ;
+	public static final String STORAGE_INPUT_URL = "" ;
 %>
-<script type="text/javascript" src="js/pages/back/admin/manage/manage_distribution_input.js"></script>
+
 <body class="hold-transition skin-blue sidebar-mini"> 
 	<div class="wrapper">
 		<!-- 导入头部标题栏内容 -->

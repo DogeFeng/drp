@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%!
-	public static final String GOODS_EDIT_URL = "pages/back/admin/goods/edit_pre.action" ; 
-	public static final String GOODS_SHOW_URL = "pages/back/admin/goods/show.action" ; 
+	public static final String GOODS_EDIT_URL = "pages/back/admin/goods/goods_edit.jsp" ;
+	public static final String GOODS_SHOW_URL = "pages/back/admin/goods/goods_show.jsp" ;
 %>
 <html>
 <head>
