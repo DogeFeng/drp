@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="js/split_page.js"></script>
 </head>
 <%!
-	public static final String WAREHOUSE_EDIT_URL = "" ;
+	public static final String WAREHOUSE_EDIT_URL = "pages/back/admin/warehouse/warehouse_edit.jsp" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">

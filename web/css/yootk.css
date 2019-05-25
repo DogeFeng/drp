@@ -37,8 +37,7 @@
     left: 0px;
     width: 100%;
     _position: absolute; /* for IE6 */
-    _top: expression(documentElement.scrollTop +
-		documentElement.clientHeight-this.offsetHeight); /* for IE6 */
+    _top: expression(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight); /* for IE6 */
     overflow: visible;
 }
 
