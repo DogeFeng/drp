@@ -10,6 +10,7 @@
     <div id="navbarDiv" class="row">
         <jsp:include page="/pages/plugins/front/include_navbar.jsp"/>
     </div>
+    <div style="height: 2px;"></div>
     <div id="splitDiv" class="row">
         <div class="col-md-12" style="height:50px;"></div>
     </div>
@@ -18,6 +19,7 @@
             <jsp:include page="/pages/plugins/front/include_ad.jsp" />
         </div>
     </div>
+    <div style="height: 2px;"></div>
     <div id="newsDiv" class="row">
         <div class="col-md-8">
             <div class="panel panel-info">

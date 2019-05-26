@@ -1,4 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%!
+    public static final String GOODS_LIST_URL = "pages/front/goods/goods_list.jsp" ;
+%>
 <div class="panel-group" id="item">		<!-- 利用面板定义折叠组件 -->
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -11,17 +14,17 @@
         <div id="content-1" class="panel-collapse collapse in">		<!-- 面板默认显示 -->
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
                 </div>
             </div>
         </div>
@@ -37,17 +40,17 @@
         <div id="content-2" class="panel-collapse collapse">		<!-- 面板默认隐藏 -->
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
                 </div>
             </div>
         </div>
@@ -63,17 +66,17 @@
         <div id="content-3" class="panel-collapse collapse">		<!-- 面板默认隐藏 -->
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
                 </div>
             </div>
         </div>
@@ -89,17 +92,17 @@
         <div id="content-4" class="panel-collapse collapse">		<!-- 面板默认隐藏 -->
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
                 </div>
             </div>
         </div>
@@ -115,17 +118,17 @@
         <div id="content-5" class="panel-collapse collapse">		<!-- 面板默认隐藏 -->
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
-                    <div class="col-md-4"><a href="#">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
+                    <div class="col-md-4"><a href="<%=GOODS_LIST_URL%>">菜单</a></div>
                 </div>
             </div>
         </div>

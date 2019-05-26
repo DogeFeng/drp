@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="js/split_page.js"></script>
 </head>
 <%!
-	public static final String STORAGE_INPUT_URL = "" ;
+	public static final String STORAGE_INPUT_URL = "pages/back/admin/manage/manage_storage.jsp" ;
 %>
 
 <body class="hold-transition skin-blue sidebar-mini"> 

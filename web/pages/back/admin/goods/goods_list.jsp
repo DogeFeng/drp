@@ -31,7 +31,7 @@
 					<thead>
 						<tr>
 							<th class="text-left" style="width:10%;">商品编号</th> 
-							<th class="text-left" style="width:30%;">商品名称</th> 
+							<th class="text-left" style="width:25%;">商品名称</th>
 							<th class="text-center" style="width:10%;">单价（￥）</th>
 							<th class="text-center" style="width:10%;">重量（g）</th>
 							<th class="text-center" style="width:10%;">最近入库日期</th>

@@ -6,6 +6,7 @@
 
 	public static final String CUSTOMER_ADD_URL = "pages/back/admin/customer/customer_add.jsp" ;
 	public static final String CUSTOMER_LIST_URL = "pages/back/admin/customer/customer_list.jsp" ;
+	public static final String CUSTOMER_AUDIT_URL = "pages/back/admin/customer/customer_audit_list.jsp" ;
 
 	public static final String STORAGE_ADD_URL = "pages/back/admin/storage/storage_add.jsp" ;
 	public static final String STORAGE_LIST_URL = "pages/back/admin/storage/storage_list_myself.jsp" ;
@@ -22,8 +23,14 @@
 
 
 	public static final String MANAGE_STORAGE_INPUT_URL = "pages/back/admin/manage/manage_storage_input.jsp" ;
-	public static final String MANAGE_DISTRIBUTION_INPUT_URL = "pages/back/admin/manage/manage_distribution_input.action" ;
+	public static final String MANAGE_DISTRIBUTION_INPUT_URL = "pages/back/admin/manage/manage_distribution_input.jsp" ;
 
+    public static final String DEPT_LIST_URL = "pages/back/admin/dept/dept_list.jsp" ;
+    public static final String EMP_ADD_URL = "pages/back/admin/emp/emp_add.jsp" ;
+    public static final String EMP_LIST_URL = "pages/back/admin/emp/emp_list.jsp" ;
+
+	public static final String NEWS_ADD_URL = "pages/back/admin/news/news_add.jsp" ;
+	public static final String NEWS_LIST_URL = "pages/back/admin/news/news_list.jsp" ;
 %>
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
@@ -70,6 +77,8 @@
 						增加客户</a></li>
 					<li class="${param.msi==22 ? 'active' : ''}"><a href="<%=CUSTOMER_LIST_URL%>"><i class="fa fa-users"></i>
 						客户列表</a></li>
+					<li class="${param.msi==23 ? 'active' : ''}"><a href="<%=CUSTOMER_AUDIT_URL%>"><i class="fa fa-users"></i>
+						待审核列表</a></li>
 				</ul></li>
 			<li class="treeview ${param.mi==3 ? 'active' : ''}"><a href="<%=INDEX_URL%>"> <i class="fa fa-dropbox"></i>
 				<span>商品入库</span> <i class="fa fa-angle-left pull-right"></i>
@@ -109,7 +118,35 @@
 					<li class="${param.msi==62 ? 'active' : ''}"><a href="<%=MANAGE_DISTRIBUTION_INPUT_URL%>"><i
 							class="fa fa-paste"></i> 出库处理</a></li>
 				</ul></li>
+            <li class="treeview ${param.mi==8 ? 'active' : ''}"><a href="${basePath}<%=INDEX_URL%>"> <i
+                    class="fa fa-sitemap"></i> <span>雇员管理</span> <i
+                    class="fa fa-angle-left pull-right"></i>
+            </a>
+                <ul class="treeview-menu">
+                    <li class="${param.msi==81 ? 'active' : ''}"><a href="<%=DEPT_LIST_URL%>"><i class="fa fa-object-group"></i>
+                        部门列表</a></li>
+                </ul></li>
+			<li class="treeview ${param.mi==9 ? 'active' : ''}"><a href="${basePath}<%=INDEX_URL%>"> <i
+					class="fa fa-sitemap"></i> <span>雇员管理</span> <i
+					class="fa fa-angle-left pull-right"></i>
+			</a>
+				<ul class="treeview-menu">
+					<li class="${param.msi==91 ? 'active' : ''}"><a href="<%=EMP_ADD_URL%>"><i class="fa fa-user-plus"></i>
+						增加雇员</a></li>
+					<li class="${param.msi==92 ? 'active' : ''}"><a href="<%=EMP_LIST_URL%>"><i class="fa fa-users"></i>
+						雇员列表</a></li>
+				</ul></li>
+			<li class="${param.role=='news' ? 'active' : ''} treeview"><a href="${basePath}<%=INDEX_URL%>"> <i class="fa fa-bullhorn"></i>
+				<span>公告管理</span> <i class="fa fa-angle-left pull-right"></i>
+			</a>
+				<ul class="treeview-menu">
+					<li class="${param.action=='news:add' ? 'active' : ''}"><a href="<%=NEWS_ADD_URL%>"><i
+							class="fa fa-plus-circle"></i> 发布公告</a></li>
+					<li class="${param.action=='news:list' ? 'active' : ''}"><a href="<%=NEWS_LIST_URL%>"><i
+							class="fa fa-list-ul"></i> 公告列表</a></li>
+				</ul></li>
 		</ul>
 	</section>
+
 	<!-- /.sidebar -->
 </aside>

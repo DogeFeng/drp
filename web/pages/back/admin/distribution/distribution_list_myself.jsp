@@ -44,15 +44,17 @@
 					<tbody>
 						<tr>
 							<th class="text-center" style="width:10%;">20001010</th> 
-							<td class="text-left">2017双十一衣帽入库</td>
+							<td class="text-left">
+								<a href="<%=DISTRIBUTION_EDIT_URL%>?sid=1">
+									2017双十一衣帽入库
+								</a>
+							</td>
 							<td class="text-center">北京</td>
 							<td class="text-center">北京</td>
 							<td class="text-center">未提交</td>
 							<td class="text-center">100</td>
 							<td class="text-center">1000.77</td>
 							<td class="text-left">
-								<a href="<%=DISTRIBUTION_EDIT_URL%>?sid=1" class="btn btn-primary btn-xs">
-									<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑申请</a>
 								<a href="<%=DISTRIBUTION_LIST_DETAILS_URL%>?sid=1" class="btn btn-warning btn-xs">
 									<span class="glyphicon glyphicon-th-list"></span>&nbsp;出库清单</a>
 								<a href="<%=DISTRIBUTION_DELETE_URL%>?sid=1" class="btn btn-danger btn-xs">

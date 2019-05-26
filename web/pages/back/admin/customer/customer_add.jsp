@@ -124,7 +124,7 @@
 								<div class="col-md-5">
 									<!-- 定义表单输入组件 -->
 									<textarea id="note" name="note"
-										class="form-control" placeholder="请输入仓库的详细信息" rows="10"></textarea>
+										class="form-control" placeholder="请输入该客户的详细信息" rows="10"></textarea>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="noteMsg"></div>

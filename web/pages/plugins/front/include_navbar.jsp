@@ -3,7 +3,13 @@
 <%!
 	public static final String LOGIN_URL = "login.jsp" ;
 	public static final String MALL_INDEX_URL = "mall_index.jsp" ;
-	public static final String CUSTOMER_ADD_URL = "mall_index.jsp" ;
+
+	public static final String PURCHASE_ADD_URL = "pages/front/center/purchase/purchase_add.jsp" ;
+
+	public static final String MEMBER_EDIT_URL = "pages/front/center/member/member_edit.jsp" ;
+	public static final String MEMBER_ADDRESS_LIST_URL = "pages/front/center/address/address_list.jsp" ;
+	public static final String ORDERS_LIST_URL = "pages/front/center/orders/orders_list.jsp" ;
+	public static final String SHOPCAR_LIST_URL = "pages/front/center/shopcar/shopcar_list.jsp" ;
 %>
 <div class="col-md-12">
 	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
@@ -16,22 +22,22 @@
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown"><span class="glyphicon glyphicon-globe"></span>&nbsp;个人中心<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="pages/front/center/member/member_edit.jsp">
+					<li><a href="<%=MEMBER_EDIT_URL%>">
 						<span class="glyphicon glyphicon-user"></span>&nbsp;个人资料</a></li>
-					<li><a href="pages/front/center/address/address_list.jsp">
+					<li><a href="<%=MEMBER_ADDRESS_LIST_URL%>">
 						<span class="glyphicon glyphicon-plane"></span>&nbsp;地址管理</a></li>
 					<li class="divider">&nbsp;</li>
-					<li><a href="pages/front/center/orders/orders_list.jsp">
+					<li><a href="<%=ORDERS_LIST_URL%>">
 						<span class="glyphicon glyphicon-list-alt"></span>&nbsp;订单列表</a></li>
-					<li><a href="pages/front/center/shopcar/shopcar_list.jsp">
+					<li><a href="<%=SHOPCAR_LIST_URL%>">
 						<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;我的购物车</a></li>
 					<li class="divider">&nbsp;</li>
-					<li><a href="<%=CUSTOMER_ADD_URL%>"><span class="glyphicon glyphicon-certificate"></span>&nbsp;大宗采购</a></li>
+					<li><a href="<%=PURCHASE_ADD_URL%>"><span class="glyphicon glyphicon-certificate"></span>&nbsp;大宗采购</a></li>
 				</ul></li>
 		</ul>
 		<form class="navbar-form navbar-left" action="" method="post">
 			<div class="form-group">
-				<input type="text" class="form-control input-xs" placeholder="请输入商品关键字..." style="width:600px;background: #F5F5F5;height:30px;">
+				<input type="text" class="form-control input-xs" placeholder="请输入商品关键字..." style="width:300px;background: #F5F5F5;height:30px;">
 				<button class="btn btn-danger" style="height:30px;">搜索</button>
 			</div>
 		</form>

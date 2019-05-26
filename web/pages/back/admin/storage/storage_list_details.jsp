@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<html>
 <head>
 	<jsp:include page="/pages/plugins/basepath.jsp"/>
 	<script type="text/javascript" src="js/pages/back/admin/storage/storage_list_details.js"></script>
@@ -51,17 +52,17 @@
 						<thead>
 							<tr>
 								<th class="text-left" style="width:10%;">商品编号</th> 
-								<th class="text-left" style="width:40%;">商品名称</th> 
+								<th class="text-left" style="width:30%;">商品名称</th>
 								<th class="text-left" style="width:10%;">入库数量</th>
-								<th class="text-left" style="width:10%;">商品单价（元）</th>
-								<th class="text-left" style="width:10%;">单位重量（g）</th>
-								<th class="text-left" style="width:20%;">操作</th>
+								<th class="text-left" style="width:10%;">单价（元）</th>
+								<th class="text-left" style="width:10%;">重量（g）</th>
+								<th class="text-left" style="width:30%;">操作</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr id="dettr-1" class="text-success">
 								<td><input type="text" id="gid-1" value="100001"/></td>
-								<td><input type="text" id="name-1" value="衣服" size="50"/></td>
+								<td><input type="text" id="name-1" value="衣服" size="40"/></td>
 								<td><input type="text" id="amount-1" value="50" maxlength="8" size="8"/></td>
 								<td><input type="text" id="price-1" value="39.2" maxlength="8" size="8"/></td>
 								<td><input type="text" id="weight-1" value="200g" maxlength="8" size="8"/></td>
@@ -90,4 +91,5 @@
 	<jsp:include page="/pages/plugins/back/modal/member_info_modal.jsp"/>
 	<jsp:include page="/pages/plugins/back/modal/member_dept_list_modal.jsp"/>
 	<jsp:include page="/pages/plugins/back/include_javascript_foot.jsp" />
-<jsp:include page="/pages/plugins/footer.jsp"/>
+</body>
+</html>

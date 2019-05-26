@@ -49,11 +49,11 @@
 							<tr>
 								<th class="text-left" style="width:10%;">商品编号</th> 
 								<th class="text-left" style="width:20%;">商品名称</th> 
-								<th class="text-left" style="width:25%;">出库仓库</th> 
+								<th class="text-left" style="width:20%;">出库仓库</th>
 								<th class="text-center" style="width:10%;">出库数量</th>
 								<th class="text-center" style="width:10%;">商品单价（元）</th>
 								<th class="text-center" style="width:10%;">总价</th>
-								<th class="text-center" style="width:15%;">操作</th>
+								<th class="text-center" style="width:20%;">操作</th>
 							</tr>
 						</thead>
 						<tbody>

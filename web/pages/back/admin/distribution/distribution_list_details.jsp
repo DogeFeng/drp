@@ -52,7 +52,7 @@
 								<th class="text-left" style="width:30%;">商品名称</th> 
 								<th class="text-left" style="width:30%;">出库仓库</th> 
 								<th class="text-center" style="width:10%;">出库数量</th>
-								<th class="text-center" style="width:10%;">商品单价（元）</th>
+								<th class="text-center" style="width:10%;">单价（元）</th>
 								<th class="text-center" style="width:10%;">总价</th>
 							</tr>
 						</thead>

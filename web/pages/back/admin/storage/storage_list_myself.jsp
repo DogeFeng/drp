@@ -5,10 +5,10 @@
 	<script type="text/javascript" src="js/split_page.js"></script>
 </head>
 <%!
-	public static final String STORAGE_SUBMIT_URL = "pages/back/admin/storage/submit.action" ;
-	public static final String STORAGE_EDIT_URL = "pages/back/admin/storage/edit_pre.action" ;
-	public static final String STORAGE_LIST_DETAILS_URL = "pages/back/admin/storage/list_details.action" ;
-	public static final String STORAGE_DELETE_URL = "pages/back/admin/storage/remove.action" ;
+	public static final String STORAGE_SUBMIT_URL = "" ;
+	public static final String STORAGE_EDIT_URL = "pages/back/admin/storage/storage_edit.jsp" ;
+	public static final String STORAGE_LIST_DETAILS_URL = "pages/back/admin/storage/storage_list_details.jsp" ;
+	public static final String STORAGE_DELETE_URL = "" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
