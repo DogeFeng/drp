@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="js/split_page.js"></script>
 </head>
 <%!
-	public static final String STORAGEAUDIT_EDIT_URL = "pages/back/admin/storageaudit/edit_pre.action" ;
+	public static final String STORAGEAUDIT_EDIT_URL = "pages/back/admin/storageaudit/storageaudit_edit.jsp" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">

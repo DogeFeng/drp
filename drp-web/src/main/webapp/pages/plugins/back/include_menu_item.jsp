@@ -119,7 +119,7 @@
 							class="fa fa-paste"></i> 出库处理</a></li>
 				</ul></li>
             <li class="treeview ${param.mi==8 ? 'active' : ''}"><a href="${basePath}<%=INDEX_URL%>"> <i
-                    class="fa fa-sitemap"></i> <span>雇员管理</span> <i
+                    class="fa fa-sitemap"></i> <span>部门管理</span> <i
                     class="fa fa-angle-left pull-right"></i>
             </a>
                 <ul class="treeview-menu">
@@ -144,6 +144,8 @@
 							class="fa fa-plus-circle"></i> 发布公告</a></li>
 					<li class="${param.action=='news:list' ? 'active' : ''}"><a href="<%=NEWS_LIST_URL%>"><i
 							class="fa fa-list-ul"></i> 公告列表</a></li>
+					<li class="${param.action=='news:list' ? 'active' : ''}"><a href="<%=NEWS_LIST_URL%>"><i
+							class="fa fa-list-ul"></i> 公告显示</a></li>
 				</ul></li>
 		</ul>
 	</section>

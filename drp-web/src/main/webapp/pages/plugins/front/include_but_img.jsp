@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%!
 	public static final String CASE_LIST_URL = "#" ;
-	public static final String MALL_INDEX_URL = "mall-index.jsp" ;
+	public static final String MALL_INDEX_URL = "mall_index.jsp" ;
 	public static final String NEWS_LIST_URL = "pages/front/news/news_list.jsp" ;
 	public static final String LOGIN_URL = "login.jsp" ;
 %>
