@@ -11,9 +11,6 @@
         <module>drp-common</module>
         <module>drp-web</module>
         <module>drp-upload</module>
-        <module>drp-common</module>
-        <module>drp-upload</module>
-        <module>drp-web</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
