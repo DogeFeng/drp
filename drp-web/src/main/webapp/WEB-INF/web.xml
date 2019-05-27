@@ -24,15 +24,15 @@
         </init-param>
         <init-param>
             <param-name>validationBaseName</param-name>
-            <param-value>com.yootk.mall.action.validate.Validation</param-value>
+            <param-value>com.yootk.drp.action.validate.Validation</param-value>
         </init-param>
         <init-param>
             <param-name>errorPageBaseName</param-name>
-            <param-value>com.yootk.mall.action.validate.ErrorPage</param-value>
+            <param-value>com.yootk.drp.action.validate.ErrorPage</param-value>
         </init-param>
         <init-param>
             <param-name>messageBaseName</param-name>
-            <param-value>com.yootk.mall.action.resource.Message</param-value>
+            <param-value>com.yootk.drp.action.resource.Message</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
