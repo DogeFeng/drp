@@ -20,7 +20,7 @@
         <servlet-class>com.yootk.common.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>scanPackages</param-name>
-            <param-value>com.yootk.mall</param-value> <!-- 如果有多个包使用“;”分割 -->
+            <param-value>com.yootk.drp</param-value> <!-- 如果有多个包使用“;”分割 -->
         </init-param>
         <init-param>
             <param-name>validationBaseName</param-name>
@@ -48,20 +48,20 @@
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>*.action</url-pattern>
     </servlet-mapping>
-    <filter>
-        <filter-name>MemberFrontLoginFilter</filter-name>
-        <filter-class>com.yootk.drp.filter.MemberFrontLoginFilter</filter-class>
-    </filter>
-    <filter>
-        <filter-name>MemberCookieFilter</filter-name>
-        <filter-class>com.yootk.drp.filter.MemberCookieFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>MemberCookieFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>MemberFrontLoginFilter</filter-name>
-        <url-pattern>/pages/front/center/*</url-pattern>
-    </filter-mapping>
+<!--    <filter>-->
+<!--        <filter-name>MemberFrontLoginFilter</filter-name>-->
+<!--        <filter-class>com.yootk.drp.filter.MemberFrontLoginFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter>-->
+<!--        <filter-name>MemberCookieFilter</filter-name>-->
+<!--        <filter-class>com.yootk.drp.filter.MemberCookieFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>MemberCookieFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>MemberFrontLoginFilter</filter-name>-->
+<!--        <url-pattern>/pages/front/center/*</url-pattern>-->
+<!--    </filter-mapping>-->
 </web-app>
