@@ -4,8 +4,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    public static final String DBDRIVER = "org.gjt.mm.mysql.Driver" ;
-    public static final String DBURL = "jdbc:mysql://mysql-server:3306/mall?useUnicode=true&characterEncoding=UTF8" ;
+    public static final String DBDRIVER = "com.mysql.jdbc.Driver" ;
+    public static final String DBURL = "jdbc:mysql://localhost:3306/drp?useUnicode=true&characterEncoding=UTF8" ;
     public static final String USER = "root" ;
     public static final String PASSWORD = "mysqladmin" ;
     public static final ThreadLocal<Connection> THREAD_LOCAL = new ThreadLocal<>() ;
