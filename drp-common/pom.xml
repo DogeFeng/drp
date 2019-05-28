@@ -11,6 +11,13 @@
     <artifactId>drp-common</artifactId>
     <dependencies>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
@@ -31,6 +38,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+<<<<<<< HEAD
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
@@ -38,6 +46,12 @@
             <version>5.1.47</version>
         </dependency>
 
+=======
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+>>>>>>> master
     </dependencies>
     <build>
         <finalName>drp-common</finalName>

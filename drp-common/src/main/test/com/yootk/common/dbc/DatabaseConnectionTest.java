@@ -1,6 +1,10 @@
 package com.yootk.common.dbc;
 
+<<<<<<< HEAD
 import static org.junit.Assert.*;
+=======
+import org.junit.Test;
+>>>>>>> master
 
 public class DatabaseConnectionTest {
 
@@ -8,4 +12,11 @@ public class DatabaseConnectionTest {
     public void getConnection() {
         System.out.println(DatabaseConnection.getConnection());
     }
+<<<<<<< HEAD
+=======
+
+    @Test
+    public void getConnection1() {
+    }
+>>>>>>> master
 }

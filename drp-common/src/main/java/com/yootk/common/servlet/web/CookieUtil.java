@@ -13,7 +13,7 @@ public class CookieUtil {
         String val = EncryptSalt.encrypt(value) ; // 将数据内容进行加密存储
         Cookie c = new Cookie(name,val) ; // 创建Cookie的对象
         c.setPath("/"); // 设置目录
-        c.setMaxAge((int)TimeUnit.SECONDS.convert(30,TimeUnit.DAYS));
+        c.setMaxAge((int)TimeUnit.SECONDS.convert(10,TimeUnit.DAYS));
         resp.addCookie(c); // 保存Cookie数据
     }
     public static String get(String name, HttpServletRequest req) {
