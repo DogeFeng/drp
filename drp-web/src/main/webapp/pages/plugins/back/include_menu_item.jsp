@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%!
 	public static final String INDEX_URL = "pages/back/index.jsp" ;
-	public static final String WAREHOUSE_ADD_URL = "pages/back/admin/warehouse/warehouse_add.jsp" ;
+	public static final String WAREHOUSE_ADD_URL = "pages/back/admin/warehouse/warehouse_add_pre.action" ;
 	public static final String WAREHOUSE_LIST_URL = "pages/back/admin/warehouse/warehouse_list.jsp" ;
 
 	public static final String CUSTOMER_ADD_URL = "pages/back/admin/customer/customer_add.jsp" ;
