@@ -1,12 +1,16 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
 	<jsp:include page="/pages/plugins/basepath.jsp"/>
-	<script type="text/javascript" src="js/mall_index.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
 </head>
 <%!
-	public static final String LOGIN_URL = "" ;
+	String LOGIN_URL = "/member_login.action" ;
 %>
+
 <script type="text/javascript" src="js/login.js"></script>
 <body class="back">
 	<div class="container contentback">
