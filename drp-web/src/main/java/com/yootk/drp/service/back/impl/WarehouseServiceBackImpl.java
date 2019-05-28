@@ -38,4 +38,18 @@ public class WarehouseServiceBackImpl extends AbstractService implements IWareho
     public boolean add(Warehouse warehouse) throws Exception {
         return this.wareHouseDAO.doCreate(warehouse);
     }
+
+    @Override
+    public Map<String, Object> list(String column, String keyWord, Long currentPage, Integer lineSize) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        if(column == null|| "".equals(column) || keyWord == null || "".equals(keyWord)){
+            map.put("allRecorders",this.wareHouseDAO.getAllCount());
+            map.put("allWarehouses",this.wareHouseDAO.findSplit(currentPage,lineSize));
+        }else{
+            map.put("allRecorders",this.wareHouseDAO.getAllCount(column,keyWord));
+            map.put("allWarehouses",this.wareHouseDAO.findSplit(currentPage,lineSize,column,keyWord));
+        }
+        System.out.println(map);
+        return map;
+    }
 }

@@ -7,6 +7,7 @@ import com.yootk.common.annotation.Controller;
 import com.yootk.common.annotation.RequestMapping;
 import com.yootk.common.servlet.web.ModuleAndView;
 import com.yootk.common.servlet.web.MultipartFile;
+import com.yootk.common.servlet.web.PageUtil;
 import com.yootk.drp.service.back.ICityService;
 import com.yootk.drp.service.back.IWarehouseServiceBack;
 import com.yootk.drp.util.UploadFileToServer;
@@ -66,5 +67,16 @@ public class WarehouseAddPreActionBack extends AbstractAction {
     @Override
     public String getUploadDir() {
         return "/upload/warehouse/";
+    }
+    @RequestMapping("warehouse_list")
+    public ModuleAndView list(){
+        ModuleAndView mav = new ModuleAndView("/pages/back/admin/warehouse/warehouse_list.jsp");
+        PageUtil pu = new PageUtil("/pages/back/admin/warehouse/warehouse_list.action","选项: |仓库名称:name");
+        try {
+            mav.add(this.warehouseServiceBack.list(pu.getColumn(),pu.getKeyword(),pu.getCurrentPage(),pu.getLineSize()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav;
     }
 }

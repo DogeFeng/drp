@@ -6,7 +6,6 @@ import com.yootk.common.service.abs.AbstractService;
 import com.yootk.drp.dao.ICityDAO;
 import com.yootk.drp.service.back.ICityService;
 import com.yootk.drp.vo.City;
-
 import java.util.List;
 @Service
 public class CityServiceImpl extends AbstractService implements ICityService {

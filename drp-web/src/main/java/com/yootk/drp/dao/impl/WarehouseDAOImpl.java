@@ -50,13 +50,16 @@ public class WarehouseDAOImpl extends AbstractDAO implements IWareHouseDAO {
 
     @Override
     public List<Warehouse> findSplit(Long currentPage, Integer lineSize) throws SQLException {
-        return null;
+        String sql = "SELECT wid,name,pid,cid,wiid,address,currnum,maximum,photo,note,admin,recorder FROM warehouse "
+                + " ORDER BY wid LIMIT " + (currentPage - 1 ) * lineSize + "," + lineSize;
+        super.pstmt = super.conn.prepareStatement(sql);
+        return super.handleResultToList(super.pstmt.executeQuery(),Warehouse.class);
     }
 
     @Override
     public List<Warehouse> findSplit(Long currentPage, Integer lineSize, String column, String keyWord) throws SQLException {
-        String sql = "SELECT mid,name,pid,cid,wiid,address,currnum,maximum,photo,note,admin,recorder FROM warehouse WHERE " + column
-                + " LIKE ? ORDER BY mid LIMIT " + (currentPage -1 ) * lineSize + "," + lineSize;
+        String sql = "SELECT wid,name,pid,cid,wiid,address,currnum,maximum,photo,note,admin,recorder FROM warehouse WHERE " + column
+                + " LIKE ? ORDER BY wid LIMIT " + (currentPage - 1 ) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql);
         super.pstmt.setString(1,"%" + keyWord + "%");
         return super.handleResultToList(super.pstmt.executeQuery(),Warehouse.class);
@@ -69,6 +72,6 @@ public class WarehouseDAOImpl extends AbstractDAO implements IWareHouseDAO {
 
     @Override
     public Long getAllCount(String column, String keyWord) throws SQLException {
-        return null;
+        return super.handleCount("warehouse",column,keyWord);
     }
 }

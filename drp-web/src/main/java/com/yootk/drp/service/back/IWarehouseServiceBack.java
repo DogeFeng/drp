@@ -27,10 +27,10 @@ public interface IWarehouseServiceBack  {
 
     /**
      * 实现仓库的列表显示
-     * @param column
-     * @param keyWord
-     * @param currentPage
-     * @param linesize
+     * @param column 查询的列
+     * @param keyWord 查询关键字
+     * @param currentPage 当前页数
+     * @param linesize 每行显示个数
      * @return
      * @throws Exception
      */
