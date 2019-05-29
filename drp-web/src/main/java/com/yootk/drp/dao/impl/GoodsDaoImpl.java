@@ -1,5 +1,6 @@
 package com.yootk.drp.dao.impl;
 
+import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
 import com.yootk.drp.dao.IGoodsDao;
 import com.yootk.drp.vo.Goods;
@@ -14,6 +15,7 @@ import java.util.Set;
  * @Date: 2019/5/28 09:50
  * @Description:
  */
+@Repository
 public class GoodsDaoImpl extends AbstractDAO implements IGoodsDao {
     @Override
     public boolean doCreate(Goods goods) throws SQLException {
@@ -117,25 +119,26 @@ public class GoodsDaoImpl extends AbstractDAO implements IGoodsDao {
 
     @Override
     public Long getAllCountFlag(int delflag) throws SQLException {
-        String sql = " SELECT COUNT(*) FROM goods WHERE delflag=? " ;
-        super.pstmt = super.conn.prepareStatement(sql) ;
+        String sql = "SELECT COUNT(*) FROM goods WHERE delflag=?  " ;
+        this.pstmt = this.conn.prepareStatement(sql) ;
         super.pstmt.setInt(1 , delflag);
         ResultSet rs = this.pstmt.executeQuery() ;
         if (rs.next()) {
             return rs.getLong(1) ;
         }
-        return null ;
+        return 0L ;
     }
 
     @Override
     public Long getAllCountFlag(String column, String keyWord, int delflag) throws SQLException {
-        String sql = " SELECT COUNT(*) FROM goods WHERE delflag=? " ;
-        super.pstmt = super.conn.prepareStatement(sql) ;
+        String sql = "SELECT COUNT(*) FROM goods WHERE delflag=? " + column + " LIKE ?" ;
+        this.pstmt = this.conn.prepareStatement(sql) ;
         super.pstmt.setInt(1 , delflag);
+        this.pstmt.setString(2,"%"+keyWord+"%");
         ResultSet rs = this.pstmt.executeQuery() ;
         if (rs.next()) {
             return rs.getLong(1) ;
         }
-        return null ;
+        return 0L ;
     }
 }

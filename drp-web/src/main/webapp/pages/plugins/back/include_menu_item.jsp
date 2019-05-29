@@ -14,7 +14,7 @@
 	public static final String STORAGE_AUDIT_LIST_URL = "pages/back/admin/storageaudit/storageaudit_list_prepare.jsp" ;
 	public static final String STORAGE_AUDIT_HISTORY_URL = "pages/back/admin/storageaudit/storageaudit_list_history.jsp" ;
 
-	public static final String GOODS_ADD_URL = "pages/back/admin/goods/goods_add.jsp" ;
+	public static final String GOODS_ADD_URL = "/pages/back/admin/goods/goods_add_pre.action" ;
 	public static final String GOODS_LIST_URL = "pages/back/admin/goods/goods_list.jsp" ;
 
 	public static final String DISTRIBUTION_GOODS_LIST_URL = "pages/back/admin/distribution/distribution_goods_list.jsp" ;

@@ -1,5 +1,6 @@
 package com.yootk.drp.dao.impl;
 
+import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
 import com.yootk.drp.dao.IWitemDao;
 import com.yootk.drp.vo.Witem;
@@ -13,6 +14,7 @@ import java.util.Set;
  * @Date: 2019/5/28 09:32
  * @Description:
  */
+@Repository
 public class WitemDaoImpl extends AbstractDAO implements IWitemDao {
     @Override
     public boolean doCreate(Witem witem) throws SQLException {

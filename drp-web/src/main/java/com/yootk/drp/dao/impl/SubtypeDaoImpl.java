@@ -1,5 +1,6 @@
 package com.yootk.drp.dao.impl;
 
+import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
 import com.yootk.drp.dao.ISubtypeDao;
 import com.yootk.drp.vo.Subtype;
@@ -13,6 +14,7 @@ import java.util.Set;
  * @Date: 2019/5/28 09:46
  * @Description:
  */
+@Repository
 public class SubtypeDaoImpl extends AbstractDAO implements ISubtypeDao {
     @Override
     public boolean doCreate(Subtype subtype) throws SQLException {

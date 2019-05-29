@@ -118,4 +118,22 @@ public class Goods implements Serializable {
     public void setDelflag(int delflag) {
         this.delflag = delflag;
     }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "gid=" + gid +
+                ", name='" + name + '\'' +
+                ", wiid=" + wiid +
+                ", stid=" + stid +
+                ", price=" + price +
+                ", weight=" + weight +
+                ", photo='" + photo + '\'' +
+                ", note='" + note + '\'' +
+                ", lastin=" + lastin +
+                ", stornum=" + stornum +
+                ", recorder='" + recorder + '\'' +
+                ", delflag=" + delflag +
+                '}';
+    }
 }
