@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -5,7 +6,7 @@
 	<script type="text/javascript" src="js/pages/back/admin/emp/emp_edit.js"></script>
 </head>
 <%!
-	public static final String EMP_EDIT_URL = "" ;
+	public static final String EMP_EDIT_URL = "pages/back/admin/emp/emp_edit.action" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -30,7 +31,7 @@
 								<label class="col-md-3 control-label" for="eid">登录ID：</label>
 								<div class="col-md-5">
 									<!-- 定义表单输入组件 -->
-									10001
+									${member.mid}
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="eidMsg"></div>
@@ -52,7 +53,7 @@
 								<div class="col-md-5">
 									<!-- 定义表单输入组件 -->
 									<input type="text" id="ename" name="ename" class="form-control"
-										placeholder="请输入雇员真实姓名">
+										placeholder="${member.name}">
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="enameMsg"></div>
@@ -63,7 +64,7 @@
 								<div class="col-md-5">
 									<!-- 定义表单输入组件 -->
 									<input type="text" id="phone" name="phone" class="form-control"
-										placeholder="请输入雇员联系电话">
+										placeholder="${member.phone}">
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="phoneMsg"></div>
@@ -74,9 +75,9 @@
 								<div class="col-md-5">
 									<select id="did" name="did" class="form-control">
 										<option value="">====== 请选择所在部门 ======</option>
-										<option value="1">技术部</option>
-										<option value="2">财务部</option>
-										<option value="3">市场部</option>
+										<c:forEach items="${allDepts}" var="dept">
+											<option value="${dept.did}">${dept.dname}</option>
+										</c:forEach>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
@@ -88,9 +89,9 @@
 								<div class="col-md-5">
 									<select id="jid" name="jid" class="form-control">
 										<option value="">====== 请选择雇员职务 ======</option>
-										<option value="1">总监</option>
-										<option value="2">部门经理</option>
-										<option value="3">部门员工</option>
+										<c:forEach items="${allLevels}" var="level">
+											<option value="${level.lid}">${level.title}</option>
+										</c:forEach>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
@@ -102,7 +103,7 @@
 								<div class="col-md-5">
 									<!-- 定义表单输入组件 -->
 									<input type="file" id="pic" name="pic" class="form-control"
-										placeholder="请选择雇员照片">
+										placeholder="${member.photo}">
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="picMsg"></div>
@@ -114,7 +115,7 @@
 								<div class="col-md-5">
 									<!-- 定义表单输入组件 -->
 									<textarea id="note" name="note"
-										class="form-control" placeholder="请输入雇员的面试情况" rows="10"></textarea>
+										class="form-control" placeholder="${member.note}" rows="10"></textarea>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="noteMsg"></div>

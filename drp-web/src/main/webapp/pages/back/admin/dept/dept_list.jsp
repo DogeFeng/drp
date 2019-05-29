@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -17,7 +18,7 @@
 		<div class="content-wrapper text-left">
 		<div class="panel panel-success">
 			<div class="panel-heading">
-				<strong><span class="glyphicon glyphicon-list"></span>&nbsp;雇员信息列表</strong>
+				<strong><span class="glyphicon glyphicon-list"></span>&nbsp;部门信息列表</strong>
 			</div>
 			<div class="panel-body">
 				<table class="table table-condensed">
@@ -29,22 +30,16 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach items="${allDepts}" var="dept">
 						<tr>
-							<td class="text-center"><input type="text" id="dname-1" class="form-control" value="技术部"></td>
-							<td class="text-center"><span id="eid-7369" style="cursor:pointer;">老李</span></td>
+							<td class="text-center"><input type="text" id="dname-${dept.did}" class="form-control" value="${dept.dname}"></td>
+							<td class="text-center"><span id="eid-${dept.mid}" style="cursor:pointer;">${allManagers[dept.mid]}</span></td>
 							<td class="text-center">
-								<button id="edit-1" class="btn btn-warning">
+								<button id="edit-${dept.did}" class="btn btn-warning">
 										<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</button>
 							</td>
 						</tr>
-						<tr>
-							<td class="text-center"><input type="text" id="dname-2" class="form-control" value="市场部"></td>
-							<td class="text-center"><span id="eid-7566" style="cursor:pointer;">老李</span></td>
-							<td class="text-center">
-								<button id="edit-2" class="btn btn-warning">
-										<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</button>
-							</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

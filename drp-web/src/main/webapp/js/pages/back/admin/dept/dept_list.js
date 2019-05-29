@@ -7,7 +7,11 @@ $(function(){
 			if (dname == "") { 
 				operateAlert(false,"","部门名称不允许为空，请确认后再提交更新！") ;
 			} else {
-				operateAlert(true,"部门名称更新成功！","") ;
+				data = did + ":" + dname ;
+				$.get("pages/back/admin/dept/dept_edit.action",data,function(data){
+					operateAlert(data.trim() == "true","部门名称修改成功！","部门名称修改失败！") ;
+				},"text") ;
+				//operateAlert(true,"部门名称更新成功！","") ;
 			}
 		}) ;
 	}) ;
