@@ -71,16 +71,22 @@ $(function(){
 			}
 		}
 	});
-	$(cid).on("change",function() {
-		handleAddress() ;	// 处理地址 
-	}) ;
-	$(pid).on("change",function(){
-		if (this.value != "") {	// 有内容，需要进行ajax异步加载
-			handleAddress() ;	// 处理地址 
-		} else {
-			$("#cid option:gt(0)").remove() ;
+	$(cid).on("change", function () {
+		handleAddress();	// 处理地址
+	});
+	$(pid).on("change", function () {
+		val = $(this).val();
+		if (val != "") {  // 有内容，需要进行ajax异步加载
+			handleAddress();	// 处理地址
+			$("#cid option:gt(0)").remove(); // 清除已有的内容
+			$("#cid option:eq(0)").prop("selected");
+			$.get("/pages/back/admin/warehouse/warehouse_edit_preCity.action", {"pid": val}, function (data) {
+				for (x = 0; x < data.length; x++) {
+					$(cid).append("<option value='" + data[x].cid + "'>" + data[x].title + "</option>");
+				}
+			}, "json");
 		}
-	}) ;
+	});
 })
 
 function handleAddress() {	// 实现地址处理过程

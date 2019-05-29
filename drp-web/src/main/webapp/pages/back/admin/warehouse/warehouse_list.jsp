@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <head>
 	<jsp:include page="/pages/plugins/basepath.jsp"/>
@@ -5,7 +6,7 @@
 	<script type="text/javascript" src="js/split_page.js"></script>
 </head>
 <%!
-	public static final String WAREHOUSE_EDIT_URL = "pages/back/admin/warehouse/warehouse_edit.jsp" ;
+	public static final String WAREHOUSE_EDIT_URL = "pages/back/admin/warehouse/warehouse_edit_pre.action" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -29,7 +30,8 @@
 					<thead>
 						<tr>
 							<th class="text-left" style="width:15%;">仓库名称</th> 
-							<th class="text-left" style="width:25%;">仓库地址</th>
+							<th class="text-left" style="width:15%;">仓库地址</th>
+							<th class="text-left" style="width:10%;">仓库图片</th>
 							<th class="text-center" style="width:10%;">存储分类</th>
 							<th class="text-center" style="width:10%;">存储上限</th>
 							<th class="text-center" style="width:10%;">当前存储量</th>
@@ -38,35 +40,24 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach items="${allWarehouses}" var="warehouse">
 						<tr>
-							<td class="text-left">北京通州仓库一号库</td>
-							<td class="text-left">北京 北京 通州XXX</td>
-							<td class="text-center">服装衣帽</td>
-							<td class="text-center">1000</td>
-							<td class="text-center">800</td>
-							<td class="text-center" id="admin-1"><span id="mid-admin" style="cursor:pointer;">老李</span></td> 
+							<td class="text-left">${warehouse.name}</td>
+							<td class="text-left">${warehouse.address}</td>
+							<td class="text-left"><img src="http://111.230.131.204/drp/upload/${warehouse.photo}" style="width:30px;"></td>
+							<td class="text-center">${allWitems[warehouse.wiid]}</td>
+							<td class="text-center">${warehouse.maximum}</td>
+							<td class="text-center">${warehouse.currnum}</td>
+							<td class="text-center" id="${warehouse.admin}"><span id="mid-admin" style="cursor:pointer;">${warehouse.admin}</span></td>
 							<td class="text-left">
 								<button id="editadmin-1" class="btn btn-primary btn-xs">
-										<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;编辑库管</button>
-										
-								<a href="<%=WAREHOUSE_EDIT_URL%>?wid=1" id="editinfo-1" class="btn btn-warning btn-xs">
-										<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑信息</a>
+									<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;编辑库管</button>
+
+								<a href="<%=WAREHOUSE_EDIT_URL%>?wid=${warehouse.wid}" id="editinfo-1" class="btn btn-warning btn-xs">
+									<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑信息</a>
 							</td>
 						</tr>
-						<tr>
-							<td class="text-left">北京通州仓库一号库</td>
-							<td class="text-left">北京 北京 通州XXX</td>
-							<td class="text-center">服装衣帽</td>
-							<td class="text-center">1000</td>
-							<td class="text-center">800</td>
-							<td class="text-center" id="admin-2"></td> 
-							<td class="text-left">
-								<button id="editadmin-2" class="btn btn-primary btn-xs">
-										<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;编辑库管</button>
-								<a href="<%=WAREHOUSE_EDIT_URL%>?wid=2" id="editinfo-1" class="btn btn-warning btn-xs">
-										<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑信息</a>
-							</td>
-						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 				<div id="splitBarDiv" style="float:right">
