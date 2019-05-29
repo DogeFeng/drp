@@ -2,13 +2,14 @@ package com.yootk.drp.dao.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.ICityDAO;
 import com.yootk.drp.dao.IWitemDAO;
-import com.yootk.drp.vo.City;
 import com.yootk.drp.vo.Witem;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 @Repository
 public class WitemDAOImpl extends AbstractDAO implements IWitemDAO {
@@ -37,6 +38,16 @@ public class WitemDAOImpl extends AbstractDAO implements IWitemDAO {
          String sql = "SELECT wiid,title FROM witem";
          super.pstmt = super.conn.prepareStatement(sql);
          return super.handleResultToList(super.pstmt.executeQuery(),Witem.class);
+    }
+    public Map<Long, String> findAllMap() throws SQLException {
+        Map<Long,String > map = new HashMap<>();
+        String sql = "SELECT wiid,title FROM witem";
+        super.pstmt = super.conn.prepareStatement(sql);
+        ResultSet rs = super.pstmt.executeQuery();
+        while (rs.next()){
+            map.put((long) rs.getInt(1),rs.getString(2));
+        }
+        return map;
     }
 
     @Override

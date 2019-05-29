@@ -14,7 +14,6 @@ import org.apache.http.util.EntityUtils;
 import java.io.File;
 
 public class UploadFileToServer {
-    // http://http://119.28.134.140/upload.action
     public static final String UPLOAD_URL = "http://111.230.131.204/drp/upload.action" ;
     public static String upload(File file,String contentType) throws Exception {
         // 1、创建一个可以被关闭的httpClient的对象

@@ -21,4 +21,12 @@ public class Witem implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public String toString() {
+        return "Witem{" +
+                "wiid=" + wiid +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }

@@ -17,6 +17,7 @@ public interface IWarehouseServiceBack  {
      */
     public Map<String,Object> preAdd()throws Exception;
 
+
     /**
      * 实现仓库的创建
      * @param warehouse 仓库创建信息
@@ -35,4 +36,20 @@ public interface IWarehouseServiceBack  {
      * @throws Exception
      */
     public Map<String,Object> list(String column,String keyWord,Long currentPage,Integer linesize) throws Exception;
+
+    /**
+     * 根据仓库编号查找仓库信息
+     * @param wid 仓库编号
+     * @return 仓库信息
+     * @throws Exception
+     */
+    public Map<String,Object> get(Long wid) throws Exception;
+
+    /**
+     * 修改仓库信息
+     * @param vo 要修改的信息
+     * @return 修改成功返回true
+     * @throws Exception
+     */
+    public boolean edit(Warehouse vo) throws Exception;
 }

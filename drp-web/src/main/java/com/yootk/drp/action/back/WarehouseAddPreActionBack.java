@@ -13,6 +13,9 @@ import com.yootk.drp.service.back.IWarehouseServiceBack;
 import com.yootk.drp.util.UploadFileToServer;
 import com.yootk.drp.vo.Warehouse;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/pages/back/admin/warehouse/")
 public class WarehouseAddPreActionBack extends AbstractAction {
@@ -48,7 +51,6 @@ public class WarehouseAddPreActionBack extends AbstractAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(warehouse);
         ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
         try {
             if(this.warehouseServiceBack.add(warehouse)){
@@ -76,6 +78,60 @@ public class WarehouseAddPreActionBack extends AbstractAction {
             mav.add(this.warehouseServiceBack.list(pu.getColumn(),pu.getKeyword(),pu.getCurrentPage(),pu.getLineSize()));
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return mav;
+    }
+
+    @RequestMapping("warehouse_edit_pre")
+    public ModuleAndView editPre(){
+        ModuleAndView mav = new ModuleAndView("/pages/back/admin/warehouse/warehouse_edit_show.action");
+        try {
+            mav.add(this.warehouseServiceBack.preAdd());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav;
+    }
+    @RequestMapping("warehouse_edit_preCity")
+    public void editPre(Long pid){
+        try {
+            super.print(JSONObject.toJSONString(this.cityService.preAddCity(pid)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("warehouse_edit_show")
+    public ModuleAndView editshow(Long wid){
+        ModuleAndView mav = new ModuleAndView("/pages/back/admin/warehouse/warehouse_edit.jsp");
+        try {
+            mav.add(this.warehouseServiceBack.get(wid));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav;
+    }
+    @RequestMapping("warehouse_edit")
+    public ModuleAndView edit(Warehouse warehouse,MultipartFile file){
+        try {
+            String fileName = UploadFileToServer.upload(file,file.getContentType()) ;
+            if(fileName != null || fileName != warehouse.getPhoto()){
+                warehouse.setPhoto(fileName);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
+        try {
+            if(this.warehouseServiceBack.edit(warehouse)){
+                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"仓库编辑成功！");
+                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/warehouse/warehouse_list.action");
+            }else{
+                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"仓库编辑失败！");
+                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/warehouse/warehouse_edit_pre.action?wid=" + warehouse.getWid());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/warehouse/warehouse_edit_pre.action?wid=" + warehouse.getWid());
         }
         return mav;
     }

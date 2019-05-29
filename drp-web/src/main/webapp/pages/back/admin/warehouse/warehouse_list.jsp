@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="js/split_page.js"></script>
 </head>
 <%!
-	public static final String WAREHOUSE_EDIT_URL = "pages/back/admin/warehouse/warehouse_edit.jsp" ;
+	public static final String WAREHOUSE_EDIT_URL = "pages/back/admin/warehouse/warehouse_edit_pre.action" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -30,7 +30,8 @@
 					<thead>
 						<tr>
 							<th class="text-left" style="width:15%;">仓库名称</th> 
-							<th class="text-left" style="width:25%;">仓库地址</th>
+							<th class="text-left" style="width:15%;">仓库地址</th>
+							<th class="text-left" style="width:10%;">仓库图片</th>
 							<th class="text-center" style="width:10%;">存储分类</th>
 							<th class="text-center" style="width:10%;">存储上限</th>
 							<th class="text-center" style="width:10%;">当前存储量</th>
@@ -43,7 +44,8 @@
 						<tr>
 							<td class="text-left">${warehouse.name}</td>
 							<td class="text-left">${warehouse.address}</td>
-							<td class="text-center">${warehouse.wiid}</td>
+							<td class="text-left"><img src="http://111.230.131.204/drp/upload/${warehouse.photo}" style="width:30px;"></td>
+							<td class="text-center">${allWitems[warehouse.wiid]}</td>
 							<td class="text-center">${warehouse.maximum}</td>
 							<td class="text-center">${warehouse.currnum}</td>
 							<td class="text-center" id="${warehouse.admin}"><span id="mid-admin" style="cursor:pointer;">${warehouse.admin}</span></td>
