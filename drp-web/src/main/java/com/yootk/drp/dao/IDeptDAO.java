@@ -14,4 +14,11 @@ public interface IDeptDAO extends IBaseDAO<Integer, Dept> {
      * key = did，value = dname
      */
     public Map<Long,String> findAllMap() throws SQLException;
+
+    /**
+     * 根据部门名称查询部门信息
+     * @param dname 要查询的部门的名称
+     * @return 返回包含部门信息的 VO 类对象
+     */
+    public Dept findByDname(String dname) throws SQLException;
 }

@@ -26,7 +26,7 @@ public class DeptDAOImpl extends AbstractDAO implements IDeptDAO {
         super.pstmt = super.conn.prepareStatement(sql) ;
         super.pstmt.setString(1,dept.getDname());
         super.pstmt.setLong(2,dept.getDid());
-        return super.pstmt.execute();
+        return super.pstmt.executeUpdate() > 0;
     }
 
     @Override
@@ -78,5 +78,13 @@ public class DeptDAOImpl extends AbstractDAO implements IDeptDAO {
             map.put(rs.getLong(1),rs.getString(2)) ;
         }
         return map ;
+    }
+
+    @Override
+    public Dept findByDname(String dname) throws SQLException {
+        String sql = "SELECT did FROM dept WHERE dname=?" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setString(1,dname);
+        return super.handleResultToVO(super.pstmt.executeQuery(),Dept.class) ;
     }
 }

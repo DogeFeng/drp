@@ -33,12 +33,11 @@ public class DeptActionBack extends AbstractAction{
     }
 
     @RequestMapping("dept_edit")
-    public void edit(String data) {
-        System.out.println(data);
-        String results[] = data.split(":") ;
+    public void edit(String did ,String dname) {
+        System.out.println("[dept_edit] did: " + did + ", dname: " + dname);
         Dept dept = new Dept();
-        dept.setDid(Long.parseLong(results[0]));
-        dept.setDname(results[1]);
+        dept.setDid(Long.parseLong(did));
+        dept.setDname(dname);
         try {
             super.print(this.deptServiceBack.edit(dept));
         } catch (Exception e) {

@@ -17,7 +17,7 @@ public interface IDeptServiceBack {
 
     /**
      * 部门编辑
-     * 调用 doEdit() 方法
+     * 查询修改后的部门名称是否已存在，如果不存在则调用 doEdit() 方法进行修改操作
      * @param dept 修改后的部门信息
      * @return 修改成功返回true，否则返回false
      */

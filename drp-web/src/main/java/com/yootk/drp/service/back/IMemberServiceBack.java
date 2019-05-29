@@ -32,6 +32,13 @@ public interface IMemberServiceBack {
      */
     public Map<String,Object> preEdit(String mid) throws SQLException;
 
+    /**
+     * 雇员信息修改
+     * 查询手机号码是否已被其他用户占用，如果没有则进行修改操作
+     * @param member 包含全部要修改的雇员信息的 VO 类对象
+     * @return 修改成功返回 true，否则返回 false
+     * @throws SQLException
+     */
     public boolean edit(Member member) throws SQLException;
 
     /**

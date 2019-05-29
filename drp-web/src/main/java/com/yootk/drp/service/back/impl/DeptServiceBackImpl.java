@@ -37,6 +37,9 @@ public class DeptServiceBackImpl extends AbstractService implements IDeptService
 
     @Override
     public boolean edit(Dept dept) throws SQLException {
+        if (deptDAO.findByDname(dept.getDname()) != null){
+            return false ;
+        }
         return deptDAO.doEdit(dept) ;
     }
 }
