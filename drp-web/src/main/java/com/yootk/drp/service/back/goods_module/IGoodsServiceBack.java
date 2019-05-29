@@ -1,4 +1,4 @@
-package com.yootk.drp.service.back;
+package com.yootk.drp.service.back.goods_module;
 
 import com.yootk.drp.vo.Goods;
 import com.yootk.drp.vo.Member;

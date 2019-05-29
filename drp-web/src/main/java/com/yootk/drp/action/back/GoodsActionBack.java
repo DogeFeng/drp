@@ -7,7 +7,7 @@ import com.yootk.common.annotation.RequestMapping;
 import com.yootk.common.servlet.web.ModuleAndView;
 import com.yootk.common.servlet.web.MultipartFile;
 import com.yootk.common.servlet.web.PageUtil;
-import com.yootk.drp.service.back.IGoodsServiceBack;
+import com.yootk.drp.service.back.goods_module.IGoodsServiceBack;
 import com.yootk.drp.util.UploadFileToServer;
 import com.yootk.drp.vo.Goods;
 

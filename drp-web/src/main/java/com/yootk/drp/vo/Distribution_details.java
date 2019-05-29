@@ -12,6 +12,20 @@ public class Distribution_details implements Serializable {
     private Long wid;
     private String outmid;
 
+    @Override
+    public String toString() {
+        return "Distribution_details{" +
+                "dsdid=" + dsdid +
+                ", gid=" + gid +
+                ", name='" + name + '\'' +
+                ", num=" + num +
+                ", price=" + price +
+                ", status=" + status +
+                ", wid=" + wid +
+                ", outmid='" + outmid + '\'' +
+                '}';
+    }
+
     public Long getDsdid() {
         return dsdid;
     }

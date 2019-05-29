@@ -1,4 +1,4 @@
-package com.yootk.drp.dao;
+package com.yootk.drp.dao.distribution_module;
 
 import com.yootk.common.dao.IBaseDAO;
 import com.yootk.drp.vo.Distribution;

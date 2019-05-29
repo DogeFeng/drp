@@ -1,17 +1,12 @@
-package com.yootk.drp.dao.impl;
+package com.yootk.drp.dao.warehouse_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.ICityDAO;
-import com.yootk.drp.dao.IProvinceDAO;
+import com.yootk.drp.dao.warehouse_module.ICityDAO;
 import com.yootk.drp.vo.City;
-import com.yootk.drp.vo.Province;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 @Repository
 public class CityDAOImpl extends AbstractDAO implements ICityDAO {

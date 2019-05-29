@@ -8,17 +8,14 @@ import com.yootk.common.annotation.RequestMapping;
 import com.yootk.common.servlet.web.ModuleAndView;
 import com.yootk.common.servlet.web.MultipartFile;
 import com.yootk.common.servlet.web.PageUtil;
-import com.yootk.drp.service.back.ICityService;
-import com.yootk.drp.service.back.IWarehouseServiceBack;
+import com.yootk.drp.service.back.warehouse_module.ICityService;
+import com.yootk.drp.service.back.warehouse_module.IWarehouseServiceBack;
 import com.yootk.drp.util.UploadFileToServer;
 import com.yootk.drp.vo.Warehouse;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Controller
 @RequestMapping("/pages/back/admin/warehouse/")
-public class WarehouseAddPreActionBack extends AbstractAction {
+public class WarehouseActionBack extends AbstractAction {
     @Autowired
     private IWarehouseServiceBack warehouseServiceBack;
     @Autowired

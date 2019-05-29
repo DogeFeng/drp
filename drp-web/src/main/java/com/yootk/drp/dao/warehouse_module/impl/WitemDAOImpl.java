@@ -1,8 +1,8 @@
-package com.yootk.drp.dao.impl;
+package com.yootk.drp.dao.warehouse_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.IWitemDAO;
+import com.yootk.drp.dao.warehouse_module.IWitemDAO;
 import com.yootk.drp.vo.Witem;
 
 import java.sql.ResultSet;
