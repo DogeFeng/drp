@@ -26,7 +26,7 @@
 	public static final String MANAGE_DISTRIBUTION_INPUT_URL = "pages/back/admin/manage/manage_distribution_input.jsp" ;
 
     public static final String DEPT_LIST_URL = "pages/back/admin/dept/dept_list.action" ;
-    public static final String EMP_ADD_URL = "pages/back/admin/emp/emp_add.jsp" ;
+    public static final String EMP_ADD_URL = "pages/back/admin/emp/emp_add_pre.action" ;
     public static final String EMP_LIST_URL = "pages/back/admin/emp/emp_list.action" ;
 
 	public static final String NEWS_ADD_URL = "pages/back/admin/news/news_add.jsp" ;

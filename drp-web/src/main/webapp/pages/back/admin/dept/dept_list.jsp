@@ -33,7 +33,7 @@
 						<c:forEach items="${allDepts}" var="dept">
 						<tr>
 							<td class="text-center"><input type="text" id="dname-${dept.did}" class="form-control" value="${dept.dname}"></td>
-							<td class="text-center"><span id="eid-${dept.mid}" style="cursor:pointer;">${allManagers[dept.mid]}</span></td>
+							<td class="text-center"><span id="mid-${dept.mid}" style="cursor:pointer;">${allManagers[dept.mid]}</span></td>
 							<td class="text-center">
 								<button id="edit-${dept.did}" class="btn btn-warning">
 										<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</button>

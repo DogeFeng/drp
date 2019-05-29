@@ -48,6 +48,16 @@ public class MemberServiceBackImpl extends AbstractService implements IMemberSer
 
     @Override
     public boolean edit(Member member) throws SQLException {
+        Member oldMember = empDAO.findById(member.getMid()) ;
+        if (! member.getPhone().equals(oldMember.getPhone())){
+            if (empDAO.findByphone(member.getPhone()) != null) {
+                return false;
+            }
+        }
+        if (member.getPassword().equals("**********")){
+            member.setPassword(oldMember.getPassword());
+        }
+        System.out.println("[service_member_back_edit member]" + member);
         return empDAO.doEdit(member) ;
     }
 
@@ -56,7 +66,7 @@ public class MemberServiceBackImpl extends AbstractService implements IMemberSer
         Map<String,Object> map = new HashMap<>() ;
         map.put("allDepts",deptDAO.findAllMap()) ;
         map.put("allLevels",levelDAO.findAllMap()) ;
-        return null;
+        return map;
     }
 
     @Override
@@ -64,10 +74,11 @@ public class MemberServiceBackImpl extends AbstractService implements IMemberSer
         if (empDAO.findById(member.getMid()) != null){
             return false ;
         }
-        if (empDAO.findByEmail(member.getEmail()) != null){
-            return false ;
-        }
-        if (empDAO.findByphone(member.getPhone()) != null){
+//        这里有个神奇的邮箱，按理说他不能重复
+//        if (empDAO.findByEmail(member.getEmail()) != null){
+//            return false ;
+//        }
+        if (empDAO.findByphone(member.getPhone()) != null){ //数据库全是重复手机号，我也很绝望
             return false ;
         }
         return empDAO.doCreate(member);

@@ -17,8 +17,8 @@ $(function(){
 	}) ;
 	$("span[id^=eid-]").each(function(){
 		$(this).on("click",function(){
-			eid = this.id.split("-")[1] ;
-			console.log("雇员编号：" + eid) ;
+			mid = this.id.split("-")[1] ;
+			console.log("雇员编号：" + mid) ;
 			$("#memberInfo").modal("toggle") ;
 		}) ;
 	}) ;

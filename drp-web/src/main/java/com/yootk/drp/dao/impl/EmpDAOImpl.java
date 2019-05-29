@@ -14,29 +14,36 @@ import java.util.*;
 public class EmpDAOImpl extends AbstractDAO implements IEmpDAO {
     @Override
     public boolean doCreate(Member member) throws SQLException {
-        String sql = "INSERT INTO member (mid,lid,did,name,sal,phone,password,photo,note,regdate,inmid,locked,type,email) " +
-                " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)" ;
+        String sql = "INSERT INTO member (mid,lid,did,name,phone,password,photo,note,regdate,inmid,type) " +
+                " VALUES(?,?,?,?,?,?,?,?,?,?,?)" ;
         super.pstmt = super.conn.prepareStatement(sql) ;
         super.pstmt.setString(1,member.getMid());
         super.pstmt.setLong(2,member.getLid());
         super.pstmt.setLong(3,member.getDid());
         super.pstmt.setString(4,member.getName());
-        super.pstmt.setDouble(5,member.getSal());
-        super.pstmt.setString(6,member.getPhone());
-        super.pstmt.setString(7,member.getPassword());
-        super.pstmt.setString(8,member.getPhoto());
-        super.pstmt.setString(9,member.getNote());
-        super.pstmt.setDate(10, (java.sql.Date) new Date());
-        super.pstmt.setString(11,member.getInmid());
-        super.pstmt.setInt(12,member.getLocked());
-        super.pstmt.setInt(13,1);
-        super.pstmt.setString(14,member.getEmail());
-        return super.pstmt.execute();
+        super.pstmt.setString(5,member.getPhone());
+        super.pstmt.setString(6,member.getPassword());
+        super.pstmt.setString(7,member.getPhoto());
+        super.pstmt.setString(8,member.getNote());
+        super.pstmt.setDate(9, new java.sql.Date(new Date().getTime()));
+        super.pstmt.setString(10,member.getInmid());
+        super.pstmt.setInt(11,1);
+        return super.pstmt.executeUpdate() > 0;
     }
 
     @Override
     public boolean doEdit(Member member) throws SQLException {
-        return false;
+        String sql = "UPDATE member SET lid=?,did=?,name=?,phone=?,password=?,photo=?,note=? WHERE mid=?" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1,member.getLid());
+        super.pstmt.setLong(2,member.getDid());
+        super.pstmt.setString(3,member.getName());
+        super.pstmt.setString(4,member.getPhone());
+        super.pstmt.setString(5,member.getPassword());
+        super.pstmt.setString(6,member.getPhoto());
+        super.pstmt.setString(7,member.getNote());
+        super.pstmt.setString(8,member.getMid());
+        return super.pstmt.executeUpdate() > 0;
     }
 
     @Override
@@ -47,7 +54,7 @@ public class EmpDAOImpl extends AbstractDAO implements IEmpDAO {
     @Override
     public Member findById(String s) throws SQLException {
         super.conn = DatabaseConnection.getConnection() ;
-        String sql = "SELECT mid,name,phone,did,lid,photo,note FROM member WHERE mid=?" ;
+        String sql = "SELECT mid,lid,did,name,phone,password,photo,note FROM member WHERE mid=?" ;
         super.pstmt = super.conn.prepareStatement(sql) ;
         super.pstmt.setString(1,s);
         return super.handleResultToVO(super.pstmt.executeQuery(),Member.class);

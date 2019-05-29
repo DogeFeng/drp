@@ -24,7 +24,7 @@ $(function(){
 		},
 		errorClass : "text-danger",
 		rules : {
-			"eid" : {
+			"mid" : {
 				required : true
 				//remote : {
 //				url : "check.jsp", // 后台处理程序
@@ -46,20 +46,20 @@ $(function(){
 			"password" : {
 				required : true
 			},
-			"ename" : {
+			"name" : {
 				required : true
 			} ,
 			"phone" : {
 				required : true 
 			},
-			"jid" : {
+			"lid" : {
 				required : true 
 			},
 			"did" : {
 				required : true 
 			},
 			"pic" : {
-				required : true ,
+				required : false ,
 				accept : ["jpg","png","gif","bmp"]
 			},
 			"note" : {
