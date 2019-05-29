@@ -24,19 +24,19 @@
 					<table class="table table-striped table-bordered table-hover">
 						<tr> 
 							<td style="width:150px;"><strong>入库标题：</strong></td>
-							<td>双13备货</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td><strong>存入仓库名称：</strong></td>
-							<td>北京市 北京市 通州一号仓库</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td><strong>仓库类型：</strong></td>
-							<td>衣帽服饰</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td><strong>备注信息：</strong></td>
-							<td>我要上</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td><strong>入库操作：</strong></td>

@@ -6,7 +6,7 @@
 </head>
 <%!
 	public static final String STORAGE_SUBMIT_URL = "" ;
-	public static final String STORAGE_EDIT_URL = "pages/back/admin/storage/storage_edit.jsp" ;
+	public static final String STORAGE_EDIT_URL = "pages/back/admin/storage/storage_edit_pre.action" ;
 	public static final String STORAGE_LIST_DETAILS_URL = "pages/back/admin/storage/storage_list_details.jsp" ;
 	public static final String STORAGE_DELETE_URL = "" ;
 %>
@@ -42,7 +42,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<th class="text-center" style="width:10%;">20001010</th> 
+							<th class="text-center" style="width:10%;">20001010</th>
 							<td class="text-left">
 								<a href="<%=STORAGE_EDIT_URL%>?sid=1">2017双十一衣帽入库</a></td>
 							<td class="text-left">北京通州仓库一号库</td>

@@ -1,4 +1,23 @@
 $(function(){
+	$(cid).on("change",function(){
+		val = $(this).val() ;
+		if (val != "") {
+			setAddressValue() ;
+		}
+	}) ;
+	$(pid).on("change",function(){
+		val = $(this).val() ;
+		if (val != "") {
+			$("#cid option:gt(0)").remove(); // 清除已有的内容
+			$("#cid option:eq(0)").prop("selected") ;
+			setAddressValue() ;
+			$.get("pages/back/admin/city/city_list.action", {"pid": val}, function (data) {
+				for (x = 0; x < data.length; x++) {
+					$(cid).append("<option value='" + data[x].cid + "'>" + data[x].title + "</option>");
+				}
+			}, "json");
+		}
+	}) ;
 	$("#myform").validate({
 		debug : true, // 取消表单的提交操作
 		submitHandler : function(form) {
@@ -45,3 +64,13 @@ $(function(){
 		}
 	});
 })
+function setAddressValue() {	// 设置省份和城市的内容
+	province = "" ;
+	city = "" ;
+	if ($("#pid").val() != "") {
+		province = $("#pid>option:selected").text(); // 获得选定元素的文本内容
+	}
+	if ($("#cid").val() != "") {
+		city = $("#cid>option:selected").text(); // 获得选定元素的文本内容
+	}
+}
