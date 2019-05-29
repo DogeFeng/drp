@@ -46,13 +46,6 @@ public interface IGoodsServiceBack {
      */
     public Map<String,Object> listGoods(Long currentPage, Integer lineSize, String column, String keyWord , int delflag) throws Exception ;
 
-    /**
-     * 根据用户id查询用户信息
-     * @param mid 用户id
-     * @return 返回Member信息
-     * @throws Exception
-     */
-    public Member getMember(String mid) throws Exception ;
 
 
 }

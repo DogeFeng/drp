@@ -50,7 +50,7 @@
 							<td class="text-center">${goods.weight}</td>
 							<td class="text-center">${goods.lastin}</td>
 							<td class="text-center"><span id="storage-1" style="cursor:pointer;">${goods.stornum}</span></td>
-							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${allMember[goods.recorder]}</span></td>
+							<td class="text-center"><span id="mid-${goods.recorder}" style="cursor:pointer;">${allMember[goods.recorder]}</span></td>
 							<td class="text-left">
 								<a href="<%=GOODS_EDIT_URL%>" class="btn btn-primary btn-xs">
 									<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</a>

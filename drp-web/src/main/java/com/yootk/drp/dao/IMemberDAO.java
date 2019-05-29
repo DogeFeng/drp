@@ -12,7 +12,7 @@ import java.util.Map;
  * @Date: 2019/5/28 15:06
  * @Description:
  */
-public interface IMemberDao extends IBaseDAO<String, Member> {
+public interface IMemberDAO extends IBaseDAO<String, Member> {
     /**
      * 查询员工id和姓名
      * @return 返回Map

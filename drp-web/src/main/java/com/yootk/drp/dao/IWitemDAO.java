@@ -8,5 +8,5 @@ import com.yootk.drp.vo.Witem;
  * @Date: 2019/5/28 09:30
  * @Description:
  */
-public interface IWitemDao extends IBaseDAO<Long, Witem> {
+public interface IWitemDAO extends IBaseDAO<Long, Witem> {
 }

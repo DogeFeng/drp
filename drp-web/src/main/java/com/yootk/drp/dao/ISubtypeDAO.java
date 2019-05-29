@@ -8,5 +8,5 @@ import com.yootk.drp.vo.Subtype;
  * @Date: 2019/5/28 09:45
  * @Description:
  */
-public interface ISubtypeDao extends IBaseDAO<Long, Subtype> {
+public interface ISubtypeDAO extends IBaseDAO<Long, Subtype> {
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * @Date: 2019/5/28 09:49
  * @Description:
  */
-public interface IGoodsDao extends IBaseDAO<Long , Goods> {
+public interface IGoodsDAO extends IBaseDAO<Long , Goods> {
     /**
      * 查询所有商品信息
      * @param delflag 删除标记。0：未删除、1：已删除

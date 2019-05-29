@@ -2,7 +2,7 @@ package com.yootk.drp.dao.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.IGoodsDao;
+import com.yootk.drp.dao.IGoodsDAO;
 import com.yootk.drp.vo.Goods;
 
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ import java.util.Set;
  * @Description:
  */
 @Repository
-public class GoodsDaoImpl extends AbstractDAO implements IGoodsDao {
+public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
     @Override
     public boolean doCreate(Goods goods) throws SQLException {
         String sql = "INSERT INTO goods(name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag) VALUES(?,?,?,?,?,?,?,?,?,?,?)" ;

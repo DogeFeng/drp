@@ -2,13 +2,12 @@ package com.yootk.drp.service.back.impl;
 
 import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Service;
-import com.yootk.drp.dao.IGoodsDao;
-import com.yootk.drp.dao.IMemberDao;
-import com.yootk.drp.dao.ISubtypeDao;
-import com.yootk.drp.dao.IWitemDao;
+import com.yootk.drp.dao.IGoodsDAO;
+import com.yootk.drp.dao.IMemberDAO;
+import com.yootk.drp.dao.ISubtypeDAO;
+import com.yootk.drp.dao.IWitemDAO;
 import com.yootk.drp.service.back.IGoodsServiceBack;
 import com.yootk.drp.vo.Goods;
-import com.yootk.drp.vo.Member;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -22,13 +21,13 @@ import java.util.Map;
 @Service
 public class GoodsServiceBackImpl implements IGoodsServiceBack {
     @Autowired
-    private ISubtypeDao subtypeDao ;
+    private ISubtypeDAO subtypeDao ;
     @Autowired
-    private IWitemDao witemDao ;
+    private IWitemDAO witemDao ;
     @Autowired
-    private IGoodsDao goodsDao ;
+    private IGoodsDAO goodsDao ;
     @Autowired
-    private IMemberDao memberDao ;
+    private IMemberDAO memberDao ;
 
     @Override
     public Map<String, Object> addPre() throws Exception {
@@ -60,8 +59,4 @@ public class GoodsServiceBackImpl implements IGoodsServiceBack {
         return map;
     }
 
-    @Override
-    public Member getMember(String mid) throws Exception {
-        return memberDao.findById(mid);
-    }
 }

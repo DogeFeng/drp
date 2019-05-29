@@ -2,7 +2,7 @@ package com.yootk.drp.dao.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.IMemberDao;
+import com.yootk.drp.dao.IMemberDAO;
 import com.yootk.drp.vo.Member;
 
 import java.sql.ResultSet;
@@ -18,7 +18,7 @@ import java.util.Set;
  * @Description:
  */
 @Repository
-public class MemberDaoImpl extends AbstractDAO implements IMemberDao {
+public class MemberDAOImpl extends AbstractDAO implements IMemberDAO {
     @Override
     public boolean doCreate(Member member) throws SQLException {
         return false;
@@ -50,6 +50,7 @@ public class MemberDaoImpl extends AbstractDAO implements IMemberDao {
     public Member findById(String s) throws SQLException {
         String sql = "SELECT mid,lid,did,name,sal,phone,password,photo,note,regdate,inmid,locked,type,email,cuid FROM member WHERE mid=? " ;
         super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setString(1,s);
         return super.handleResultToVO(super.pstmt.executeQuery(),Member.class);
     }
 

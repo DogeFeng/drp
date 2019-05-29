@@ -14,6 +14,14 @@ $(function(){
 	$("span[id^=mid-]").each(function(){
 		$(this).on("click",function(){
 			mid = this.id.split("-")[1] ;
+			/*$.get("###", {"mid": mid}, function (data) {
+				var elem = $("#memberInfo table span") ;
+				elem[0].innerText = ;
+				elem[1].innerText = ;
+				elem[2].innerText = ;
+				elem[3].innerText = ;
+				elem[4].innerText = ;
+			}, "json");*/
 			$("#memberInfo").modal("toggle") ;
 		}) ;
 	}) ;
