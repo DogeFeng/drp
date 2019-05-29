@@ -23,6 +23,8 @@ public class GoodsActionBack extends AbstractAction {
     @Autowired
     private IGoodsServiceBack goodsServiceBack ;
 
+
+
     /**
      * 商品显示
      * @return
@@ -37,6 +39,14 @@ public class GoodsActionBack extends AbstractAction {
             e.printStackTrace();
         }
         return mav ;
+    }
+    @RequestMapping("goods_add_pre_subtype")
+    public void addPre_Subtype(Long wiid) {
+        try {
+            super.print(JSONObject.toJSONString(goodsServiceBack.findByWitemId(wiid)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

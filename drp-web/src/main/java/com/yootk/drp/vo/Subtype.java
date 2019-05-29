@@ -6,6 +6,7 @@ import java.io.Serializable;
  * @Auther: LL
  * @Date: 2019/5/28 09:08
  * @Description: 商品二级分类、子分类
+ *  stid,title,wiid
  */
 public class Subtype implements Serializable {
     private Long stid ;         //子分类编号，自动增长

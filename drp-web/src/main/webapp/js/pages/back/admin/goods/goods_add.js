@@ -1,4 +1,15 @@
 $(function(){
+
+	$("#wiid").on("change",function () {
+		var wiid = $(this).val() ;
+		$.get("pages/back/admin/goods/goods_add_pre_subtype.action", {"wiid": wiid}, function (data) {
+			for (x = 0; x < data.length; x++) {
+				console.log(" ****** " + data[x].title) ;
+				$("#stid").append("<option value='" + data[x].stid + "'>" + data[x].title + "</option>") ;
+			}
+		}, "json");
+	}) ;
+
 	tinymce.init({ selector:'#note' });
 	$("#myform").validate({
 		debug : true, // 取消表单的提交操作

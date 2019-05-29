@@ -58,9 +58,9 @@
 								<div class="col-md-5">
 									<select id="stid" name="stid" class="form-control">
 										<option value="">====== 请选择商品所属子分类 ======</option>
-										<c:forEach items="${allSubtype}" var="sub">
+										<%--<c:forEach items="${allSubtype}" var="sub">
 											<option value="${sub.stid}">${sub.title}</option>
-										</c:forEach>
+										</c:forEach>--%>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->

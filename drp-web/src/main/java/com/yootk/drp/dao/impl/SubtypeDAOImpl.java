@@ -62,4 +62,12 @@ public class SubtypeDAOImpl extends AbstractDAO implements ISubtypeDAO {
     public Long getAllCount(String column, String keyWord) throws SQLException {
         return null;
     }
+
+    @Override
+    public List<Subtype> findByWiid(Long wiid) throws Exception {
+        String sql = "SELECT stid,title,wiid FROM subtype WHERE wiid=? " ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1,wiid);
+        return super.handleResultToList(super.pstmt.executeQuery() , Subtype.class);
+    }
 }

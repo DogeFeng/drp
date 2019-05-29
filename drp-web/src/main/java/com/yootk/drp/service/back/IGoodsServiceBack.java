@@ -2,7 +2,9 @@ package com.yootk.drp.service.back;
 
 import com.yootk.drp.vo.Goods;
 import com.yootk.drp.vo.Member;
+import com.yootk.drp.vo.Subtype;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,6 +13,9 @@ import java.util.Map;
  * @Description:
  */
 public interface IGoodsServiceBack {
+
+    public List<Subtype> findByWitemId(Long wiid) throws Exception ;
+
     /**
      * 商品添加前查询商品分类和子分类
      * @return Map
