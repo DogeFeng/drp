@@ -6,6 +6,7 @@ import com.yootk.common.annotation.Controller;
 import com.yootk.common.annotation.RequestMapping;
 import com.yootk.common.servlet.web.ModuleAndView;
 import com.yootk.common.servlet.web.MultipartFile;
+import com.yootk.common.servlet.web.PageUtil;
 import com.yootk.drp.service.back.IGoodsServiceBack;
 import com.yootk.drp.util.UploadFileToServer;
 import com.yootk.drp.vo.Goods;
@@ -21,6 +22,28 @@ public class GoodsActionBack extends AbstractAction {
     @Autowired
     private IGoodsServiceBack goodsServiceBack ;
 
+
+
+    /**
+     * 商品显示
+     * @return
+     */
+    @RequestMapping("goods_list")
+    public ModuleAndView list() {
+        ModuleAndView mav = new ModuleAndView("goods_list.jsp") ;
+        PageUtil pu = new PageUtil("/pages/back/admin/goods/goods_list.action","商品名称:name|商品单价:price");
+        try {
+            mav.add(goodsServiceBack.listGoods(pu.getCurrentPage(),pu.getLineSize(),pu.getColumn(),pu.getKeyword(),1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav ;
+    }
+
+    /**
+     * 商品添加前的准备
+     * @return
+     */
     @RequestMapping("goods_add_pre")
     public ModuleAndView addPre() {
         ModuleAndView mav = new ModuleAndView("goods_add.jsp") ;
@@ -31,9 +54,16 @@ public class GoodsActionBack extends AbstractAction {
         }
         return mav ;
     }
+
+    /**
+     * 商品添加
+     * @param goods
+     * @param photo
+     * @return
+     */
     @RequestMapping("goods_add")
     public ModuleAndView add(Goods goods, MultipartFile photo){
-        goods.setRecorder("xxx");
+        goods.setRecorder(super.getFrontUser());
         try {
             String fileName = UploadFileToServer.upload(photo,photo.getContentType()) ;
             goods.setPhoto(fileName);
@@ -42,7 +72,7 @@ public class GoodsActionBack extends AbstractAction {
         }
         ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
         try {
-            System.out.println(goods);
+            //System.out.println(goods);
             if(this.goodsServiceBack.add(goods)){
                 mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"商品增加成功！");
                 mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"pages/back/admin/goods/goods_add_pre.action");

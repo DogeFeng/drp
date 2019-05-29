@@ -110,7 +110,7 @@ public class GoodsDaoImpl extends AbstractDAO implements IGoodsDao {
 
     @Override
     public List<Goods> findSplitFlag(Long currentPage, Integer lineSize, String column, String keyWord, int delflag) throws SQLException {
-        String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE delflag=? " + column + " LIKE ? LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
+        String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE delflag=? AND " + column + " LIKE ? LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql);
         super.pstmt.setInt(1 , delflag);
         super.pstmt.setString(2, "%" + keyWord + "%");
@@ -131,7 +131,7 @@ public class GoodsDaoImpl extends AbstractDAO implements IGoodsDao {
 
     @Override
     public Long getAllCountFlag(String column, String keyWord, int delflag) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM goods WHERE delflag=? " + column + " LIKE ?" ;
+        String sql = "SELECT COUNT(*) FROM goods WHERE delflag=? AND " + column + " LIKE ?" ;
         this.pstmt = this.conn.prepareStatement(sql) ;
         super.pstmt.setInt(1 , delflag);
         this.pstmt.setString(2,"%"+keyWord+"%");

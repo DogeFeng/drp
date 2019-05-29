@@ -54,6 +54,7 @@ public class GoodsServiceBackImpl implements IGoodsServiceBack {
         }else {
             map.put("allGoods",goodsDao.findSplitFlag(currentPage,lineSize,column,keyWord,delflag)) ;
             map.put("allRecorders",goodsDao.getAllCountFlag(column,keyWord,delflag)) ;
+
         }
         map.put("allMember",memberDao.findMap()) ;
         return map;
