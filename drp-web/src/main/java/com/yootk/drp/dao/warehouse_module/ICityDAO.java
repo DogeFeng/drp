@@ -1,10 +1,9 @@
-package com.yootk.drp.dao;
+package com.yootk.drp.dao.warehouse_module;
 
 import com.yootk.common.dao.IBaseDAO;
 import com.yootk.drp.vo.City;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 public interface ICityDAO extends IBaseDAO<Long, City> {
     /**

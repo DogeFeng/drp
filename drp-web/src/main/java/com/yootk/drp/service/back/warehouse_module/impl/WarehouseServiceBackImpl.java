@@ -1,14 +1,13 @@
-package com.yootk.drp.service.back.impl;
+package com.yootk.drp.service.back.warehouse_module.impl;
 
 import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Service;
 import com.yootk.common.service.abs.AbstractService;
-import com.yootk.drp.dao.ICityDAO;
-import com.yootk.drp.dao.IProvinceDAO;
-import com.yootk.drp.dao.IWareHouseDAO;
-import com.yootk.drp.dao.IWitemDAO;
-import com.yootk.drp.service.back.IWarehouseServiceBack;
-import com.yootk.drp.vo.City;
+import com.yootk.drp.dao.warehouse_module.ICityDAO;
+import com.yootk.drp.dao.warehouse_module.IProvinceDAO;
+import com.yootk.drp.dao.warehouse_module.IWareHouseDAO;
+import com.yootk.drp.dao.warehouse_module.IWitemDAO;
+import com.yootk.drp.service.back.warehouse_module.IWarehouseServiceBack;
 import com.yootk.drp.vo.Province;
 import com.yootk.drp.vo.Warehouse;
 import com.yootk.drp.vo.Witem;

@@ -28,7 +28,7 @@ $(function(){
 			"name" : {
 				required : true
 			} ,
-			"tid" : {
+			"wiid" : {
 				required : true 
 			},
 			"stid" : {
@@ -38,11 +38,15 @@ $(function(){
 				required : true ,
 				number : true 
 			},
+			"stornum" : {
+				required : true ,
+				number : true
+			},
 			"weight" : {
 				required : true ,
 				digits : true 
 			},
-			"pic" : {
+			"photo" : {
 				required : true ,
 				accept : ["jpg","png","gif","bmp"]
 			},

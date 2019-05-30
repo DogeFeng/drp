@@ -34,7 +34,6 @@ public class DeptActionBack extends AbstractAction{
 
     @RequestMapping("dept_edit")
     public void edit(String did ,String dname) {
-        System.out.println("[dept_edit] did: " + did + ", dname: " + dname);
         Dept dept = new Dept();
         dept.setDid(Long.parseLong(did));
         dept.setDname(dname);
