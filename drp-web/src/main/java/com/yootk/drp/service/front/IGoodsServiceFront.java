@@ -1,5 +1,8 @@
 package com.yootk.drp.service.front;
 
+import com.yootk.drp.vo.Goods;
+
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,4 +19,21 @@ public interface IGoodsServiceFront {
      * @throws Exception
      */
     public Map<String,Object> findSubtypeAndWitem() throws Exception ;
+
+    /**
+     * 通过二级分类查询商品信息
+     * @param stid
+     * @param delflag
+     * @return
+     * @throws Exception
+     */
+    public Map<String, Object> findSubtypeIdGoods(Long stid , Long currentPage, Integer lineSize, String column, String keyWord , int delflag) throws Exception ;
+
+    /**
+     * 根据id进行查询
+     * @param gid
+     * @return
+     * @throws Exception
+     */
+    public Goods get(Long gid) throws Exception ;
 }

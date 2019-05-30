@@ -59,4 +59,10 @@ public interface IGoodsDAO extends IBaseDAO<Long , Goods> {
      * @throws SQLException
      */
     public Long getAllCountFlag(String column, String keyWord , int delflag) throws SQLException ;
+
+    public Long getAllCountFlagAndStid(Long stid ,String column, String keyWord , int delflag) throws SQLException ;
+    public Long getAllCountFlagAndStid(Long stid ,int delflag) throws SQLException ;
+    public List<Goods> findSplitFlagAndStid(Long stid ,Long currentPage, Integer lineSize, String column, String keyWord , int delflag) throws SQLException ;
+    public List<Goods> findSplitFlagAndStid(Long stid ,Long currentPage, Integer lineSize , int delflag) throws SQLException ;
+
 }

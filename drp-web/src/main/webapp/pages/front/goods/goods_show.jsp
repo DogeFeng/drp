@@ -5,7 +5,9 @@
 	<jsp:include page="/pages/plugins/basepath.jsp"/>
 	<script type="text/javascript" src="js/pages/front/goods/goods_show.js"></script>
 </head>
-
+<%!
+	public static final String GOODS_PRICE_URL = "http://111.230.131.204/drp/upload/" ;
+%>
 <body class="back">
 	<div class="container contentback">
 		<div id="headDiv" class="row">
@@ -22,36 +24,24 @@
 					</div>
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-md-2 text-center"> 
-								<p><img class="img" src="images/nophoto.png" style="width:125px;"></p>
+							<div class="col-md-3 text-center">
+								<p><img class="img" src="<%=GOODS_PRICE_URL%>${goods.photo}" style="width:90%;"></p>
 								<button id="addCar-1" class="btn btn-lg btn-danger">
 									<span class="glyphicon glyphicon-eye-open"></span>&nbsp;加入购物车</button>
 							</div>
-							<div class="col-md-10">
+							<div class="col-md-9">
 								<div class="row">
-									<div class="col-md-2 h3"><strong>商品名称：</strong></div>
-									<div class="col-md-3 h3">Java开发实战经典</div>
+									<div class="col-md-3 h3"><strong>商品名称：</strong></div>
+									<div class="col-md-3 h3">${goods.name}</div>
 								</div>
 								<div class="row">
-									<div class="col-md-2 h3"><strong>商品价格：</strong></div>
-									<div class="col-md-3 h3">￥79.8</div> 
+									<div class="col-md-3 h3"><strong>商品价格：</strong></div>
+									<div class="col-md-3 h3">￥${goods.price}</div>
 								</div>
-								<div class="row"> 
-									<div class="col-md-12">
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
-										商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。商品描述信息。<br>
+								<div class="row">
+									<div class="col-md-3 h3"><strong>商品描述：</strong></div>
+									<div class="col-md-12 h4">
+										${goods.note}
 									</div>
 								</div>
 							</div>
