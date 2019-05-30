@@ -1,8 +1,9 @@
 package com.yootk.drp.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Member {
+public class Member implements Serializable {
     private String mid ;
     private Long lid ;
     private Long did ;

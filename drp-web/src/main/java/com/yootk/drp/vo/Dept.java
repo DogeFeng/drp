@@ -1,6 +1,8 @@
 package com.yootk.drp.vo;
 
-public class Dept {
+import java.io.Serializable;
+
+public class Dept implements Serializable {
     private Long did ;
     private String dname ;
     private String mid ;

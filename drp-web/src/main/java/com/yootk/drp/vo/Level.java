@@ -1,6 +1,8 @@
 package com.yootk.drp.vo;
 
-public class Level {
+import java.io.Serializable;
+
+public class Level implements Serializable {
     private Long lid ;
     private String title ;
 
