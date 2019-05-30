@@ -16,8 +16,11 @@ $(function(){
 	$("button[id^=out-]").each(function(){
 		$(this).on("click",function(){
 			cid = this.id.split("-")[1] ;
+			mid = "${mid}";
+			console.log(mid);
 			operateAlert(true,"出库客户追加成功！","出库客户追加失败！") ;
 		}) ;
+
 	}) ;
 	$("button[id^=input-]").each(function(){
 		$(this).on("click",function(){

@@ -9,7 +9,9 @@ import com.yootk.drp.vo.Distribution_details;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Repository
@@ -44,6 +46,44 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
             return rs.getInt(1);
         }
         return null;
+    }
+
+    @Override
+    public Map<Long, Integer> findAllByMid(String mid) throws SQLException {
+        Map<Long,Integer> map = new HashMap<>();
+        String sql = "SELECT gid,num FROM distribution_details WHERE outmid = ?";
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setString(1,mid);
+        ResultSet rs = super.pstmt.executeQuery();
+        while (rs.next()){
+            map.put(rs.getLong(1),rs.getInt(2));
+        }
+        return map;
+    }
+
+    @Override
+    public boolean doEditBatch(List<Distribution_details> details) throws SQLException {
+        String sql = "UPDATE distribution_details SET num=? WHERE outmid=? AND gid=?";
+        super.pstmt = super.conn.prepareStatement(sql);
+        for(Distribution_details detail : details){
+            super.pstmt.setInt(1, detail.getNum());
+            super.pstmt.setString(2,detail.getOutmid());
+            super.pstmt.setLong(3,detail.getGid());
+            super.pstmt.addBatch();
+        }
+        return super.isBatchSuccess(super.pstmt.executeBatch());  //执行批处理
+    }
+
+    @Override
+    public boolean doRemoveByMidAndGid(String mid, Set<Long> gids) throws SQLException {
+        StringBuffer sql = new StringBuffer("DELETE FROM distribution_details WHERE outmid=? AND gid IN (");
+        for(Long gid : gids){
+            sql.append(gid + ",");
+        }
+        sql.delete(sql.length() - 1 ,sql.length()).append(")");
+        super.pstmt = super.conn.prepareStatement(sql.toString());
+        super.pstmt.setString(1,mid);
+        return super.pstmt.executeUpdate() > 0;
     }
 
     @Override

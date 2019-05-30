@@ -2,6 +2,9 @@
 <%!
 	public static final String CUSTOMER_ADD_URL = "" ;
 %>
+<%
+	session.setAttribute("mid","ceshiyong");
+%>
 <html>
 <head>
 	<jsp:include page="/pages/plugins/basepath.jsp"/>
