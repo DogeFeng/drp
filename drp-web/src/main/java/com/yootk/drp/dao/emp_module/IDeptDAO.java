@@ -1,4 +1,4 @@
-package com.yootk.drp.dao;
+package com.yootk.drp.dao.emp_module;
 
 import com.yootk.common.dao.IBaseDAO;
 import com.yootk.common.dao.abs.AbstractDAO;

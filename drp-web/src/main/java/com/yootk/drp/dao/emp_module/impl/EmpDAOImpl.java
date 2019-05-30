@@ -1,9 +1,9 @@
-package com.yootk.drp.dao.impl;
+package com.yootk.drp.dao.emp_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
 import com.yootk.common.dbc.DatabaseConnection;
-import com.yootk.drp.dao.IEmpDAO;
+import com.yootk.drp.dao.emp_module.IEmpDAO;
 import com.yootk.drp.vo.Member;
 
 import java.sql.ResultSet;
