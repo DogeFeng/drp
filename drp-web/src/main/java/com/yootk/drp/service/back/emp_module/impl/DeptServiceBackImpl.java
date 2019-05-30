@@ -1,12 +1,11 @@
-package com.yootk.drp.service.back.impl;
+package com.yootk.drp.service.back.emp_module.impl;
 
 import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Service;
 import com.yootk.common.service.abs.AbstractService;
-import com.yootk.drp.dao.IDeptDAO;
-import com.yootk.drp.dao.IEmpDAO;
-import com.yootk.drp.dao.ILevelDAO;
-import com.yootk.drp.service.back.IDeptServiceBack;
+import com.yootk.drp.dao.emp_module.IDeptDAO;
+import com.yootk.drp.dao.emp_module.IEmpDAO;
+import com.yootk.drp.service.back.emp_module.IDeptServiceBack;
 import com.yootk.drp.vo.Dept;
 
 import java.sql.SQLException;
