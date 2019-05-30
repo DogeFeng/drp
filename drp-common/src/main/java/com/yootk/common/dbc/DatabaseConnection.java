@@ -29,6 +29,7 @@ public class DatabaseConnection {
         return conn ;
     }
     public static void close() {
+
         Connection conn = THREAD_LOCAL.get() ;
         if (conn != null) {
             try {

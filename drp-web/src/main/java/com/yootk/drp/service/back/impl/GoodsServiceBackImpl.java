@@ -2,6 +2,7 @@ package com.yootk.drp.service.back.impl;
 
 import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Service;
+import com.yootk.common.dbc.DatabaseConnection;
 import com.yootk.drp.dao.IGoodsDAO;
 import com.yootk.drp.dao.IMemberDAO;
 import com.yootk.drp.dao.ISubtypeDAO;
@@ -10,6 +11,7 @@ import com.yootk.drp.service.back.IGoodsServiceBack;
 import com.yootk.drp.vo.Goods;
 import com.yootk.drp.vo.Subtype;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +34,14 @@ public class GoodsServiceBackImpl implements IGoodsServiceBack {
     private IMemberDAO memberDao ;
 
     @Override
+    public Map<String,Object> findById(Long gid) throws Exception {
+        Map<String, Object> map = new HashMap<>() ;
+        map.put("allWitem",witemDao.findAll()) ;
+        map.put("goods",goodsDao.findById(gid)) ;
+        return map;
+    }
+
+    @Override
     public List<Subtype> findByWitemId(Long wiid) throws Exception {
         return subtypeDao.findByWiid(wiid) ;
     }
@@ -39,16 +49,18 @@ public class GoodsServiceBackImpl implements IGoodsServiceBack {
     @Override
     public Map<String, Object> addPre() throws Exception {
         Map<String, Object> map = new HashMap<>() ;
-        //map.put("allSubtype",subtypeDao.findAll()) ;
         map.put("allWitem",witemDao.findAll()) ;
         return map;
     }
 
     @Override
     public boolean add(Goods goods) throws Exception {
-        goods.setDelflag(1) ;
-        goods.setLastin(new Date());
         return goodsDao.doCreate(goods);
+    }
+
+    @Override
+    public boolean edit(Goods goods) throws Exception {
+        return goodsDao.doEdit(goods);
     }
 
     @Override

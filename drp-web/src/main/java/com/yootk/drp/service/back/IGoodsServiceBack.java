@@ -14,6 +14,21 @@ import java.util.Map;
  */
 public interface IGoodsServiceBack {
 
+
+    /**
+     * 通过商品id，查询商品信息
+     * @param gid
+     * @return
+     * @throws Exception
+     */
+    public Map<String,Object> findById(Long gid) throws Exception ;
+
+    /**
+     * 通过一级分类id查询二级分类id
+     * @param wiid
+     * @return
+     * @throws Exception
+     */
     public List<Subtype> findByWitemId(Long wiid) throws Exception ;
 
     /**
@@ -27,14 +42,20 @@ public interface IGoodsServiceBack {
 
     /**
      * 商品添加
-     * 1.delflag=1,未删除
-     * 2.lastin=当前时间，最后进货时间
      * @param goods 商品信息
      * @return boolean
      *  添加成功返回true，失败false
      * @throws Exception
      */
     public boolean add(Goods goods) throws Exception ;
+
+    /**
+     * 商品修改
+     * @param goods 商品信息
+     * @return boolean
+     *  添加成功返回true，失败false
+     */
+    public boolean edit(Goods goods) throws Exception ;
 
     /**
      * 商品查询

@@ -12,6 +12,8 @@ import com.yootk.drp.service.back.IGoodsServiceBack;
 import com.yootk.drp.util.UploadFileToServer;
 import com.yootk.drp.vo.Goods;
 
+import java.util.Date;
+
 /**
  * @Auther: LL
  * @Date: 2019/5/28 16:13
@@ -23,7 +25,50 @@ public class GoodsActionBack extends AbstractAction {
     @Autowired
     private IGoodsServiceBack goodsServiceBack ;
 
+    @RequestMapping("goods_edit")
+    public ModuleAndView edit(Goods goods, MultipartFile photo){
+        //goods.setRecorder(super.getFrontUser());    //操作者
+        goods.setRecorder("yootk1");    //操作者
+        goods.setDelflag(1) ;                       //delflag=1,未删除
+        goods.setLastin(new Date());                //最后进货时间
+        try {
+            String fileName = UploadFileToServer.upload(photo,photo.getContentType()) ;
+            goods.setPhoto(fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
+        try {
+            System.out.println(goods);
+            if(this.goodsServiceBack.edit(goods)){
+                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"商品修改成功！");
+                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"pages/back/admin/goods/goods_list.action");
+            }else{
+                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"商品修改失败！");
+                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"pages/back/admin/goods/goods_list.action");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"pages/back/admin/goods/goods_list.action");
+        }
+        return mav;
+    }
 
+    /**
+     * 商品修改前准备
+     * @param gid
+     * @return
+     */
+    @RequestMapping("goods_edit_pre")
+    public ModuleAndView editPre(Long gid) {
+        ModuleAndView mav = new ModuleAndView("goods_edit.jsp") ;
+        try {
+            mav.add(goodsServiceBack.findById(gid));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav ;
+    }
 
     /**
      * 商品显示
@@ -72,7 +117,10 @@ public class GoodsActionBack extends AbstractAction {
      */
     @RequestMapping("goods_add")
     public ModuleAndView add(Goods goods, MultipartFile photo){
-        goods.setRecorder(super.getFrontUser());
+        //goods.setRecorder(super.getFrontUser());    //操作者
+        goods.setRecorder("yootk1");    //操作者
+        goods.setDelflag(1) ;                       //delflag=1,未删除
+        goods.setLastin(new Date());                //最后进货时间
         try {
             String fileName = UploadFileToServer.upload(photo,photo.getContentType()) ;
             goods.setPhoto(fileName);
