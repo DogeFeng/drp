@@ -2,6 +2,7 @@ package com.yootk.drp.service.back.impl;
 
 import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Service;
+import com.yootk.common.encrypt.EncryptUtil;
 import com.yootk.common.service.abs.AbstractService;
 import com.yootk.drp.dao.IDeptDAO;
 import com.yootk.drp.dao.IEmpDAO;
@@ -56,6 +57,8 @@ public class MemberServiceBackImpl extends AbstractService implements IMemberSer
         }
         if (member.getPassword().equals("**********")){
             member.setPassword(oldMember.getPassword());
+        }else{
+            member.setPassword(EncryptUtil.encode(member.getPassword())) ;
         }
         System.out.println("[service_member_back_edit member]" + member);
         return empDAO.doEdit(member) ;
@@ -81,6 +84,7 @@ public class MemberServiceBackImpl extends AbstractService implements IMemberSer
         if (empDAO.findByphone(member.getPhone()) != null){ //数据库全是重复手机号，我也很绝望
             return false ;
         }
+        member.setPassword(EncryptUtil.encode(member.getPassword())) ;
         return empDAO.doCreate(member);
     }
 }
