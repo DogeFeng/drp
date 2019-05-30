@@ -3,15 +3,15 @@ package com.yootk.drp.vo;
 /**
  * 客户回访业务分类
  */
-public class CrItem {
+public class CRItem {
     private Long criid ;
     private String title ;
 
-    public CrItem(Long criid) {
+    public CRItem(Long criid) {
         this.criid = criid;
     }
 
-    public CrItem(String title) {
+    public CRItem(String title) {
         this.title = title;
     }
 
