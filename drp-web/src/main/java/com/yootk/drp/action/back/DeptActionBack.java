@@ -5,13 +5,9 @@ import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Controller;
 import com.yootk.common.annotation.RequestMapping;
 import com.yootk.common.servlet.web.ModuleAndView;
-import com.yootk.common.util.ResourceUtil;
-import com.yootk.drp.service.back.IDeptServiceBack;
+import com.yootk.drp.service.back.emp_module.IDeptServiceBack;
 import com.yootk.drp.vo.Dept;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Controller
