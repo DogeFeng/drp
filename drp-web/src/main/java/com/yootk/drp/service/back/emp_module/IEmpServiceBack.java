@@ -6,7 +6,7 @@ import com.yootk.drp.vo.Member;
 import java.sql.SQLException;
 import java.util.Map;
 
-public interface IMemberServiceBack {
+public interface IEmpServiceBack {
     /**
      * 雇员信息的查询操作
      * 查询雇员的照片、姓名、级别、部门、如用日期、工资、联系电话

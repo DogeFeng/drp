@@ -43,10 +43,7 @@ $(function(){
 //				}
 //}
 			} ,
-			"ename" : {
-				required : true
-			} ,
-			"tid" : { 
+			"csid" : {
 				required : true 
 			},
 			"pid" : {
@@ -61,7 +58,7 @@ $(function(){
 			"address" : {
 				required : true 
 			},
-			"lev" : {
+			"ciid" : {
 				required : true 
 			},
 			"note" : {

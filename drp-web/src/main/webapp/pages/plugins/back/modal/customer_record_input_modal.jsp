@@ -24,11 +24,11 @@
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="titleMsg"></div>
 							</div>
-							<div class="form-group" id="bidDiv">
+							<div class="form-group" id="criidDiv">
 								<!-- 定义表单提示文字 -->
-								<label class="col-md-3 control-label" for="bid">业务分类：</label>
+								<label class="col-md-3 control-label" for="criid">业务分类：</label>
 								<div class="col-md-5">
-									<select id="bid" name="bid" class="form-control">
+									<select id="criid" name="criid" class="form-control">
 										<option value="">====== 请选择联系的业务类型 ======</option>
 										<option value="1">销售推荐</option>
 										<option value="2">客户回访</option>
@@ -37,7 +37,7 @@
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
-								<div class="col-md-4" id="bidMsg"></div>
+								<div class="col-md-4" id="criidMsg"></div>
 							</div>
 							<!-- 定义输入表单样式，其中id主要用于设置颜色样式 -->
 							<div class="form-group" id="noteDiv">

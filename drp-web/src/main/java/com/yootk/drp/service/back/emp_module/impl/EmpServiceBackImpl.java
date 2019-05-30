@@ -7,7 +7,7 @@ import com.yootk.common.service.abs.AbstractService;
 import com.yootk.drp.dao.emp_module.IDeptDAO;
 import com.yootk.drp.dao.emp_module.IEmpDAO;
 import com.yootk.drp.dao.emp_module.ILevelDAO;
-import com.yootk.drp.service.back.emp_module.IMemberServiceBack;
+import com.yootk.drp.service.back.emp_module.IEmpServiceBack;
 import com.yootk.drp.vo.Member;
 
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class MemberServiceBackImpl extends AbstractService implements IMemberServiceBack {
+public class EmpServiceBackImpl extends AbstractService implements IEmpServiceBack {
     @Autowired
     private IEmpDAO empDAO ;
     @Autowired
