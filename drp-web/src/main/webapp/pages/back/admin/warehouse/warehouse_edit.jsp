@@ -85,7 +85,7 @@
 										placeholder="请输入仓库实际使用面积">
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
-								<div class="col-md-4" id="areaMsg"></div>
+								<div class="col-md-4" id="currnumMsg"></div>
 							</div>
 							<div class="form-group" id="wiidDiv">
 								<!-- 定义表单提示文字 -->

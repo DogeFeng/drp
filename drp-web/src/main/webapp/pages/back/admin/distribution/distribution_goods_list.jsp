@@ -2,7 +2,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%!
-	public static final String DISTRIBUTION_ADD_URL = "pages/back/admin/distribution/distribution_add.jsp" ;
+	public static final String DISTRIBUTION_ADD_URL = "pages/back/admin/distribution/distribution_add_pre.action" ;
 %>
 <html>
 <head>

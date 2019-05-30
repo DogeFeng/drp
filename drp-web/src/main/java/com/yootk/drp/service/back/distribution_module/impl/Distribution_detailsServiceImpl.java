@@ -7,6 +7,7 @@ import com.yootk.drp.dao.distribution_module.IDistribution_detailsDAO;
 import com.yootk.drp.dao.goods_module.IGoodsDAO;
 import com.yootk.drp.service.back.distribution_module.IDistribution_detailsService;
 import com.yootk.drp.vo.Distribution_details;
+import com.yootk.drp.vo.Goods;
 
 import java.util.HashMap;
 import java.util.List;

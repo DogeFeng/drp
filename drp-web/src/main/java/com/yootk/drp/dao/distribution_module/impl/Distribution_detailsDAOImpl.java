@@ -6,16 +6,28 @@ import com.yootk.drp.dao.distribution_module.IDistributionDAO;
 import com.yootk.drp.dao.distribution_module.IDistribution_detailsDAO;
 import com.yootk.drp.vo.Distribution;
 import com.yootk.drp.vo.Distribution_details;
+import com.yootk.drp.vo.Goods;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistribution_detailsDAO {
+    @Override
+    public boolean doCreateBatch(List<Goods> allGoods,Integer status,Long dsid) throws Exception {
+        String sql = "UPDATE distribution_details SET name=?,price=?,status=?,dsid=? WHERE gid=?";
+        super.pstmt = super.conn.prepareStatement(sql);
+        for(Goods good : allGoods){
+            super.pstmt.setString(1,good.getName());
+            super.pstmt.setDouble(2,good.getPrice());
+            super.pstmt.setInt(3,status);
+            super.pstmt.setLong(4,dsid);
+            super.pstmt.setLong(5,good.getGid());
+            super.pstmt.addBatch();
+        }
+        return super.isBatchSuccess(super.pstmt.executeBatch());
+    }
     @Override
     public boolean doCreateByGid(Distribution_details vo) throws SQLException {
         String sql = "INSERT INTO distribution_details(gid,num,outmid)VALUES(?,?,?)";
@@ -84,6 +96,19 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
         super.pstmt = super.conn.prepareStatement(sql.toString());
         super.pstmt.setString(1,mid);
         return super.pstmt.executeUpdate() > 0;
+    }
+
+    @Override
+    public Set<Long> getAllGids(String mid) throws SQLException {
+        Set<Long> gids = new HashSet<>();
+        String sql = "SELECT gid FROM distribution_details WHERE outmid=?";
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setString(1,mid);
+        ResultSet rs = super.pstmt.executeQuery();
+        while (rs.next()){
+            gids.add(rs.getLong(1));
+        }
+        return gids;
     }
 
     @Override

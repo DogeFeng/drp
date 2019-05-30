@@ -3,6 +3,7 @@ package com.yootk.drp.dao.distribution_module;
 import com.yootk.common.dao.IBaseDAO;
 import com.yootk.drp.vo.Distribution;
 import com.yootk.drp.vo.Distribution_details;
+import com.yootk.drp.vo.Goods;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -38,4 +39,20 @@ public interface IDistribution_detailsDAO extends IBaseDAO<Long, Distribution_de
      * @throws SQLException
      */
     public boolean doRemoveByMidAndGid(String mid, Set<Long> gids) throws SQLException;
+
+    /**
+     * 根据仓库管理员编号查询所有的gid编号
+     * @param mid
+     * @return
+     * @throws SQLException
+     */
+    public Set<Long> getAllGids(String mid) throws SQLException;
+
+    /**
+     * 根据仓库管理员，取得商品详细信息，填入出库商品详情
+     * @param allGoods
+     * @return
+     * @throws Exception
+     */
+    public boolean doCreateBatch(List<Goods> allGoods,Integer status,Long dsid) throws Exception;
 }

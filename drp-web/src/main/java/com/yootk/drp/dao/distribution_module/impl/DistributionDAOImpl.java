@@ -10,10 +10,22 @@ import java.util.List;
 import java.util.Set;
 @Repository
 public class DistributionDAOImpl extends AbstractDAO implements IDistributionDAO {
-
+    @Override
+    public Long findLastId() throws SQLException {
+        return super.getLastId();
+    }
     @Override
     public boolean doCreate(Distribution vo) throws SQLException {
-        return false;
+        String sql = "INSERT INTO distribution(title,pid,cid,note,gnum,price,status) VALUES(?,?,?,?,?,?,?)";
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setString(1,vo.getTitle());
+        super.pstmt.setLong(2,vo.getPid());
+        super.pstmt.setLong(3,vo.getCid());
+        super.pstmt.setString(4,vo.getNote());
+        super.pstmt.setInt(5,vo.getGnum());
+        super.pstmt.setDouble(6,vo.getPrice());
+        super.pstmt.setInt(7,vo.getStatus());
+        return super.pstmt.executeUpdate() > 0;
     }
 
     @Override

@@ -5,14 +5,21 @@ import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Controller;
 import com.yootk.common.annotation.RequestMapping;
 import com.yootk.common.servlet.web.ModuleAndView;
+import com.yootk.common.servlet.web.ServletObject;
+import com.yootk.drp.service.back.distribution_module.IDistributionService;
 import com.yootk.drp.service.back.distribution_module.IDistribution_detailsService;
+import com.yootk.drp.util.UploadFileToServer;
+import com.yootk.drp.vo.Distribution;
 import com.yootk.drp.vo.Distribution_details;
 
+import javax.sql.rowset.serial.SerialBlob;
 import java.util.*;
 
 @Controller
 @RequestMapping("/pages/back/admin/distribution/")
 public class DistributionActionBack extends AbstractAction {
+    @Autowired
+    private IDistributionService distributionService;
     @Autowired
     private IDistribution_detailsService distribution_detailsService;
     @RequestMapping("distribution_goods_list")
@@ -70,5 +77,32 @@ public class DistributionActionBack extends AbstractAction {
     @Override
     public String getUploadDir() {
         return null;
+    }
+    @RequestMapping("distribution_add_pre")
+    public ModuleAndView addPre(){
+        ModuleAndView mav = new ModuleAndView("/pages/back/admin/distribution/distribution_add.jsp");
+        try {
+            mav.add(this.distributionService.preAdd("yootk10"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav;
+    }
+    @RequestMapping("distribution_add")
+    public ModuleAndView add(Distribution vo){
+        ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
+        try {
+            if(this.distributionService.add("yootk10",vo)){
+                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"商品出库单创建成功！");
+                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/index.jsp");
+            }else{
+                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"仓库增加失败！");
+                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/distribution/distribution_details_goods_list.action");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/distribution/distribution_details_goods_list.action");
+        }
+        return mav;
     }
 }

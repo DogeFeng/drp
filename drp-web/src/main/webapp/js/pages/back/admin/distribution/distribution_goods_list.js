@@ -88,7 +88,16 @@ $(function() {
 			},"text") ;
 		}
 	}) ;
-
+    // $(createBtn).on("click",function() {
+    //     gidArray = new Array(); // 保存要传输的gid编号
+    //     foot = 0;
+    //     $(":checkbox[id='gid']").each(function () {
+    //         if ($(this).prop("checked")) {
+    //             gidArray[foot++] = parseInt($(this).val());
+    //         }
+    //     });
+    //     $(this).attr("href",$(this).attr("href") + "?gids=" + gidArray);
+    // });
 	$("button[id*=add-]").each(function(){
 		var gid = this.id.split("-")[1] ; // 取得商品ID数据
 		$(this).on("click",function(){
