@@ -25,6 +25,17 @@ public class GoodsActionBack extends AbstractAction {
     @Autowired
     private IGoodsServiceBack goodsServiceBack ;
 
+    @RequestMapping("goods_show")
+    public ModuleAndView goodsShow(Long gid) {
+        ModuleAndView mav = new ModuleAndView("goods_show.jsp") ;
+        try {
+            mav.add(goodsServiceBack.findgoodsShow(gid));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav ;
+    }
+
     @RequestMapping("goods_edit")
     public ModuleAndView edit(Goods goods, MultipartFile photo){
         //goods.setRecorder(super.getFrontUser());    //操作者

@@ -14,9 +14,10 @@ import java.util.Map;
  */
 public interface IGoodsServiceBack {
 
+    public Map<String,Object> findgoodsShow(Long gid) throws Exception ;
 
     /**
-     * 通过商品id，查询商品信息
+     * 通过商品id，查询信息
      * @param gid
      * @return
      * @throws Exception

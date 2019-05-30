@@ -36,7 +36,7 @@ public class IGoodsServiceFrontImpl implements IGoodsServiceFront {
 
     @Override
     public Goods get(Long gid) throws Exception {
-        return goodsDAO.findById(gid);
+        return goodsDAO.    findById(gid);
     }
 
     @Override

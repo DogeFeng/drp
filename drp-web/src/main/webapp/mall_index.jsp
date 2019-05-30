@@ -24,7 +24,7 @@
                 <%-- <jsp:include page="/pages/plugins/split_plugin_search_bar.jsp"/> --%>
             </div>
             <div class="row">
-                <img src="images/include.jpg" width="99%">
+                <img src="images/include.jpg" style="width: 1000px ; height: 540px">
             </div>
         </div>
         <div id="splitBarDiv" style="float:right">

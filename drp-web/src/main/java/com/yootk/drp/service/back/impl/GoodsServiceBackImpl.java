@@ -34,6 +34,13 @@ public class GoodsServiceBackImpl implements IGoodsServiceBack {
     private IMemberDAO memberDao ;
 
     @Override
+    public Map<String, Object> findgoodsShow(Long gid) throws Exception {
+        Map<String, Object> map = new HashMap<>() ;
+        map.put("goods",goodsDao.findById(gid)) ;
+        return map;
+    }
+
+    @Override
     public Map<String,Object> findById(Long gid) throws Exception {
         Map<String, Object> map = new HashMap<>() ;
         map.put("allWitem",witemDao.findAll()) ;

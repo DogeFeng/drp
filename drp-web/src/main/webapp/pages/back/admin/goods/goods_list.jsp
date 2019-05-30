@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%!
 	public static final String GOODS_EDIT_URL = "pages/back/admin/goods/goods_edit_pre.action" ;
-	public static final String GOODS_SHOW_URL = "pages/back/admin/goods/goods_show.jsp" ;
+	public static final String GOODS_SHOW_URL = "pages/back/admin/goods/goods_show.action" ;
 %>
 <html>
 <head>
@@ -45,7 +45,7 @@
 					<c:forEach items="${allGoods}" var="goods">
 						<tr>
 							<td class="text-left">${goods.gid}</td>
-							<td class="text-left"><a href="<%=GOODS_SHOW_URL%>" title="查看商品详情">${goods.name}</a></td>
+							<td class="text-left"><a href="<%=GOODS_SHOW_URL%>?gid=${goods.gid}" title="查看商品详情">${goods.name}</a></td>
 							<td class="text-center">${goods.price}</td>
 							<td class="text-center">${goods.weight}</td>
 							<td class="text-center">${goods.lastin}</td>

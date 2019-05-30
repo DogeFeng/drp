@@ -10,6 +10,8 @@ import com.yootk.common.servlet.web.ServletObject;
 import com.yootk.drp.service.back.IGoodsServiceBack;
 import com.yootk.drp.service.front.IGoodsServiceFront;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @Auther: LL
  * @Date: 2019/5/30 10:19
@@ -35,7 +37,9 @@ public class GoodsActionFront extends AbstractAction {
     @RequestMapping("goods_list")
     public ModuleAndView findSubtypeIdGoods(Long stid){
         if(stid == null) {
-            stid = Long.parseLong(ServletObject.getRequest().getSession().getAttribute("stid").toString()) ;
+            HttpSession session =  ServletObject.getRequest().getSession() ;
+            stid = Long.parseLong(session.getAttribute("stid").toString()) ;
+            session.removeAttribute("stid");
         }
         ModuleAndView mav = new ModuleAndView("goods_list.jsp") ;
         PageUtil pu = new PageUtil("/pages/front/goods/goods_list.action","商品名称:name|商品单价:price");

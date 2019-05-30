@@ -40,7 +40,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-3 h3"><strong>商品描述：</strong></div>
-									<div class="col-md-12 h4">
+									<div class="col-md-8 h4">
 										${goods.note}
 									</div>
 								</div>

@@ -14,9 +14,12 @@
 %>
 <%
 	request.setAttribute("lineSize",8) ;
-	if(request.getAttribute("allGoods") != null) {
-		Long stid = ((List<Goods>)request.getAttribute("allGoods")).get(0).getStid() ;
+	List<Goods> list = (List<Goods>)request.getAttribute("allGoods") ;
+	if(!(list == null || list.size() ==0)){
+		Long stid = list.get(0).getStid() ;
 		session.setAttribute("stid" , stid) ;
+	}else {
+		session.setAttribute("stid" , 0) ;
 	}
 %>
 <body>
