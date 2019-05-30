@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%!
 	public static final String LOGIN_URL = "login.jsp" ;
-	public static final String MALL_INDEX_URL = "mall_index.jsp" ;
+	public static final String MALL_INDEX_URL = "/pages/front/admin/goods/goods_mall_index.action" ;
 	public static final String PURCHASE_ADD_URL = "pages/front/center/purchase/purchase_add.jsp" ;
 	public static final String MEMBER_EDIT_URL = "pages/front/center/member/member_edit.jsp" ;
 	public static final String MEMBER_ADDRESS_LIST_URL = "pages/front/center/address/address_list.jsp" ;
