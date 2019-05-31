@@ -60,6 +60,14 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
     }
 
     @Override
+    public List<Goods> findLinkName(String name) throws SQLException {
+        String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE name LIKE ?" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setString(1 , "%" + name +"%");
+        return super.handleResultToList(super.pstmt.executeQuery() , Goods.class);
+    }
+
+    @Override
     public Goods findById(Long aLong) throws SQLException {
         String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE gid=?" ;
         super.pstmt = super.conn.prepareStatement(sql) ;

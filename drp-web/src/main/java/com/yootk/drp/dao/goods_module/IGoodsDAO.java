@@ -13,6 +13,14 @@ import java.util.List;
  */
 public interface IGoodsDAO extends IBaseDAO<Long , Goods> {
     /**
+     * 通过name，模糊查询
+     * @param name
+     * @return
+     * @throws SQLException
+     */
+    public List<Goods> findLinkName(String name) throws SQLException ;
+
+    /**
      * 查询所有商品信息
      * @param delflag 删除标记。0：未删除、1：已删除
      * @return List<Goods>

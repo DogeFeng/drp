@@ -18,7 +18,7 @@ public interface IGoodsServiceFront {
      *  2.key=allWitem、value=List<Witem></>
      * @throws Exception
      */
-    public Map<String,Object> findSubtypeAndWitem() throws Exception ;
+    public Map<String,Object> findSubtypeAndWitem(String name) throws Exception ;
 
     /**
      * 通过二级分类查询商品信息

@@ -26,10 +26,15 @@ public class IGoodsServiceFrontImpl implements IGoodsServiceFront {
     private IGoodsDAO goodsDAO ;
 
     @Override
-    public Map<String, Object> findSubtypeAndWitem() throws Exception {
+    public Map<String, Object> findSubtypeAndWitem(String name) throws Exception {
         Map<String, Object> map = new HashMap<>() ;
         map.put("allSubtype" ,subtypeDao.findAll()) ;
         map.put("allWitem",witemDao.findAll()) ;
+        if(name == null ) {
+            map.put("allGoods",null) ;
+        }else {
+            map.put("allGoods",goodsDAO.findLinkName(name)) ;
+        }
         return map;
     }
 

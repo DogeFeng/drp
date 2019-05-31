@@ -33,9 +33,9 @@
 					<li><a href="<%=PURCHASE_ADD_URL%>"><span class="glyphicon glyphicon-certificate"></span>&nbsp;大宗采购</a></li>
 				</ul></li>
 		</ul>
-		<form class="navbar-form navbar-left" action="" method="post">
+		<form class="navbar-form navbar-left" action="<%=MALL_INDEX_URL%>" method="post">
 			<div class="form-group">
-				<input type="text" class="form-control input-xs" placeholder="请输入商品关键字..." style="width:300px;background: #F5F5F5;height:30px;">
+				<input type="text" name="name" class="form-control input-xs" placeholder="请输入商品关键字..." style="width:300px;background: #F5F5F5;height:30px;">
 				<button class="btn btn-danger" style="height:30px;">搜索</button>
 			</div>
 		</form>

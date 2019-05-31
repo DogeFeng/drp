@@ -55,10 +55,10 @@ public class GoodsActionFront extends AbstractAction {
      * @return
      */
     @RequestMapping("goods_mall_index")
-    public ModuleAndView findSubtypeAndWitem(){
+    public ModuleAndView findSubtypeAndWitem(String name){
         ModuleAndView mav = new ModuleAndView("/mall_index.jsp") ;
         try {
-            mav.add(goodsServiceFront.findSubtypeAndWitem());
+            mav.add(goodsServiceFront.findSubtypeAndWitem(name));
         } catch (Exception e) {
             e.printStackTrace();
         }
