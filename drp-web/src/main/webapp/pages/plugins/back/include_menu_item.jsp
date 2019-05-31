@@ -9,7 +9,7 @@
 	public static final String CUSTOMER_AUDIT_URL = "pages/back/admin/customer/customer_audit_list.jsp" ;
 
 	public static final String STORAGE_ADD_URL = "pages/back/admin/storage/storage_add_pre.action" ;
-	public static final String STORAGE_LIST_URL = "pages/back/admin/storage/storage_list_myself.jsp" ;
+	public static final String STORAGE_LIST_URL = "pages/back/admin/storage/storage_list.action" ;
 
 	public static final String STORAGE_AUDIT_LIST_URL = "pages/back/admin/storageaudit/storageaudit_list_prepare.jsp" ;
 	public static final String STORAGE_AUDIT_HISTORY_URL = "pages/back/admin/storageaudit/storageaudit_list_history.jsp" ;

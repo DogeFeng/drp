@@ -1,11 +1,10 @@
-package com.yootk.drp.dao.impl;
+package com.yootk.drp.dao.city_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.ICityDAO;
+import com.yootk.drp.dao.city_module.ICityDAO;
 import com.yootk.drp.vo.City;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;

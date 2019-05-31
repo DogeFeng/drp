@@ -14,7 +14,7 @@ $(function(){
 			}
 			id = id + "Msg" ;
 			$("#" + id).empty() ;	// 先清除之前的所有内容
-			$("#" + id).append(error) ; 
+			$("#" + id).append(error) ;
 		},
 		highlight : function(element, errorClass) {
 			$(element).fadeOut(1,function() {
@@ -28,12 +28,12 @@ $(function(){
 			var id = $(element).attr("id") ;
 			id = id + "Msg" ;
 			$("#" + id).empty() ;	// 先清除之前的所有内容
-			$("#" + id).append("<span class='text-success glyphicon glyphicon-ok'></span>") ; 
+			$("#" + id).append("<span class='text-success glyphicon glyphicon-ok'></span>") ;
 		},
 		unhighlight : function(element, errorClass) {
 			$(element).fadeOut(1,function() {
 				$(element).fadeIn(1,function() {
-						$("#" + $(element).attr("id").replace(".","\\.") + "Div").attr("class","form-group has-success");
+					$("#" + $(element).attr("id").replace(".","\\.") + "Div").attr("class","form-group has-success");
 				});
 			})
 		},
@@ -41,14 +41,15 @@ $(function(){
 		rules : {
 			"mid" : {
 				required : true
+
 			},
-			"password" : { 
+			"password" : {
 				required : true
 			} ,
 			"code" : {
 				required : true ,
 				remote : {
-					url : "CheckRandomActionFront!check.action", // 后台处理程序
+					url : "code_check.action", // 后台处理程序
 					type : "post", // 数据发送方式
 					dataType : "html", // 接收数据格式
 					data : { // 要传递的数据

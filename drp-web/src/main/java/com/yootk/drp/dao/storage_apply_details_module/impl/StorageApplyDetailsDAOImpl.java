@@ -1,7 +1,7 @@
-package com.yootk.drp.dao.impl;
+package com.yootk.drp.dao.storage_apply_details_module.impl;
 
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.IStorageApplyDetailsDAO;
+import com.yootk.drp.dao.storage_apply_details_module.IStorageApplyDetailsDAO;
 import com.yootk.drp.vo.StorageApplyDetails;
 
 import java.sql.ResultSet;
@@ -14,7 +14,15 @@ import java.util.Set;
 public class StorageApplyDetailsDAOImpl  extends AbstractDAO implements IStorageApplyDetailsDAO {
     @Override
     public boolean doCreate(StorageApplyDetails storageApplyDetails) throws SQLException {
-        return false;
+        String sql = "INSERT INTO storage_apply_details(said,gid,name,num,price,weight)VALUES(?,?,?,?,?,?)" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1,storageApplyDetails.getSadid());
+        super.pstmt.setLong(2,storageApplyDetails.getGid());
+        super.pstmt.setString(3,storageApplyDetails.getName());
+        super.pstmt.setInt(4,storageApplyDetails.getNum());
+        super.pstmt.setDouble(5,storageApplyDetails.getPrice());
+        super.pstmt.setDouble(6,storageApplyDetails.getWeight());
+        return super.pstmt.executeUpdate() > 0;
     }
 
     @Override
@@ -68,5 +76,10 @@ public class StorageApplyDetailsDAOImpl  extends AbstractDAO implements IStorage
             map.put(rs.getLong(1),rs.getInt(2)) ;
         }
         return map ;
+    }
+
+    @Override
+    public Long findLastId() throws SQLException {
+        return super.getLastId();
     }
 }

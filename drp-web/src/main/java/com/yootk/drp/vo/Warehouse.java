@@ -111,4 +111,22 @@ public class Warehouse implements Serializable {
     public void setAdmin(String admin) {
         this.admin = admin;
     }
+
+    @Override
+    public String toString() {
+        return "Warehouse{" +
+                "wid=" + wid +
+                ", name='" + name + '\'' +
+                ", pid=" + pid +
+                ", cid=" + cid +
+                ", wiid=" + wiid +
+                ", address='" + address + '\'' +
+                ", maximum=" + maximum +
+                ", currnum=" + currnum +
+                ", photo='" + photo + '\'' +
+                ", note='" + note + '\'' +
+                ", recorder='" + recorder + '\'' +
+                ", admin='" + admin + '\'' +
+                '}';
+    }
 }

@@ -84,4 +84,19 @@ public class StorageApply implements Serializable {
     public void setAppmid(String appmid) {
         this.appmid = appmid;
     }
+
+    @Override
+    public String toString() {
+        return "StorageApply{" +
+                "said=" + said +
+                ", title='" + title + '\'' +
+                ", pid=" + pid +
+                ", cid=" + cid +
+                ", wiid=" + wiid +
+                ", wid=" + wid +
+                ", note='" + note + '\'' +
+                ", status=" + status +
+                ", appmid='" + appmid + '\'' +
+                '}';
+    }
 }

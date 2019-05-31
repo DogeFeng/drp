@@ -1,8 +1,8 @@
-package com.yootk.drp.dao.impl;
+package com.yootk.drp.dao.storageapply_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.IStorageApplyDAO;
+import com.yootk.drp.dao.storageapply_module.IStorageApplyDAO;
 import com.yootk.drp.vo.StorageApply;
 
 import java.sql.ResultSet;
@@ -14,14 +14,15 @@ import java.util.Set;
 public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO {
     @Override
     public boolean doCreate(StorageApply storageApply) throws SQLException {
-        String sql = "INSERT INTO storage_apply(title,pid,cid,wiid,wid,note)VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO storage_apply(said,title,pid,cid,wiid,wid,note)VALUES(?,?,?,?,?,?,?)";
         super.pstmt = super.conn.prepareStatement(sql);
-        super.pstmt.setString(1, storageApply.getTitle());
-        super.pstmt.setLong(2, storageApply.getPid());
-        super.pstmt.setLong(3, storageApply.getCid());
-        super.pstmt.setLong(4, storageApply.getWiid());
-        super.pstmt.setLong(5, storageApply.getWid());
-        super.pstmt.setString(6, storageApply.getNote());
+        super.pstmt.setLong(1,storageApply.getSaid());
+        super.pstmt.setString(2, storageApply.getTitle());
+        super.pstmt.setLong(3, storageApply.getPid());
+        super.pstmt.setLong(4, storageApply.getCid());
+        super.pstmt.setLong(5, storageApply.getWiid());
+        super.pstmt.setLong(6, storageApply.getWid());
+        super.pstmt.setString(7, storageApply.getNote());
         return super.pstmt.executeUpdate() > 0;
     }
 
@@ -46,10 +47,7 @@ public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO
 
     @Override
     public StorageApply findById(Long aLong) throws SQLException {
-        String sql = "SELECT said,title,pid,cid,wiid,wid,note FROM storage_apply WHERE said=?";
-        super.pstmt = super.conn.prepareStatement(sql);
-        super.pstmt.setLong(1, aLong);
-        return super.handleResultToVO(super.pstmt.executeQuery(), StorageApply.class);
+        return null ;
     }
 
     @Override
@@ -59,35 +57,22 @@ public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO
 
     @Override
     public List<StorageApply> findSplit(Long currentPage, Integer lineSize) throws SQLException {
-        String sql = " SELECT said,title,pid,cid,wiid,wid,note,appmid FROM storage_apply " +
-                " WHERE status=0 AND LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
+        String sql = " SELECT said,title,pid,cid,wiid,wid,note,status FROM storage_apply " +
+                " ORDER BY said  LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql);
         return super.handleResultToList(super.pstmt.executeQuery(), StorageApply.class);
     }
 
-    @Override
-    public List<StorageApply> findSplit(Long currentPage, Integer lineSize, String column, String keyWord) throws SQLException {
-        return null;
-    }
 
     @Override
-    public List<StorageApply> findSplitByStorageApply(Long said, Long currentPage, Integer lineSize, String column, String keyWord) throws SQLException {
-        String sql = "SELECT said,title,pid,cid,wiid,wid,note,appmid FROM storage_apply " +
-                " WHERE said=? AND status=0 AND " + column + " LIKE ? LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
+    public List<StorageApply> findSplit( Long currentPage, Integer lineSize, String column, String keyWord) throws SQLException {
+        String sql = "SELECT said,title,pid,cid,wiid,wid,note,status FROM storage_apply " +
+                " WHERE " + column + " LIKE ? ORDER BY said LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql);
         super.pstmt.setString(1, "%" + keyWord + "%");
-        super.pstmt.setLong(2, said);
         return super.handleResultToList(super.pstmt.executeQuery(), StorageApply.class);
     }
 
-    @Override
-    public List<StorageApply> findSplitByStorageApply(Long said, Long currentPage, Integer lineSize) throws SQLException {
-        String sql = "SELECT said,title,pid,cid,wiid,wid,note,appmid FROM storage_apply " +
-                " WHERE said=? AND status=0  LIMIT " + (currentPage - 1) * lineSize + ", " + lineSize;
-        super.pstmt = super.conn.prepareStatement(sql);
-        super.pstmt.setLong(1, said);
-        return super.handleResultToList(super.pstmt.executeQuery(), StorageApply.class);
-    }
 
     @Override
     public Long getAllCount() throws SQLException {
@@ -114,6 +99,7 @@ public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO
 
     @Override
     public Long findLastId() throws SQLException {
+        System.out.println(super.getLastId());
         return super.getLastId();
     }
 }

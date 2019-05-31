@@ -32,7 +32,7 @@
                             <div class="col-md-5">
                                 <!-- 定义表单输入组件 -->
                                 <input type="text" id="title" name="title" class="form-control"
-                                       placeholder="请输入申请单标题名称" value="${applies.title}">
+                                       placeholder="请输入申请单标题名称" >
                             </div>
                             <!-- 定义表单错误提示显示元素 -->
                             <div class="col-md-4" id="titleMsg"></div>
@@ -44,7 +44,7 @@
                                 <select id="pid" name="pid" class="form-control">
                                     <option value="">====== 请选择所在省份 ======</option>
                                     <c:forEach items="${allProvinces}" var="province">
-                                        <option value="${province.pid}">${province.title}</option>
+                                        <option value="${province.pid}"${province.pid==warehouse.pid?"selected":""}>${province.title}</option>
                                     </c:forEach>
                                 </select>
                             </div>
@@ -57,6 +57,9 @@
                             <div class="col-md-5">
                                 <select id="cid" name="cid" class="form-control">
                                     <option value="">====== 请选择所在城市 ======</option>
+                                    <c:forEach items="${allCitys}" var="city">
+                                        <option value="${city.cid}" ${city.cid==warehouse.cid?"selected":""}>${city.title}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <!-- 定义表单错误提示显示元素 -->
@@ -69,7 +72,7 @@
                                 <select id="wiid" name="wiid" class="form-control">
                                     <option value="">====== 请选择库存商品类型 ======</option>
                                     <c:forEach items="${allWitems}" var="witem">
-                                        <option value="${witem.wiid}">${witem.title}</option>
+                                        <option value="${witem.wiid}" ${witem.wiid==warehouse.wiid?"selected":""}>${witem.title}</option>
                                     </c:forEach>
                                 </select>
                             </div>
@@ -82,7 +85,7 @@
                             <div class="col-md-5">
                                 <select id="wid" name="wid" class="form-control">
                                     <option value="">====== 请选择要存储的仓库 ======</option>
-                                    <option value="1">北京通州仓库一号库</o  ption>
+                                    <option value="1">北京通州仓库一号库</option>
                                 </select>
                             </div>
                             <!-- 定义表单错误提示显示元素 -->

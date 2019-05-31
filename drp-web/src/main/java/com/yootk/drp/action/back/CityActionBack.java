@@ -5,7 +5,7 @@ import com.yootk.common.action.abs.AbstractAction;
 import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Controller;
 import com.yootk.common.annotation.RequestMapping;
-import com.yootk.drp.service.back.ICityServiceBack;
+import com.yootk.drp.service.back.city_module.ICityServiceBack;
 @Controller
 @RequestMapping("/pages/back/admin/city/")
 public class CityActionBack extends AbstractAction {

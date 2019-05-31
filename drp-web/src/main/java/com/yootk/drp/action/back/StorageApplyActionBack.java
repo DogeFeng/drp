@@ -5,11 +5,9 @@ import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Controller;
 import com.yootk.common.annotation.RequestMapping;
 import com.yootk.common.servlet.web.ModuleAndView;
-import com.yootk.common.servlet.web.MultipartFile;
 import com.yootk.common.servlet.web.PageUtil;
-import com.yootk.drp.service.back.IStorageApplyServiceBack;
+import com.yootk.drp.service.back.storage_apply_module.IStorageApplyServiceBack;
 import com.yootk.drp.vo.StorageApply;
-import com.yootk.drp.vo.Warehouse;
 
 @Controller
 @RequestMapping("/pages/back/admin/storage/")
@@ -55,10 +53,10 @@ public class StorageApplyActionBack extends AbstractAction {
         return mav ;
     }
     @RequestMapping("storage_edit_pre")
-    public ModuleAndView editPre(Long said){
+    public ModuleAndView editPre(Long wid){
         ModuleAndView mav = new ModuleAndView("/pages/back/admin/storage/storage_edit.jsp") ;
         try {
-            mav.add(this.storageApplyService.preEdit(said));
+            mav.add(this.storageApplyService.preEdit(wid));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -81,25 +79,16 @@ public class StorageApplyActionBack extends AbstractAction {
         }
         return mav ;
     }
-    @RequestMapping("storage_details_show")
-    public ModuleAndView show(Long sadid){
-        ModuleAndView mav = new ModuleAndView("/pages/back/admin/storage/storage_list_details.jsp") ;
-        try {
-            mav.add(this.storageApplyService.getDetails(sadid));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return mav ;
-    }
+
     @RequestMapping("storage_list")
-    public ModuleAndView list(Long said)throws Exception{
+    public ModuleAndView list()throws Exception{
         ModuleAndView mav = new ModuleAndView("/pages/back/admin/storage/storage_list_myself.jsp") ;
-        PageUtil pu = new PageUtil("/pages/back/admin/storage/storage_list.action",null) ;
-        mav.add(this.storageApplyService.list(said,pu.getCurrentPage(),pu.getLineSize(),pu.getColumn(),pu.getKeyword()));
+        PageUtil pu = new PageUtil("/pages/back/admin/storage/storage_list.action") ;
+        mav.add(this.storageApplyService.list(pu.getCurrentPage(),pu.getLineSize(),pu.getColumn(),pu.getKeyword()));
         return mav ;
     }
     @Override
     public String getUploadDir() {
-        return "/upload/storage";
+        return "/upload/storage/";
     }
 }

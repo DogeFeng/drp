@@ -3,9 +3,11 @@
 <head>
 	<jsp:include page="/pages/plugins/basepath.jsp"/>
 	<script type="text/javascript" src="js/mall_index.js"></script>
+
+
 </head>
 <%!
-	public static final String LOGIN_URL = "" ;
+	 public static final String LOGIN_URL =  "member_login.action" ;
 %>
 <script type="text/javascript" src="js/login.js"></script>
 <body class="back">
@@ -15,7 +17,7 @@
 				<jsp:include page="/pages/plugins/front/include_navbar.jsp" />
 			</div>
 		</div>
-		<div style="height: 60px;"></div> 
+		<div style="height: 60px;"></div>
 		<div id="contentDiv" class="row">
 			<div class="col-md-12 col-xs-12">
 				<div class="panel panel-primary">
@@ -56,7 +58,7 @@
 										<!-- 定义表单输入组件 -->
 										<input type="text" id="code" name="code" class="form-control"
 											placeholder="验证码" size="4" maxlength="4">
-									</div> 
+									</div>
 									<div class="col-md-2">
 										<img src="ImageCode" id="imageCode" title="看不清？单击换一张图片">
 									</div>
@@ -70,7 +72,7 @@
 										<!-- 定义表单输入组件 -->
 										<input type="checkbox" id="rememberme" name="rememberme" class=""
 											value="true">10天内免登录
-									</div> 
+									</div>
 									<!-- 定义表单错误提示显示元素 -->
 									<div class="col-md-4" id="remembermeMsg"></div>
 								</div>
@@ -89,8 +91,8 @@
 					</div>
 					<div class="panel-footer">
 						<div class="alert alert-success" id="alertDiv" style="display: none;">
-	                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-	                        <span id="alertText"></span>
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<span id="alertText"></span>
 	                    </div>
 					</div>
 				</div>
