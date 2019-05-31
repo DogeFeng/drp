@@ -1,15 +1,14 @@
-package com.yootk.drp.service.front.impl;
+package com.yootk.drp.service.front.goods_module.impl;
 
 import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Service;
-import com.yootk.drp.dao.IGoodsDAO;
-import com.yootk.drp.dao.ISubtypeDAO;
-import com.yootk.drp.dao.IWitemDAO;
-import com.yootk.drp.service.front.IGoodsServiceFront;
+import com.yootk.drp.dao.goods_module.IGoodsDAO;
+import com.yootk.drp.dao.goods_module.ISubtypeDAO;
+import com.yootk.drp.dao.goods_module.IWitemDAO;
+import com.yootk.drp.service.front.goods_module.IGoodsServiceFront;
 import com.yootk.drp.vo.Goods;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

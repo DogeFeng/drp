@@ -1,8 +1,8 @@
-package com.yootk.drp.dao.impl;
+package com.yootk.drp.dao.goods_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.ISubtypeDAO;
+import com.yootk.drp.dao.goods_module.ISubtypeDAO;
 import com.yootk.drp.vo.Subtype;
 
 import java.sql.SQLException;

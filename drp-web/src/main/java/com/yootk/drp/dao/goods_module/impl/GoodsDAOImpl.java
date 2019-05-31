@@ -1,13 +1,12 @@
-package com.yootk.drp.dao.impl;
+package com.yootk.drp.dao.goods_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-import com.yootk.drp.dao.IGoodsDAO;
+import com.yootk.drp.dao.goods_module.IGoodsDAO;
 import com.yootk.drp.vo.Goods;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.List;
 import java.util.Set;
 

@@ -1,18 +1,15 @@
-package com.yootk.drp.service.back.impl;
+package com.yootk.drp.service.back.goods_module.impl;
 
 import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Service;
-import com.yootk.common.dbc.DatabaseConnection;
-import com.yootk.drp.dao.IGoodsDAO;
-import com.yootk.drp.dao.IMemberDAO;
-import com.yootk.drp.dao.ISubtypeDAO;
-import com.yootk.drp.dao.IWitemDAO;
-import com.yootk.drp.service.back.IGoodsServiceBack;
+import com.yootk.drp.dao.goods_module.IGoodsDAO;
+import com.yootk.drp.dao.goods_module.IMemberDAO;
+import com.yootk.drp.dao.goods_module.ISubtypeDAO;
+import com.yootk.drp.dao.goods_module.IWitemDAO;
+import com.yootk.drp.service.back.goods_module.IGoodsServiceBack;
 import com.yootk.drp.vo.Goods;
 import com.yootk.drp.vo.Subtype;
 
-import java.sql.SQLException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

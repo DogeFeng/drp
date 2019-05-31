@@ -1,4 +1,4 @@
-package com.yootk.drp.service.front;
+package com.yootk.drp.service.front.goods_module;
 
 import com.yootk.drp.vo.Goods;
 

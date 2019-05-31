@@ -7,8 +7,7 @@ import com.yootk.common.annotation.RequestMapping;
 import com.yootk.common.servlet.web.ModuleAndView;
 import com.yootk.common.servlet.web.PageUtil;
 import com.yootk.common.servlet.web.ServletObject;
-import com.yootk.drp.service.back.IGoodsServiceBack;
-import com.yootk.drp.service.front.IGoodsServiceFront;
+import com.yootk.drp.service.front.goods_module.IGoodsServiceFront;
 
 import javax.servlet.http.HttpSession;
 
