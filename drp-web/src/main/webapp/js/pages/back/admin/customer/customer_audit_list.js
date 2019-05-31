@@ -6,28 +6,28 @@ $(function(){
 			$("#memberInfo").modal("toggle") ;
 		}) ;
 	}) ;
-	$("span[id^=cid-]").each(function(){
+	$("span[id^=cuid-]").each(function(){
 		$(this).on("click",function(){
-			cid = this.id.split("-")[1] ;
+			cuid = this.id.split("-")[1] ;
 			loadData() ;
 			$("#customerRecordInfo").modal("toggle") ;
 		}) ;
 	}) ;
 	$("button[id^=out-]").each(function(){
 		$(this).on("click",function(){
-			cid = this.id.split("-")[1] ;
+			cuid = this.id.split("-")[1] ;
 			operateAlert(true,"出库客户追加成功！","出库客户追加失败！") ;
 		}) ;
 	}) ;
 	$("button[id^=input-]").each(function(){
 		$(this).on("click",function(){
-			cid = this.id.split("-")[1] ;
+			cuid = this.id.split("-")[1] ;
 			$("#customerRecordInputInfo").modal("toggle") ;
 		}) ;
 	}) ;
 	$("button[id^=audit-]").each(function(){
 		$(this).on("click",function(){
-			cid = this.id.split("-")[1] ;
+			cuid = this.id.split("-")[1] ;
 			$("#customerAuditInfo").modal("toggle") ;
 		}) ;
 	}) ;
@@ -108,7 +108,7 @@ $(function(){
 }) ;
 function loadData() {	// 该函数名称一定要固定，不许修改
 	// 如果要想进行分页的处理列表前首先查询出部门编号
-	console.log("客户编号：" + cid) ;
+	console.log("客户编号：" + cuid) ;
 	// $("#memberBasicInfo tr:gt(0)").remove() ; // 加载之前要进行原有数据删除
 	createSplitBar(10) ;	// 创建分页控制项
 }

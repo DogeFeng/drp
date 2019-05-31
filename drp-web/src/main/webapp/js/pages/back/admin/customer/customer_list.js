@@ -1,4 +1,4 @@
-cuid = 0 ;
+cid = 0 ;
 $(function(){
 	$("span[id^=mid-]").each(function(){
 		$(this).on("click",function(){
@@ -16,6 +16,8 @@ $(function(){
 	$("button[id^=out-]").each(function(){
 		$(this).on("click",function(){
 			cuid = this.id.split("-")[1] ;
+			mid = "${mid}";
+			console.log(mid);
 			operateAlert(true,"出库客户追加成功！","出库客户追加失败！") ;
 		}) ;
 	}) ;

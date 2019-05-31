@@ -6,7 +6,7 @@
 
 	public static final String CUSTOMER_ADD_URL = "pages/back/admin/customer/customer_add_pre.action" ;
 	public static final String CUSTOMER_LIST_URL = "pages/back/admin/customer/customer_list.action" ;
-	public static final String CUSTOMER_AUDIT_URL = "pages/back/admin/customer/customer_audit_list.jsp" ;
+	public static final String CUSTOMER_AUDIT_URL = "pages/back/admin/customer/customer_audit_list.action" ;
 
 	public static final String STORAGE_ADD_URL = "pages/back/admin/storage/storage_add.jsp" ;
 	public static final String STORAGE_LIST_URL = "pages/back/admin/storage/storage_list_myself.jsp" ;
@@ -17,7 +17,7 @@
 	public static final String GOODS_ADD_URL = "/pages/back/admin/goods/goods_add_pre.action" ;
 	public static final String GOODS_LIST_URL = "pages/back/admin/goods/goods_list.action" ;
 
-	public static final String DISTRIBUTION_GOODS_LIST_URL = "pages/back/admin/distribution/distribution_goods_list.jsp" ;
+	public static final String DISTRIBUTION_GOODS_LIST_URL = "pages/back/admin/distribution/distribution_details_goods_list.action" ;
 	public static final String DISTRIBUTION_LIST_URL = "pages/back/admin/distribution/distribution_list_myself.jsp" ;
 	public static final String DISTRIBUTION_CANCLE_URL = "pages/back/admin/distribution/distribution_list_myself.jsp" ;
 

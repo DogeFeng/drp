@@ -109,6 +109,17 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
     }
 
     @Override
+    public List<Goods> findAllByGids(Set<Long> gids) throws SQLException {
+        StringBuffer sql = new StringBuffer("SELECT gid,name,price,photo,stornum FROM goods WHERE gid IN(");
+        for(Long gid : gids){
+            sql.append(gid + ",");
+        }
+        sql.delete(sql.length()-1,sql.length()).append(")");
+        super.pstmt = super.conn.prepareStatement(sql.toString());
+        return super.handleResultToList(super.pstmt.executeQuery(),Goods.class);
+    }
+
+    @Override
     public List<Goods> findSplitFlag(Long currentPage, Integer lineSize, String column, String keyWord, int delflag) throws SQLException {
         String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE delflag=? AND " + column + " LIKE ? LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql);

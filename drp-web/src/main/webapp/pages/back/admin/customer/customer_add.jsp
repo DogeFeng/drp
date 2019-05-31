@@ -81,10 +81,7 @@
 								<label class="col-md-3 control-label" for="cid">所在城市：</label>
 								<div class="col-md-5">
 									<select id="cid" name="cid" class="form-control">
-										<option value="">====== 请选择所在省份 ======</option>
-										<c:forEach items="${allCities}" var="entry">
-											<option value="${entry.key}">${entry.value}</option>
-										</c:forEach>
+										<option value="">====== 请选择所在城市 ======</option>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->

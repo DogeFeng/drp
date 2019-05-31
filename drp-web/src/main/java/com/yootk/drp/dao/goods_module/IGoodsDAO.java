@@ -5,6 +5,7 @@ import com.yootk.drp.vo.Goods;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Auther: LL
@@ -30,6 +31,13 @@ public interface IGoodsDAO extends IBaseDAO<Long , Goods> {
      */
     public List<Goods> findSplitFlag(Long currentPage, Integer lineSize , int delflag) throws SQLException ;
 
+    /**
+     * 根据已有商品编号查询出所有的商品信息
+     * @param gids 所有商品编号
+     * @return 所有对应的商品信息
+     * @throws SQLException
+     */
+    public List<Goods> findAllByGids(Set<Long> gids) throws SQLException;
     /**
      * 分页模糊查询所有商品
      * @param currentPage 当前页数

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%!
@@ -62,41 +63,28 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr id="goods-1">
-								<td class="text-center">
-									<input type="checkbox" id="gid" name="gid" value="1">
-								</td>
-								<td class="text-center"><img src="images/goods.png" style="width:30px;"></td>
-								<td class="text-left">胡友牌化粪池</td>
-								<td class="text-center"><span id="price-1">179.8</span></td>
-								<td class="text-center">3000</td>
-								<td class="text-center">
-									<button class="btn btn-primary" id="sub-1">-</button>
-									<input type="text" id="amount-1" name="amount-1" class="shopcar-form-control" size="4" maxlength="4" value="20">
-									<button class="btn btn-primary" id="add-1">+</button> 
-								</td>
-								<td class="text-center"><button class="btn btn-primary" id="updateBtn-1">修改</button></td>
-							</tr>
-							<tr id="goods-2"> 
-								<td class="text-center">
-									<input type="checkbox" id="gid" name="gid" value="2">
-								</td>
-								<td class="text-center"><img src="images/goods.png" style="width:30px;"></td>
-								<td class="text-left">胡友牌化粪池</td>
-								<td class="text-center"><span id="price-2">279.8</span></td>
-								<td class="text-center">3000</td>
-								<td class="text-center">
-									<button class="btn btn-primary" id="sub-2">-</button>
-									<input type="text" id="amount-2" name="amount-2" class="shopcar-form-control" size="4" maxlength="4" value="20">
-									<button class="btn btn-primary" id="add-2">+</button> 
-								</td>
-								<td class="text-center"><button class="btn btn-primary" id="updateBtn-2">修改</button></td>
-							</tr>
+							<c:forEach items="${allGoods}" var="goods">
+								<tr id="goods-${goods.gid}">
+									<td class="text-center">
+										<input type="checkbox" id="gid" name="gid" value="${goods.gid}">
+									</td>
+									<td class="text-center"><img src="http://111.230.131.204/drp/upload/${goods.photo}" style="width:30px;"></td>
+									<td class="text-left">${goods.name}</td>
+									<td class="text-center"><span id="price-${goods.gid}">${goods.price}</span></td>
+									<td class="text-center">${goods.stornum}</td>
+									<td class="text-center">
+										<button class="btn btn-primary" id="sub-${goods.gid}">-</button>
+										<input type="text" id="amount-${goods.gid}" name="amount-${goods.gid}" class="shopcar-form-control" size="4" maxlength="4" value="${details[goods.gid]}">
+										<button class="btn btn-primary" id="add-${goods.gid}">+</button>
+									</td>
+									<td class="text-center"><button class="btn btn-primary" id="updateBtn-${goods.gid}">修改</button></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<div class="text-right">
-					总价￥<span id="allPrice" class="text-danger h2">78.9</span>
+					总价￥<span id="allPrice" class="text-danger h2">7338.9</span>
 				</div>
 				<div>
 					<button class="btn btn-primary" id="editBtn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;修改数量</button>
