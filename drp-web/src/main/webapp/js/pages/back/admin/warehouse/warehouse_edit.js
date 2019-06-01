@@ -52,10 +52,10 @@ $(function(){
 			"address" : {
 				required : true 
 			},
-			"iid" : {
+			"wiid" : {
 				required : true 
 			},
-			"area" : {
+			"currnum" : {
 				required : true ,
 				number : true 
 			},
@@ -63,7 +63,7 @@ $(function(){
 				required : true ,
 				digits : true 
 			},
-			"pic" : {
+			"file" : {
 				accept : ["jpg","png","gif","bmp"]
 			},
 			"note" : {

@@ -228,8 +228,9 @@ CREATE TABLE distribution (
 
 -- 定义出库申请详情
 CREATE TABLE distribution_details (
-	dsdid	bigint	auto_increment ,
-	gid	bigint ,
+	dsdid	bigint	AUTO_INCREMENT ,
+    dsid    bigint,
+	gid 	bigint,
 	name	varchar(50) ,
 	num	int ,
 	price	double ,

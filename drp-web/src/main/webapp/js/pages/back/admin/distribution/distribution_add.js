@@ -38,4 +38,16 @@ $(function(){
 			}
 		}
 	});
+	$(pid).on("change", function () {
+		val = $(this).val();
+		if (val != "") {  // 有内容，需要进行ajax异步加载
+			$("#cid option:gt(0)").remove(); // 清除已有的内容
+			$("#cid option:eq(0)").prop("selected");
+			$.get("/pages/back/admin/warehouse/warehouse_add_preCity.action", {"pid": val}, function (data) {
+				for (x = 0; x < data.length; x++) {
+					$(cid).append("<option value='" + data[x].cid + "'>" + data[x].title + "</option>");
+				}
+			}, "json");
+		}
+	});
 })
