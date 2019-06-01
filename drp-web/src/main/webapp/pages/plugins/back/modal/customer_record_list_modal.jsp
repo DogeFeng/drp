@@ -19,7 +19,7 @@
 								<th class="text-left" style="width:60%"><strong>联系记录</strong></th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="table">
 							<tr id="record-1">
 								<td class="text-center">2019-10-10 11:12:13</td>
 								<td class="text-left">王淹三</td>

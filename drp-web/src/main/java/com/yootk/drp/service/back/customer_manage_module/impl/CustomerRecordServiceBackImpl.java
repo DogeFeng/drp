@@ -4,6 +4,7 @@ import com.yootk.common.annotation.Autowired;
 import com.yootk.common.annotation.Service;
 import com.yootk.common.service.abs.AbstractService;
 import com.yootk.drp.dao.customer_manage_module.ICRItemDAO;
+import com.yootk.drp.dao.customer_manage_module.ICustomerDAO;
 import com.yootk.drp.dao.customer_manage_module.ICustomerRecordDAO;
 import com.yootk.drp.service.back.customer_manage_module.ICustomerRecordServiceBack;
 import com.yootk.drp.service.back.customer_manage_module.ICustomerServiceBack;
@@ -20,6 +21,8 @@ public class CustomerRecordServiceBackImpl extends AbstractService implements IC
     private ICRItemDAO crItemDAO ;
     @Autowired
     private ICustomerRecordDAO customerRecordDAO ;
+    @Autowired
+    private ICustomerDAO customerDAO ;
 
     @Override
     public List<CRItem> preInput() throws SQLException {
@@ -28,7 +31,13 @@ public class CustomerRecordServiceBackImpl extends AbstractService implements IC
 
     @Override
     public boolean add(CustomerRecord customerRecord) throws SQLException {
-        return customerRecordDAO.doCreate(customerRecord);
+       if (customerRecordDAO.doCreate(customerRecord)){
+           Customer customer = customerDAO.findById(customerRecord.getCuid()) ;
+           customer.setConnum(customer.getConnum() + 1);
+           return true ;
+       }else{
+           return false ;
+       }
     }
 
     @Override

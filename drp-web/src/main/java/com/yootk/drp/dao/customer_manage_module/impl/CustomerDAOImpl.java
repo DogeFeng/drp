@@ -44,7 +44,23 @@ public class CustomerDAOImpl extends AbstractDAO implements ICustomerDAO {
 
     @Override
     public Customer findById(Long aLong) throws SQLException {
-        return null;
+        String sql = "SELECT cuid,name,phone,pid,cid,address,indate,connum,ciid,csid,note,recorder,statue FROM customer " +
+                " WHERE cuid=" + aLong;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        ResultSet rs = super.pstmt.executeQuery() ;
+        Customer customer = null ;
+        if (rs.next()){
+            customer = new Customer() ;
+            customer.setCuid(rs.getLong(1));
+            customer.setName(rs.getString(2));
+            customer.setPhone(rs.getString(3));
+            customer.setAddress(rs.getString(4));
+            customer.setCiid(rs.getLong(5));
+            customer.setIndate(rs.getDate(6));
+            customer.setConnum(rs.getInt(7));
+            customer.setRecorder(rs.getString(8));
+        }
+        return customer ;
     }
 
     @Override

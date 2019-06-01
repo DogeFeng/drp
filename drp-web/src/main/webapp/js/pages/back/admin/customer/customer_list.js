@@ -21,10 +21,11 @@ $(function(){
 			cuid = this.id.split("-")[1] ;
 			loadData() ;
 			$("#customerRecordInfo").modal("toggle") ;
+			$("#table tr").remove();
 			$.getJSON("/pages/back/admin/customer/customer_record_list.action",{"cuid":cuid},function (data) {
 				for (x = 0; x < data.length; x++) {
 					$(criid).append("<option value='" + data[x].criid + "'>" + data[x].title + "</option>");
-					$("table tbody").append("<tr id='record-" + data[x].cuid + "'>" +
+					$("#table").append("<tr id='record-" + data[x].cuid + "'>" +
 						"<td class='text-center'>" + data[x].cdate + "</td>" +
 						"<td class='text-left'>" + "记录者" + "</td>" +
 						"<td class='text-left'>" + "记录者电话" + "</td>" +
