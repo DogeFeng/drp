@@ -3,19 +3,19 @@ package com.yootk.drp.vo;
 import java.io.Serializable;
 
 public class StorageApplyDetails implements Serializable {
-    private Long sadid ;
+    private Long said ;
     private Long gid ;
     private String name ;
     private Integer num ;
     private Double price ;
     private Double weight ;
 
-    public Long getSadid() {
-        return sadid;
+    public Long getSaid() {
+        return said;
     }
 
-    public void setSadid(Long sadid) {
-        this.sadid = sadid;
+    public void setSaid(Long said) {
+        this.said = said;
     }
 
     public Long getGid() {

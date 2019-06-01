@@ -14,21 +14,7 @@ import java.util.Set;
 public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO {
     @Override
     public boolean doCreate(StorageApply storageApply) throws SQLException {
-        String sql = "INSERT INTO storage_apply(said,title,pid,cid,wiid,wid,note)VALUES(?,?,?,?,?,?,?)";
-        super.pstmt = super.conn.prepareStatement(sql);
-        super.pstmt.setLong(1,storageApply.getSaid());
-        super.pstmt.setString(2, storageApply.getTitle());
-        super.pstmt.setLong(3, storageApply.getPid());
-        super.pstmt.setLong(4, storageApply.getCid());
-        super.pstmt.setLong(5, storageApply.getWiid());
-        super.pstmt.setLong(6, storageApply.getWid());
-        super.pstmt.setString(7, storageApply.getNote());
-        return super.pstmt.executeUpdate() > 0;
-    }
-
-    @Override
-    public boolean doEdit(StorageApply storageApply) throws SQLException {
-        String sql = "UPDATE storage_apply SET title=?,pid=?,cid=?,wiid=?,wid=?,note=? WHERE said=?";
+        String sql = "INSERT INTO storage_apply(title,pid,cid,wiid,wid,note)VALUES(?,?,?,?,?,?)";
         super.pstmt = super.conn.prepareStatement(sql);
         super.pstmt.setString(1, storageApply.getTitle());
         super.pstmt.setLong(2, storageApply.getPid());
@@ -36,7 +22,22 @@ public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO
         super.pstmt.setLong(4, storageApply.getWiid());
         super.pstmt.setLong(5, storageApply.getWid());
         super.pstmt.setString(6, storageApply.getNote());
-        super.pstmt.setLong(7, storageApply.getSaid());
+        return super.pstmt.executeUpdate() > 0;
+    }
+
+    @Override
+    public boolean doEdit(StorageApply storageApply) throws SQLException {
+        String sql = "UPDATE storage_apply SET title=?,pid=?,cid=?,wiid=?,wid=?,note=?,appmid=? WHERE said=?";
+        super.pstmt = super.conn.prepareStatement(sql);
+        System.out.println(storageApply.getSaid());
+        super.pstmt.setString(1, storageApply.getTitle());
+        super.pstmt.setLong(2, storageApply.getPid());
+        super.pstmt.setLong(3, storageApply.getCid());
+        super.pstmt.setLong(4, storageApply.getWiid());
+        super.pstmt.setLong(5, storageApply.getWid());
+        super.pstmt.setString(6, storageApply.getNote());
+        super.pstmt.setString(7,storageApply.getAppmid());
+        super.pstmt.setLong(8, storageApply.getSaid());
         return super.pstmt.executeUpdate() > 0;
     }
 
@@ -47,7 +48,10 @@ public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO
 
     @Override
     public StorageApply findById(Long aLong) throws SQLException {
-        return null ;
+        String sql = "SELECT said,title,pid,cid,wiid,wid,note,status FROM storage_apply WHERE said=?" ;
+        super.pstmt  = super.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1,aLong);
+        return super.handleResultToVO(super.pstmt.executeQuery(),StorageApply.class);
     }
 
     @Override
@@ -65,7 +69,7 @@ public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO
 
 
     @Override
-    public List<StorageApply> findSplit( Long currentPage, Integer lineSize, String column, String keyWord) throws SQLException {
+    public List<StorageApply> findSplit(Long currentPage, Integer lineSize, String column, String keyWord) throws SQLException {
         String sql = "SELECT said,title,pid,cid,wiid,wid,note,status FROM storage_apply " +
                 " WHERE " + column + " LIKE ? ORDER BY said LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql);
@@ -76,30 +80,30 @@ public class StorageApplyDAOImpl extends AbstractDAO implements IStorageApplyDAO
 
     @Override
     public Long getAllCount() throws SQLException {
-        String sql = "SELECT COUNT(*) FROM storage_apply WHERE status=0";
-        super.pstmt = super.conn.prepareStatement(sql);
-        ResultSet rs = super.pstmt.executeQuery();
-        if (rs.next()) {
-            return rs.getLong(1);
-        }
-        return 0L;
+        return super.handleCount("storage_apply") ;
     }
 
     @Override
     public Long getAllCount(String column, String keyWord) throws SQLException {
-        String sql = " SELECT COUNT(*) FROM storage_apply WHERE status=0 AND" + column + " LIKE ? ";
-        super.pstmt = super.conn.prepareStatement(sql);
-        super.pstmt.setString(1, "%" + keyWord + "%");
-        ResultSet rs = super.pstmt.executeQuery();
-        if (rs.next()) {
-            return rs.getLong(1);
-        }
-        return 0L;
+        return super.handleCount("storage_apply",column,keyWord) ;
     }
 
     @Override
     public Long findLastId() throws SQLException {
-        System.out.println(super.getLastId());
         return super.getLastId();
     }
+
+    @Override
+    public Long findByPid(Long said) throws SQLException {
+        String sql = "SELECT pid FROM storage_apply WHERE said=?" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1,said);
+        ResultSet rs = super.pstmt.executeQuery() ;
+        if (rs.next()){
+            return rs.getLong(1) ;
+        }
+        return 0L ;
+    }
+
+
 }

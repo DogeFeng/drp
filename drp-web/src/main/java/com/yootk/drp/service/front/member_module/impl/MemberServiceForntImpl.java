@@ -23,7 +23,6 @@ public class MemberServiceForntImpl extends AbstractService implements IMemberSe
     @Override
     public boolean login(Member vo) throws Exception {
         Member member = this.memberDAO.findById(vo.getMid()) ;//根据mid获取Member的信息
-        System.out.println("********************************************" +member);
         if(member != null){
             return member.getPassword().equals(vo.getPassword()) ;
         }

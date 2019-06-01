@@ -190,13 +190,13 @@ CREATE TABLE storage_apply (
 
 -- 定义入库申请单详情
 CREATE TABLE storage_apply_details (
-	sadid	bigint	auto_increment ,
+	said	bigint	auto_increment ,
 	gid	bigint	,
 	name	varchar(50) ,
 	num	int ,
 	price	double ,
 	weight	double ,
-	constraint pk_sadid PRIMARY KEY(sadid)
+	constraint pk_said PRIMARY KEY(sadid)
 ) engine=innodb ;
 
 -- 定义入库记录信息
