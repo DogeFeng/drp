@@ -14,6 +14,7 @@ import com.yootk.drp.service.back.emp_module.IEmpServiceBack;
 import com.yootk.drp.vo.CRItem;
 import com.yootk.drp.vo.Customer;
 import com.yootk.drp.vo.CustomerRecord;
+import com.yootk.drp.vo.Member;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -109,8 +110,16 @@ public class CustomerActionBack extends AbstractAction {
 
     @RequestMapping("customer_record_list")
     public void listModal(Long cuid){
+
         try {
-            super.print(JSONObject.toJSONString(this.customerRecordServiceBack.list(cuid,1L,1)));
+            Customer customer = customerServiceBack.getCustomer(cuid) ;
+            Member member = empServiceBack.getEmp(customer.getRecorder()) ;
+            List<CustomerRecord> list = this.customerRecordServiceBack.list(cuid,1L,3) ;
+            Map<String,Object> map = new HashMap<>() ;
+            map.put("member",member) ;
+            map.put("list",list) ;
+            super.print(JSONObject.toJSONString(map));
+            //super.print(JSONObject.toJSONString(this.customerRecordServiceBack.list(cuid,1L,3)));
         } catch (SQLException e) {
             e.printStackTrace();
         }

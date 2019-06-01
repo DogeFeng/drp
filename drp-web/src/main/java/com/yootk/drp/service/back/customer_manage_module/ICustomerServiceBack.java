@@ -39,4 +39,11 @@ public interface ICustomerServiceBack {
      * @return 增加成功返回 true，否则返回 false
      */
     public boolean add(Customer customer) throws SQLException;
+
+    /**
+     * 根据 id 获取客户信息
+     * @param cuid
+     * @return
+     */
+    public Customer getCustomer(Long cuid) throws SQLException;
 }

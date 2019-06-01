@@ -97,4 +97,9 @@ public class EmpServiceBackImpl extends AbstractService implements IEmpServiceBa
         map.put("level",levelDAO.findById(member.getLid())) ;
         return map ;
     }
+
+    @Override
+    public Member getEmp(String mid) throws SQLException {
+        return empDAO.findById(mid) ;
+    }
 }

@@ -60,4 +60,9 @@ public class CustomerServiceBackImpl extends AbstractService implements ICustome
     public boolean add(Customer customer) throws SQLException {
         return customerDAO.doCreate(customer) ;
     }
+
+    @Override
+    public Customer getCustomer(Long cuid) throws SQLException {
+        return customerDAO.findById(cuid);
+    }
 }

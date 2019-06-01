@@ -2,6 +2,7 @@ package com.yootk.drp.dao.customer_manage_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
+import com.yootk.common.dbc.DatabaseConnection;
 import com.yootk.drp.dao.customer_manage_module.ICustomerRecordDAO;
 import com.yootk.drp.vo.CustomerRecord;
 
@@ -68,6 +69,7 @@ public class CustomerRecordDAOImpl extends AbstractDAO implements ICustomerRecor
 
     @Override
     public List<CustomerRecord> findAllById(Long cuid,Long currentPage,Integer lineSize) throws SQLException {
+        super.conn = DatabaseConnection.getConnection() ;
         String sql = "SELECT crid,cmid,cdate,criid,cuid,note FROM customer_record WHERE cuid=" + cuid  + " LIMIT " + (currentPage-1) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql) ;
         ResultSet rs = super.pstmt.executeQuery() ;

@@ -23,13 +23,15 @@ $(function(){
 			$("#customerRecordInfo").modal("toggle") ;
 			$("#table tr").remove();
 			$.getJSON("/pages/back/admin/customer/customer_record_list.action",{"cuid":cuid},function (data) {
-				for (x = 0; x < data.length; x++) {
-					$(criid).append("<option value='" + data[x].criid + "'>" + data[x].title + "</option>");
-					$("#table").append("<tr id='record-" + data[x].cuid + "'>" +
-						"<td class='text-center'>" + data[x].cdate + "</td>" +
-						"<td class='text-left'>" + "记录者" + "</td>" +
-						"<td class='text-left'>" + "记录者电话" + "</td>" +
-						"<td class='text-left'><pre class='pre-scrollable' style='width:700px;height: 60px'>" + data[x].note + "</pre></td>" +
+				member = data.member ;
+				list = data.list ;
+				for (x = 0; x < list.length; x++) {
+					$(criid).append("<option value='" + list[x].criid + "'>" + list[x].title + "</option>");
+					$("#table").append("<tr id='record-" + list[x].cuid + "'>" +
+						"<td class='text-center'>" + list[x].cdate + "</td>" +
+						"<td class='text-left'>" + member.name + "</td>" +
+						"<td class='text-left'>" + member.phone + "</td>" +
+						"<td class='text-left'><pre class='pre-scrollable' style='width:700px;height: 60px'>" + list[x].note + "</pre></td>" +
 						"</tr>")
 				}
 			})

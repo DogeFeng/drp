@@ -69,4 +69,11 @@ public interface IEmpServiceBack {
      * @throws SQLException
      */
     public Map<String,Object> modal(String mid) throws SQLException;
+
+    /**
+     * 根据 id 查找雇员信息
+     * @param mid
+     * @return
+     */
+    public Member getEmp(String mid) throws SQLException;
 }
