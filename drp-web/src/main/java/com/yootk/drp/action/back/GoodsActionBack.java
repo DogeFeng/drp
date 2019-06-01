@@ -88,7 +88,7 @@ public class GoodsActionBack extends AbstractAction {
     @RequestMapping("goods_list")
     public ModuleAndView list() {
         ModuleAndView mav = new ModuleAndView("goods_list.jsp") ;
-        PageUtil pu = new PageUtil("/pages/back/admin/goods/goods_list.action","商品名称:name|商品单价:price");
+        PageUtil pu = new PageUtil("pages/back/admin/goods/goods_list.action","商品名称:name|商品单价:price");
         try {
             mav.add(goodsServiceBack.listGoods(pu.getCurrentPage(),pu.getLineSize(),pu.getColumn(),pu.getKeyword(),1));
         } catch (Exception e) {

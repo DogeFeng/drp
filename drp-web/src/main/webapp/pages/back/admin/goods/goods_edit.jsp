@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="bootstrap/tinymce/tinymce.min.js"></script>
 </head>
 <%!
-	public static final String GOODS_EDIT_URL = "/pages/back/admin/goods/goods_edit.action" ;
+	public static final String GOODS_EDIT_URL = "pages/back/admin/goods/goods_edit.action" ;
 	public static final String GOODS_PRICE_URL = "http://111.230.131.204/drp/upload/" ;
 %>
 

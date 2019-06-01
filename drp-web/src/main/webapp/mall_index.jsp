@@ -6,7 +6,7 @@
     <script type="text/javascript" src="js/mall_index.js"></script>
 </head>
 <%!
-    public static final String GOODS_SHOW_URL = "/pages/front/goods/goods_show.action" ;
+    public static final String GOODS_SHOW_URL = "pages/front/goods/goods_show.action" ;
     public static final String GOODS_PRICE_URL = "http://111.230.131.204/drp/upload/" ;
     private int foot = 1;
 %>
