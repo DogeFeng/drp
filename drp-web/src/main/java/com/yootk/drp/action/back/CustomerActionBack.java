@@ -162,10 +162,6 @@ public class CustomerActionBack extends AbstractAction {
 
     @RequestMapping("customer_audit")
     public void editAudit(Long cuid,Integer status,String note){
-        System.out.println("audit action");
-        System.out.println("cuid:" + cuid);
-        System.out.println("status:" + status);
-        System.out.println("note:" + note);
         try {
             super.print(customerServiceBack.editAudit(cuid,status,note)) ;
         } catch (SQLException e) {

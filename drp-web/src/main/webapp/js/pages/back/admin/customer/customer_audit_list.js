@@ -101,10 +101,6 @@ $(function(){
 			$.getJSON("/pages/back/admin/customer/customer_audit.action",{"cuid":customerid,"status":status,"note":auditnote},function (data) {
 				operateAlert(data,"客户信息审核完成！","客户信息审核错误！") ;
 			})
-
-
-
-			//operateAlert(true,"客户信息审核完成！","客户信息审核错误！") ;
 		},
 		errorPlacement : function(error, element) {
 			$("#" + $(element).attr("id").replace(".", "\\.") + "Msg").append(error);
