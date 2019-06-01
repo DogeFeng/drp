@@ -87,4 +87,14 @@ public class EmpServiceBackImpl extends AbstractService implements IEmpServiceBa
         member.setPassword(EncryptUtil.encode(member.getPassword())) ;
         return empDAO.doCreate(member);
     }
+
+    @Override
+    public Map<String,Object> modal(String mid) throws SQLException {
+        Map<String,Object> map = new HashMap<>() ;
+        Member member = empDAO.findById(mid) ;
+        map.put("member",member) ;
+        map.put("dept",deptDAO.findById(member.getDid())) ;
+        map.put("level",levelDAO.findById(member.getLid())) ;
+        return map ;
+    }
 }

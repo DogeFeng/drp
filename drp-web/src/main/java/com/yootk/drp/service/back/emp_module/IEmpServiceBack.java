@@ -58,4 +58,15 @@ public interface IEmpServiceBack {
      * @throws SQLException
      */
     public boolean add(Member member) throws SQLException ;
+
+    /**
+     * 根据 id 进行雇员信息查询
+     * @param mid 要查询的雇员 id
+     * @return Map 集合
+     * key = member ,value = 查询的雇员信息
+     * key = dept,value = 雇员所对应的部门信息，Dept 类对象
+     * key = level,雇员所对应的等级信息，Level 类对象
+     * @throws SQLException
+     */
+    public Map<String,Object> modal(String mid) throws SQLException;
 }

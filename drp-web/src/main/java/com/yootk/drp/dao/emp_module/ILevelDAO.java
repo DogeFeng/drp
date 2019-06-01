@@ -13,4 +13,11 @@ public interface ILevelDAO extends IBaseDAO<Integer, Level> {
      * key = lid，value = title
      */
     public Map<Long,String> findAllMap() throws SQLException;
+
+    /**
+     * 根据 id 查询对应等级名称
+     * @param lid 要查询的等级 id
+     * @return 该等级的对应的名称
+     */
+    public String findById(Long lid) throws SQLException;
 }

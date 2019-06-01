@@ -87,4 +87,17 @@ public class DeptDAOImpl extends AbstractDAO implements IDeptDAO {
         super.pstmt.setString(1,dname);
         return super.handleResultToVO(super.pstmt.executeQuery(),Dept.class) ;
     }
+
+    @Override
+    public String findById(Long did) throws SQLException {
+        super.conn = DatabaseConnection.getConnection() ;
+        String sql = "SELECT dname FROM dept WHERE did=?" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1,did);
+        ResultSet rs = super.pstmt.executeQuery() ;
+        if (rs.next()){
+            return rs.getString(1) ;
+        }
+        return null ;
+    }
 }

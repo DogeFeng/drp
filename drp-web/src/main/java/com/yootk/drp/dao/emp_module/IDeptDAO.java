@@ -21,4 +21,11 @@ public interface IDeptDAO extends IBaseDAO<Integer, Dept> {
      * @return 返回包含部门信息的 VO 类对象
      */
     public Dept findByDname(String dname) throws SQLException;
+
+    /**
+     * 根据 id 查询部门名称
+     * @param did 要查询的部门 id
+     * @return 部门名称
+     */
+    public String findById(Long did) throws SQLException;
 }

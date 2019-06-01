@@ -72,4 +72,17 @@ public class LevelDAOImpl extends AbstractDAO implements ILevelDAO {
         }
         return map ;
     }
+
+    @Override
+    public String findById(Long lid) throws SQLException {
+        super.conn = DatabaseConnection.getConnection() ;
+        String sql = "SELECT title FROM level WHERE lid=?" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1,lid);
+        ResultSet rs = super.pstmt.executeQuery() ;
+        if (rs.next()){
+            return rs.getString(1) ;
+        }
+        return null ;
+    }
 }

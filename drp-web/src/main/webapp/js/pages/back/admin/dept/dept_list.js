@@ -16,9 +16,20 @@ $(function(){
 	}) ;
 	$("span[id^=mid-]").each(function(){
 		$(this).on("click",function(){
-			mid = this.id.split("-")[1] ;
+			//mid = this.id.split("-",2)[1] ;
+			mid = this.id.substring(4) ;
 			console.log("雇员编号：" + mid) ;
 			$("#memberInfo").modal("toggle") ;
+			$.getJSON("/pages/back/admin/dept/dept_list_modal.action", {"mid": mid}, function (data) {
+				console.log("测试一下") ;
+				$("#name").text(data.member.name) ;
+				$("#level").text(data.level) ;
+				$("#dept").text(data.dept) ;
+				$("#phone").text(data.member.phone) ;
+				$("#note").text(data.member.note) ;
+			}).fail(function () {
+				alert(2) ;
+			});
 		}) ;
 	}) ;
 }) ;
