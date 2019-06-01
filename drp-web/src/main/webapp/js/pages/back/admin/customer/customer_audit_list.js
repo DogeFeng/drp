@@ -11,6 +11,23 @@ $(function(){
 			cuid = this.id.split("-")[1] ;
 			loadData() ;
 			$("#customerRecordInfo").modal("toggle") ;
+			$("#table tr").remove();
+			$.getJSON("/pages/back/admin/customer/customer_input_cuid.action",{"cuid":cuid},function (data) {
+				$("#cuid").val(data) ;
+			})
+			$.getJSON("/pages/back/admin/customer/customer_record_list.action",{"cuid":cuid},function (data) {
+				member = data.member ;
+				list = data.list ;
+				for (x = 0; x < list.length; x++) {
+					$(criid).append("<option value='" + list[x].criid + "'>" + list[x].title + "</option>");
+					$("#table").append("<tr id='record-" + list[x].cuid + "'>" +
+						"<td class='text-center'>" + list[x].cdate + "</td>" +
+						"<td class='text-left'>" + member.name + "</td>" +
+						"<td class='text-left'>" + member.phone + "</td>" +
+						"<td class='text-left'><pre class='pre-scrollable' style='width:700px;height: 60px'>" + list[x].note + "</pre></td>" +
+						"</tr>")
+				}
+			})
 		}) ;
 	}) ;
 	$("button[id^=out-]").each(function(){
@@ -29,6 +46,9 @@ $(function(){
 		$(this).on("click",function(){
 			cuid = this.id.split("-")[1] ;
 			$("#customerAuditInfo").modal("toggle") ;
+			$.getJSON("/pages/back/admin/customer/customer_input_cuid.action",{"cuid":cuid},function (data) {
+				$("#cuid").val(data) ;
+			})
 		}) ;
 	}) ;
 	$("#myform").validate({
@@ -75,7 +95,16 @@ $(function(){
 		submitHandler : function(form) {
 			// 发送ajax请求进行异步数据处理操作
 			$("#customerAuditInfo").modal("toggle") ;
-			operateAlert(true,"客户信息审核完成！","客户信息审核错误！") ;
+			customerid = $("#cuid").val() ;
+			status = $("#audit").val() ;
+			auditnote = $("textarea").val() ;
+			$.getJSON("/pages/back/admin/customer/customer_audit.action",{"cuid":customerid,"status":status,"note":auditnote},function (data) {
+				operateAlert(data,"客户信息审核完成！","客户信息审核错误！") ;
+			})
+
+
+
+			//operateAlert(true,"客户信息审核完成！","客户信息审核错误！") ;
 		},
 		errorPlacement : function(error, element) {
 			$("#" + $(element).attr("id").replace(".", "\\.") + "Msg").append(error);

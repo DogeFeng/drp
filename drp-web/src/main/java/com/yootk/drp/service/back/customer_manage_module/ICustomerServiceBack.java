@@ -46,4 +46,13 @@ public interface ICustomerServiceBack {
      * @return
      */
     public Customer getCustomer(Long cuid) throws SQLException;
+
+    /**
+     * 客户认证操作
+     * @param cuid 认证的客户 id
+     * @param status 认证状态
+     * @param note
+     * @return
+     */
+    public boolean editAudit(Long cuid,Integer status,String note) throws SQLException;
 }

@@ -148,6 +148,15 @@ public class CustomerDAOImpl extends AbstractDAO implements ICustomerDAO {
     }
 
     @Override
+    public boolean audit(Long cuid, Integer status, String note) throws SQLException {
+        String sql = "UPDATE customer SET status=?,note=? WHERE cuid=" + cuid ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setInt(1,status);
+        super.pstmt.setString(2,note);
+        return super.pstmt.executeUpdate() > 0;
+    }
+
+    @Override
     public Long getAllCount() throws SQLException {
         return super.handleCount("customer");
     }

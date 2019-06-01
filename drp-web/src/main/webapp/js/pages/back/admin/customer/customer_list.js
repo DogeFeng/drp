@@ -49,7 +49,7 @@ $(function(){
 		$(this).on("click",function(){
 			cuid = this.id.split("-")[1] ;
 			$("#customerRecordInputInfo").modal("toggle") ;
-			$.getJSON("/pages/back/admin/customer/customer_record_input_cuid.action",{"cuid":cuid},function (data) {
+			$.getJSON("/pages/back/admin/customer/customer_input_cuid.action",{"cuid":cuid},function (data) {
 				$("#cuid").val(data) ;
 			})
 			$.getJSON("/pages/back/admin/customer/customer_record_input_pre.action",{},function (data) {

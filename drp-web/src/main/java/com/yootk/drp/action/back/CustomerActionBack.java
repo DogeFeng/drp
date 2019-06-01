@@ -91,6 +91,7 @@ public class CustomerActionBack extends AbstractAction {
         PageUtil pu = new PageUtil("/pages/back/admin/customer/customer_audit_list.action","客户姓名:name");
         Set<Integer> status = new HashSet<>() ;
         status.add(0) ;
+        status.add(2) ;
         try {
             mav.add(this.customerServiceBack.list(pu.getCurrentPage(), pu.getLineSize(),pu.getColumn(), pu.getKeyword(),status));
         } catch (Exception e) {
@@ -125,7 +126,7 @@ public class CustomerActionBack extends AbstractAction {
         }
     }
 
-    @RequestMapping("customer_record_input_cuid")
+    @RequestMapping("customer_input_cuid")
     public void preInput(Long cuid){
         super.print(JSONObject.toJSONString(cuid));
     }
@@ -157,6 +158,19 @@ public class CustomerActionBack extends AbstractAction {
             mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/customer/customer_list.action");
         }
         return mav;
+    }
+
+    @RequestMapping("customer_audit")
+    public void editAudit(Long cuid,Integer status,String note){
+        System.out.println("audit action");
+        System.out.println("cuid:" + cuid);
+        System.out.println("status:" + status);
+        System.out.println("note:" + note);
+        try {
+            super.print(customerServiceBack.editAudit(cuid,status,note)) ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
