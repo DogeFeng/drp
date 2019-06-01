@@ -2,6 +2,7 @@ package com.yootk.drp.dao.customer_manage_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
+import com.yootk.common.dbc.DatabaseConnection;
 import com.yootk.drp.dao.customer_manage_module.ICustomerDAO;
 import com.yootk.drp.vo.Customer;
 
@@ -13,8 +14,8 @@ import java.util.*;
 public class CustomerDAOImpl extends AbstractDAO implements ICustomerDAO {
     @Override
     public boolean doCreate(Customer customer) throws SQLException {
-        String sql = "INSERT INTO customer (name,phone,pid,cid,address,indate,ciid,csid,note,recorder,status) " +
-                " VALUES (?,?,?,?,?,?,?,?,?,?,?)" ;
+        String sql = "INSERT INTO customer (name,phone,pid,cid,address,indate,ciid,csid,note,recorder,status,type) " +
+                " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" ;
         super.pstmt = super.conn.prepareStatement(sql) ;
         super.pstmt.setString(1,customer.getName());
         super.pstmt.setString(2,customer.getPhone());
@@ -27,6 +28,7 @@ public class CustomerDAOImpl extends AbstractDAO implements ICustomerDAO {
         super.pstmt.setString(9,customer.getNote());
         super.pstmt.setString(10,customer.getRecorder());
         super.pstmt.setInt(11,customer.getStatus());
+        super.pstmt.setInt(12,customer.getType());
         return super.pstmt.executeUpdate() > 0 ;
     }
 
@@ -62,6 +64,7 @@ public class CustomerDAOImpl extends AbstractDAO implements ICustomerDAO {
 
     @Override
     public List<Customer> findSplit(Long currentPage, Integer lineSize, Set<Integer> status) throws SQLException {
+        super.conn = DatabaseConnection.getConnection() ;
         StringBuffer sql = new StringBuffer() ;
         sql.append("SELECT cuid,name,phone,address,ciid,indate,connum,recorder FROM customer WHERE status IN (");
         status.forEach((s)->{

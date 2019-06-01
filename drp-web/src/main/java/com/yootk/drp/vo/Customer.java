@@ -20,11 +20,12 @@ public class Customer implements Serializable {
     private String note ; //客户信息记录
     private String recorder ; //客户信息记录者 雇员的mid
     private Integer status ; //认证状态
+    private Integer type ; //认证类型，1 企业，2 个人
 
     public Customer() {
     }
 
-    public Customer(Long cuid, String name, String phone, Long pid, Long cid, String address, Date indate, Integer connum, Long ciid, Long csid, String note, String recorder, Integer status) {
+    public Customer(Long cuid, String name, String phone, Long pid, Long cid, String address, Date indate, Integer connum, Long ciid, Long csid, String note, String recorder, Integer status,Integer type) {
         this.cuid = cuid;
         this.name = name;
         this.phone = phone;
@@ -38,6 +39,7 @@ public class Customer implements Serializable {
         this.note = note;
         this.recorder = recorder;
         this.status = status;
+        this.type = type ;
     }
 
     @Override
@@ -56,6 +58,7 @@ public class Customer implements Serializable {
                 ", note='" + note + '\'' +
                 ", recorder='" + recorder + '\'' +
                 ", status=" + status +
+                ",type=" + type +
                 '}';
     }
 
@@ -161,5 +164,13 @@ public class Customer implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

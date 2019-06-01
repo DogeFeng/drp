@@ -110,7 +110,7 @@ public class EmpDAOImpl extends AbstractDAO implements IEmpDAO {
     @Override
     public List<Member> findEmpSplit(Long currentPage, Integer lineSize, String column, String keyWord) throws SQLException {
         super.conn = DatabaseConnection.getConnection() ;
-        String sql = "SELECT mid,lid,did,name,sal,phone,photo,regdate FROM member WHERE " + column + " LIKE? LIMIT " + (currentPage - 1) * lineSize + ", " + lineSize ;
+        String sql = "SELECT mid,lid,did,name,sal,phone,photo,regdate FROM member WHERE type=1 AND " + column + " LIKE? LIMIT " + (currentPage - 1) * lineSize + ", " + lineSize ;
         super.pstmt = super.conn.prepareStatement(sql) ;
         super.pstmt.setString(1,"%" + keyWord + "%");
         ResultSet rs = super.pstmt.executeQuery() ;
@@ -131,7 +131,7 @@ public class EmpDAOImpl extends AbstractDAO implements IEmpDAO {
     }
 
     @Override
-    public Map<String, String> findManagersMapById(List<String> ids) throws SQLException {
+    public Map<String, String> findMembersMapById(List<String> ids) throws SQLException {
         super.conn = DatabaseConnection.getConnection() ;
         Map<String,String> map = new HashMap<>() ;
         StringBuffer sql = new StringBuffer() ;
@@ -171,5 +171,4 @@ public class EmpDAOImpl extends AbstractDAO implements IEmpDAO {
         super.pstmt.setString(1,phone);
         return super.handleResultToVO(super.pstmt.executeQuery(),Member.class) ;
     }
-
 }

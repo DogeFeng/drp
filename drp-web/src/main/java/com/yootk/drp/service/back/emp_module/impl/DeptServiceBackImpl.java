@@ -30,7 +30,7 @@ public class DeptServiceBackImpl extends AbstractService implements IDeptService
         for(Dept dept : depts){
             mids.add(dept.getMid()) ;
         }
-        map.put("allManagers",empDAO.findManagersMapById(mids)) ;
+        map.put("allManagers",empDAO.findMembersMapById(mids)) ;
         return map ;
     }
 

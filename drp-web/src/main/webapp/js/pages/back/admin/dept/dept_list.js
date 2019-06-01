@@ -21,7 +21,6 @@ $(function(){
 			console.log("雇员编号：" + mid) ;
 			$("#memberInfo").modal("toggle") ;
 			$.getJSON("/pages/back/admin/dept/dept_list_modal.action", {"mid": mid}, function (data) {
-				console.log("测试一下") ;
 				$("#name").text(data.member.name) ;
 				$("#level").text(data.level) ;
 				$("#dept").text(data.dept) ;

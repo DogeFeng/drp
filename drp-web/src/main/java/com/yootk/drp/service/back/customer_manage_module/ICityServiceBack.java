@@ -3,9 +3,8 @@ package com.yootk.drp.service.back.customer_manage_module;
 import com.yootk.drp.vo.City;
 
 import java.util.List;
-import java.util.Map;
 
-public interface ICityService {
+public interface ICityServiceBack {
 
     /**
      * 实现城市信息表单回填

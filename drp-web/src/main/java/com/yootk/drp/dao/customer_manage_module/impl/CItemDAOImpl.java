@@ -2,6 +2,7 @@ package com.yootk.drp.dao.customer_manage_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
+import com.yootk.common.dbc.DatabaseConnection;
 import com.yootk.drp.dao.customer_manage_module.ICItemDAO;
 import com.yootk.drp.vo.CItem;
 
@@ -16,6 +17,7 @@ import java.util.Set;
 public class CItemDAOImpl extends AbstractDAO implements ICItemDAO {
     @Override
     public Map<Long, String> findAllMap() throws SQLException {
+        super.conn = DatabaseConnection.getConnection() ;
         Map<Long,String> map = new HashMap<>() ;
         String sql = "SELECT ciid,title FROM citem" ;
         super.pstmt = super.conn.prepareStatement(sql) ;

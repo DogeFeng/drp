@@ -31,13 +31,14 @@ public interface IEmpDAO extends IBaseDAO<String, Member> {
     public List<Member> findEmpSplit(Long currentPage, Integer lineSize, String column, String keyWord) throws SQLException;
 
     /**
-     * 查询所有的部门领导
-     * @param ids 领导id
+     * 查询雇员信息
+     * @param ids
      * @return Map 集合
-     * key = mid，value = Member 的 VO 对象
+     * key = mid，value = name
      */
-    public Map<String, String> findManagersMapById(List<String> ids) throws SQLException;
+    public Map<String, String> findMembersMapById(List<String> ids) throws SQLException;
 
     public Member findByEmail(String email) throws SQLException ;
     public Member findByphone(String phone) throws SQLException ;
+
 }

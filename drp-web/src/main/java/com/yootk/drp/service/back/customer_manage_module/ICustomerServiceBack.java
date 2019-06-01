@@ -19,6 +19,7 @@ public interface ICustomerServiceBack {
      * key = allCustomers，value = 所有雇员的 List<Customer> 集合，使用 findSplit() 方法
      * key = allRecorders，value = 查询的数据统计 Long ，使用 getAllCount() 方法
      * key = allCItems，value = 所有 CItem 的 Map<Long,String> 集合 ，使用 findAllMap() 方法
+     * key = allEmps,value = 所有雇员的 Map<String,String> 集合
      */
     public Map<String ,Object> list(Long currentPage, Integer lineSize, String column, String keyWord,Set<Integer> status) throws SQLException;
 

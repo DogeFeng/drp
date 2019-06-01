@@ -52,9 +52,9 @@
 						<td class="text-left">${customer.address}</td>
 						<td class="text-left">${customer.indate}</td>
 						<td class="text-center">${customer.connum}</td>
-						<td class="text-center"><span id="mid-${customer.recorder}" style="cursor:pointer;">老李</span></td>
+						<td class="text-center"><span id="mid-${customer.recorder}" style="cursor:pointer;">${allEmps[customer.recorder]}</span></td>
 						<td class="text-left">
-							<button class="btn btn-primary btn-xs" id="input-1">
+							<button class="btn btn-primary btn-xs" id="input-${customer.cuid}">
 								<span class="glyphicon glyphicon-floppy-save"></span>&nbsp;追加记录</button>
 							<button class="btn btn-danger btn-xs" id="out-1">
 								<span class="glyphicon glyphicon-log-out"></span>&nbsp;商品出库</button>
