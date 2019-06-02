@@ -147,7 +147,7 @@ public class DistributionActionBack extends AbstractAction {
     @RequestMapping("distribution_list_yes")
     public ModuleAndView listStatusYes(){
         ModuleAndView mav = new ModuleAndView("/pages/back/admin/distribution/distribution_list_myself_yes.jsp");
-        PageUtil pu = new PageUtil("/pages/back/admin/distribution/distribution_list_yes.action","选项: |申请标题:title");
+        PageUtil pu = new PageUtil("/pages/back/admin/distribution/distribution_list_yes.action","申请标题:title|");
         try {
             mav.add(this.distributionService.list(1,pu.getColumn(),pu.getKeyword(),pu.getCurrentPage(),pu.getLineSize()));
         } catch (Exception e) {
@@ -158,7 +158,7 @@ public class DistributionActionBack extends AbstractAction {
     @RequestMapping("distribution_list_no")
     public ModuleAndView listStatusNo(){
         ModuleAndView mav = new ModuleAndView("/pages/back/admin/distribution/distribution_list_myself_no.jsp");
-        PageUtil pu = new PageUtil("/pages/back/admin/distribution/distribution_list_no.action","选项: |申请标题:title");
+        PageUtil pu = new PageUtil("/pages/back/admin/distribution/distribution_list_no.action","申请标题:title|");
         try {
             mav.add(this.distributionService.list(0,pu.getColumn(),pu.getKeyword(),pu.getCurrentPage(),pu.getLineSize()));
         } catch (Exception e) {
@@ -217,7 +217,6 @@ public class DistributionActionBack extends AbstractAction {
     }
     @RequestMapping("distribution_edit")
     public ModuleAndView edit(Distribution vo){
-        System.out.println(vo);
         ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
         try {
             if(this.distributionService.edit(vo)){

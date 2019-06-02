@@ -74,7 +74,7 @@ public class WarehouseActionBack extends AbstractAction {
     @RequestMapping("warehouse_list")
     public ModuleAndView list(){
         ModuleAndView mav = new ModuleAndView("/pages/back/admin/warehouse/warehouse_list.jsp");
-        PageUtil pu = new PageUtil("/pages/back/admin/warehouse/warehouse_list.action","选项: |仓库名称:name");
+        PageUtil pu = new PageUtil("/pages/back/admin/warehouse/warehouse_list.action","仓库名称:name|仓库地址:address|存储分类:wiid|");
         try {
             mav.add(this.warehouseServiceBack.list(pu.getColumn(),pu.getKeyword(),pu.getCurrentPage(),pu.getLineSize()));
         } catch (Exception e) {

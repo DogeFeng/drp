@@ -1,4 +1,19 @@
 $(function(){
+
+	$("#wiid").on("change",function () {
+		var wiid = $(this).val() ;
+		if(wiid != null) {
+			console.log($("#stid option:gt(0)").length + " )))))) ") ;
+			$("#stid option:gt(0)").remove() ;		// 清除已有的内容
+			$.get("pages/back/admin/goods/goods_add_pre_subtype.action", {"wiid": wiid}, function (data) {
+				for (x = 0; x < data.length; x++) {
+					$("#stid").append("<option value='" + data[x].stid + "'>" + data[x].title + "</option>") ;
+				}
+			}, "json");
+		}
+
+	}) ;
+
 	tinymce.init({ selector:'#note' });
 	$("#myform").validate({
 		debug : true, // 取消表单的提交操作

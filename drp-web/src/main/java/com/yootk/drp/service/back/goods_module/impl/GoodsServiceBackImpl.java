@@ -5,13 +5,13 @@ import com.yootk.common.annotation.Service;
 import com.yootk.drp.dao.goods_module.IGoodsDAO;
 import com.yootk.drp.dao.goods_module.IMemberDAO;
 import com.yootk.drp.dao.goods_module.ISubtypeDAO;
-import com.yootk.drp.dao.warehouse_module.IWitemDAO;
+import com.yootk.drp.dao.goods_module.IWitemDAO;
 import com.yootk.drp.service.back.goods_module.IGoodsServiceBack;
 import com.yootk.drp.vo.Goods;
-import com.yootk.drp.vo.Member;
+import com.yootk.drp.vo.Subtype;
 
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,18 +31,40 @@ public class GoodsServiceBackImpl implements IGoodsServiceBack {
     private IMemberDAO memberDao ;
 
     @Override
+    public Map<String, Object> findgoodsShow(Long gid) throws Exception {
+        Map<String, Object> map = new HashMap<>() ;
+        map.put("goods",goodsDao.findById(gid)) ;
+        return map;
+    }
+
+    @Override
+    public Map<String,Object> findById(Long gid) throws Exception {
+        Map<String, Object> map = new HashMap<>() ;
+        map.put("allWitem",witemDao.findAll()) ;
+        map.put("goods",goodsDao.findById(gid)) ;
+        return map;
+    }
+
+    @Override
+    public List<Subtype> findByWitemId(Long wiid) throws Exception {
+        return subtypeDao.findByWiid(wiid) ;
+    }
+
+    @Override
     public Map<String, Object> addPre() throws Exception {
         Map<String, Object> map = new HashMap<>() ;
-        map.put("allSubtype",subtypeDao.findAll()) ;
         map.put("allWitem",witemDao.findAll()) ;
         return map;
     }
 
     @Override
     public boolean add(Goods goods) throws Exception {
-        goods.setDelflag(1) ;
-        goods.setLastin(new Date());
         return goodsDao.doCreate(goods);
+    }
+
+    @Override
+    public boolean edit(Goods goods) throws Exception {
+        return goodsDao.doEdit(goods);
     }
 
     @Override
@@ -60,8 +82,4 @@ public class GoodsServiceBackImpl implements IGoodsServiceBack {
         return map;
     }
 
-    @Override
-    public Member getMember(String mid) throws Exception {
-        return memberDao.findById(mid);
-    }
 }

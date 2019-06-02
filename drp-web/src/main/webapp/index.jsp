@@ -6,7 +6,6 @@
     <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
-<div class="container contentback" >
     <div id="navbarDiv" class="row">
         <jsp:include page="/pages/plugins/front/include_navbar.jsp"/>
     </div>

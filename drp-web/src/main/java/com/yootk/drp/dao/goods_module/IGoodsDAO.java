@@ -14,6 +14,14 @@ import java.util.Set;
  */
 public interface IGoodsDAO extends IBaseDAO<Long , Goods> {
     /**
+     * 通过name，模糊查询
+     * @param name
+     * @return
+     * @throws SQLException
+     */
+    public List<Goods> findLinkName(String name) throws SQLException ;
+
+    /**
      * 查询所有商品信息
      * @param delflag 删除标记。0：未删除、1：已删除
      * @return List<Goods>
@@ -31,13 +39,6 @@ public interface IGoodsDAO extends IBaseDAO<Long , Goods> {
      */
     public List<Goods> findSplitFlag(Long currentPage, Integer lineSize , int delflag) throws SQLException ;
 
-    /**
-     * 根据已有商品编号查询出所有的商品信息
-     * @param gids 所有商品编号
-     * @return 所有对应的商品信息
-     * @throws SQLException
-     */
-    public List<Goods> findAllByGids(Set<Long> gids) throws SQLException;
     /**
      * 分页模糊查询所有商品
      * @param currentPage 当前页数
@@ -67,4 +68,10 @@ public interface IGoodsDAO extends IBaseDAO<Long , Goods> {
      * @throws SQLException
      */
     public Long getAllCountFlag(String column, String keyWord , int delflag) throws SQLException ;
+
+    public Long getAllCountFlagAndStid(Long stid ,String column, String keyWord , int delflag) throws SQLException ;
+    public Long getAllCountFlagAndStid(Long stid ,int delflag) throws SQLException ;
+    public List<Goods> findSplitFlagAndStid(Long stid ,Long currentPage, Integer lineSize, String column, String keyWord , int delflag) throws SQLException ;
+    public List<Goods> findSplitFlagAndStid(Long stid ,Long currentPage, Integer lineSize , int delflag) throws SQLException ;
+    public List<Goods> findAllByGids(Set<Long> gids) throws SQLException;
 }

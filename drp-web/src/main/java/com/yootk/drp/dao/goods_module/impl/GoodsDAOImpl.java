@@ -60,6 +60,14 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
     }
 
     @Override
+    public List<Goods> findLinkName(String name) throws SQLException {
+        String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE name LIKE ?" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        super.pstmt.setString(1 , "%" + name +"%");
+        return super.handleResultToList(super.pstmt.executeQuery() , Goods.class);
+    }
+
+    @Override
     public Goods findById(Long aLong) throws SQLException {
         String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE gid=?" ;
         super.pstmt = super.conn.prepareStatement(sql) ;
@@ -109,20 +117,6 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
     }
 
     @Override
-    public List<Goods> findAllByGids(Set<Long> gids) throws SQLException {
-        if(gids == null || gids.size() == 0){
-            return null;
-        }
-        StringBuffer sql = new StringBuffer("SELECT gid,name,price,photo,stornum FROM goods WHERE gid IN(");
-        for(Long gid : gids){
-            sql.append(gid + ",");
-        }
-        sql.delete(sql.length()-1,sql.length()).append(")");
-        super.pstmt = super.conn.prepareStatement(sql.toString());
-        return super.handleResultToList(super.pstmt.executeQuery(),Goods.class);
-    }
-
-    @Override
     public List<Goods> findSplitFlag(Long currentPage, Integer lineSize, String column, String keyWord, int delflag) throws SQLException {
         String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE delflag=? AND " + column + " LIKE ? LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql);
@@ -154,5 +148,65 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
             return rs.getLong(1) ;
         }
         return 0L ;
+    }
+
+    @Override
+    public Long getAllCountFlagAndStid(Long stid, String column, String keyWord, int delflag) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM goods WHERE stid =? AND delflag=? AND " + column + " LIKE ?" ;
+        this.pstmt = this.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1 , stid);
+        super.pstmt.setInt(2 , delflag);
+        this.pstmt.setString(3,"%"+keyWord+"%");
+        ResultSet rs = this.pstmt.executeQuery() ;
+        if (rs.next()) {
+            return rs.getLong(1) ;
+        }
+        return 0L ;
+    }
+
+    @Override
+    public Long getAllCountFlagAndStid(Long stid, int delflag) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM goods WHERE stid =? AND delflag=?  " ;
+        this.pstmt = this.conn.prepareStatement(sql) ;
+        super.pstmt.setLong(1 , stid);
+        super.pstmt.setInt(2 , delflag);
+        ResultSet rs = this.pstmt.executeQuery() ;
+        if (rs.next()) {
+            return rs.getLong(1) ;
+        }
+        return 0L ;
+    }
+
+    @Override
+    public List<Goods> findSplitFlagAndStid(Long stid, Long currentPage, Integer lineSize, String column, String keyWord, int delflag) throws SQLException {
+        String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE stid =? AND delflag=? AND " + column + " LIKE ? LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setLong(1 , stid);
+        super.pstmt.setInt(2 , delflag);
+        super.pstmt.setString(3, "%" + keyWord + "%");
+        return super.handleResultToList(super.pstmt.executeQuery(),Goods.class);
+    }
+
+    @Override
+    public List<Goods> findSplitFlagAndStid(Long stid, Long currentPage, Integer lineSize, int delflag) throws SQLException {
+        String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE stid =? AND delflag=?  LIMIT " + (currentPage - 1) * lineSize + "," + lineSize;
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setLong(1 , stid);
+        super.pstmt.setInt(2 , delflag);
+        return super.handleResultToList(super.pstmt.executeQuery(),Goods.class);
+    }
+
+    @Override
+    public List<Goods> findAllByGids(Set<Long> gids) throws SQLException {
+        if(gids == null || gids.size() == 0){
+            return null;
+        }
+        StringBuffer sql = new StringBuffer("SELECT gid,name,price,photo,stornum FROM goods WHERE gid IN(");
+        for(Long gid : gids){
+            sql.append(gid + ",");
+        }
+        sql.delete(sql.length()-1,sql.length()).append(")");
+        super.pstmt = super.conn.prepareStatement(sql.toString());
+        return super.handleResultToList(super.pstmt.executeQuery(),Goods.class);
     }
 }
