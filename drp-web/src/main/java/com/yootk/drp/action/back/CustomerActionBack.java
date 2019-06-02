@@ -128,7 +128,7 @@ public class CustomerActionBack extends AbstractAction {
     @RequestMapping("customer_record_count")
     public void count(Long cuid){
         try {
-            super.print(this.customerRecordServiceBack.allCount(cuid));
+            super.print(JSONObject.toJSONString(this.customerRecordServiceBack.allCount(cuid) ));
         } catch (SQLException e) {
             e.printStackTrace();
         }

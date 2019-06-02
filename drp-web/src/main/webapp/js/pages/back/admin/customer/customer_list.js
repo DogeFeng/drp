@@ -62,7 +62,6 @@ $(function(){
 			$.get("/pages/back/admin/customer/customer_record_input.action",{"title":recordtitle,"cuid":customerid,"criid":customerRecordID,"note":recordnote},function (data) {
 				operateAlert(data,"客户联系记录追加成功！","客户联系记录追加失败！") ;
 			})
-
 		},
 		errorPlacement : function(error, element) {
 			$("#" + $(element).attr("id").replace(".", "\\.") + "Msg").append(error);
@@ -101,9 +100,9 @@ function loadData() {	// 该函数名称一定要固定，不许修改
 	console.log("客户编号：" + cuid) ;
 	// $("#memberBasicInfo tr:gt(0)").remove() ; // 加载之前要进行原有数据删除
 	//createSplitBar(10) ;	// 创建分页控制项
-	$.get("/pages/back/admin/customer/customer_record_count.action"),{"cuid":cuid},function(data){
+	$.getJSON("/pages/back/admin/customer/customer_record_count.action",{"cuid":cuid},function(data){
 		createSplitBar(data) ;	// 创建分页控制项
-	}
+	}) ;
 	$("#table tr").remove();
 	$.getJSON("/pages/back/admin/customer/customer_record_list.action",{"cuid":cuid,"currentPage":jsCommonCp,"lineSize":jsCommonLs},function (data) {
 		member = data.member ;
@@ -116,5 +115,5 @@ function loadData() {	// 该函数名称一定要固定，不许修改
 				"<td class='text-left'><pre class='pre-scrollable' style='width:700px;height: 60px'>" + list[x].note + "</pre></td>" +
 				"</tr>")
 		}
-	})
+	}) ;
 }

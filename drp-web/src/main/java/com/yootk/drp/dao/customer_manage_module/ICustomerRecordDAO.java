@@ -14,5 +14,12 @@ public interface ICustomerRecordDAO extends IBaseDAO<Long, CustomerRecord> {
      */
     public List<CustomerRecord> findAllById(Long cuid,Long currentPage,Integer lineSize) throws SQLException;
 
+    /**
+     * 获取某客户的全部回访记录
+     * @param column 列名称 cuid
+     * @param aLong 客户 id
+     * @return
+     * @throws SQLException
+     */
     public Long getAllCount(String column,Long aLong) throws SQLException;
 }
