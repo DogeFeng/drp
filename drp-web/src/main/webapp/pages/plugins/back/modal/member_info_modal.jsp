@@ -12,7 +12,7 @@
 				<div id="costBasicInfo">
 					<div class="row">
 						<div class="col-xs-3">
-							< img src="images/user.png" style="width:200px;">
+							<img/>
 						</div>
 						<div class="col-xs-8">
 							<table class="table table-condensed" style="width:700px;">

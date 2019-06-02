@@ -42,9 +42,9 @@ public class WarehouseActionBack extends AbstractAction {
     public ModuleAndView add(Warehouse warehouse,MultipartFile file){
 //        warehouse.setAdmin(super.getFrontUser());  //设置仓库管理员的用户编号
         if(super.getFrontUser() == null){
-            warehouse.setAdmin("chengcheng");
+            warehouse.setAdmin("yootk-dev");
         }else{
-            warehouse.setAdmin(super.getFrontUser());
+            warehouse.setAdmin("yootk-dev");
         }
         try {
             String fileName = UploadFileToServer.upload(file,file.getContentType()) ;

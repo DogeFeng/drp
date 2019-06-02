@@ -2,15 +2,26 @@ wid = 0 ;
 $(function(){
 	$("span[id^=mid-]").each(function(){
 		$(this).on("click",function(){
-			mid = this.id.split("-")[1] ;
-			console.log("仓库管理员编号：" + mid) ;
+			//mid = this.id.split("-")[1] ;
+			mid = this.id.substring(4) ;
 			$("#memberInfo").modal("toggle") ;
+			$.getJSON("/pages/back/admin/customer/customer_list_member_modal.action", {"mid": mid}, function (data) {
+				url = "http://111.230.131.204/drp/upload/" + (data.member.photo) ;
+				$("img").attr("src", url) ;
+				$("#name").text(data.member.name) ;
+				$("#level").text(data.level) ;
+				$("#dept").text(data.dept) ;
+				$("#phone").text(data.member.phone) ;
+				$("#note").text(data.member.note) ;
+			}).fail(function () {
+				alert(3000);
+			});
 		}) ;
 	}) ;
+
 	$("button[id^=editadmin-]").each(function(){
 		$(this).on("click",function(){
 			wid = this.id.split("-")[1] ;
-			console.log("修改仓库管理员，仓库编号：" + wid) ;
 			loadData() ; // 异步数据加载与分页控制
 			$("#memberDeptInfo").modal("toggle") ;
 		}) ;
@@ -19,8 +30,8 @@ $(function(){
 		$(this).on("click",function(){
 			mid = this.id.split("-")[1] ;
 			console.log("新的仓库管理员编号：" + mid) ;
-			name = $("#memberName").text() ; 
-			ele = $("<span id='mid-admin' style='cursor:pointer;'>"+name+"</span>") ;
+			name1 = $("#memberName").text() ;
+			ele = $("<span id='mid-admin' style='cursor:pointer;'>"+name1+"</span>") ;
 			ele.on("click",function(){
 				console.log("仓库管理员ID：" + mid) ;
 				$("#memberInfo").modal("toggle") ;
@@ -32,7 +43,7 @@ $(function(){
 	})
 }) ;
 function loadData() {	// 该函数名称一定要固定，不许修改
-	// 如果要想进行分页的处理列表前首先查询出部门编号
+// 如果要想进行分页的处理列表前首先查询出部门编号
 	did = $("#did").val() ;	// 取得指定组件的value
 	tid = $("#tid").val() ;
 	console.log("部门编号：" + did) ;

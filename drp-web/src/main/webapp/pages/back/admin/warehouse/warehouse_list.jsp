@@ -48,9 +48,9 @@
 							<td class="text-center">${allWitems[warehouse.wiid]}</td>
 							<td class="text-center">${warehouse.maximum}</td>
 							<td class="text-center">${warehouse.currnum}</td>
-							<td class="text-center" id="${warehouse.admin}"><span id="mid-admin" style="cursor:pointer;">${warehouse.admin}</span></td>
+							<td class="text-center" id="${warehouse.admin}"><span id="mid-${warehouse.admin}" style="cursor:pointer;">${warehouse.admin}</span></td>
 							<td class="text-left">
-								<button id="editadmin-1" class="btn btn-primary btn-xs">
+								<button id="editadmin-${warehouse.wid}" class="btn btn-primary btn-xs">
 									<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;编辑库管</button>
 
 								<a href="<%=WAREHOUSE_EDIT_URL%>?wid=${warehouse.wid}" id="editinfo-1" class="btn btn-warning btn-xs">
