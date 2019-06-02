@@ -12,5 +12,5 @@ public interface ICustomerDAO extends IBaseDAO<Long,Customer> {
 
     List<Customer> findSplit(Long currentPage, Integer lineSize, String column, String keyWord, Set<Integer> status) throws SQLException;
 
-    public boolean audit(Long cuid,Integer status,String note) throws SQLException;
+    public boolean audit(Long cuid,Integer status,String note,String recorder) throws SQLException;
 }

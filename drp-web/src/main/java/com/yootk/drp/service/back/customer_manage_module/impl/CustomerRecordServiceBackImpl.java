@@ -44,4 +44,5 @@ public class CustomerRecordServiceBackImpl extends AbstractService implements IC
     public List<CustomerRecord> list(Long cuid,Long currentPage,Integer lineSize) throws SQLException {
         return customerRecordDAO.findAllById(cuid,currentPage,lineSize) ;
     }
+
 }

@@ -47,7 +47,7 @@
 							<td class="text-left">${customer.address}</td>
 							<td class="text-left">${customer.indate}</td>
 							<td class="text-left">
-								<button class="btn btn-primary btn-xs" id="audit-2">
+								<button class="btn btn-primary btn-xs" id="audit-${customer.cuid}">
 									<span class="glyphicon glyphicon-floppy-save"></span>&nbsp;审核处理</button>
 							</td>
 						</tr>

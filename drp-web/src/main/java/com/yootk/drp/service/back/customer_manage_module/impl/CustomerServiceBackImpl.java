@@ -67,12 +67,11 @@ public class CustomerServiceBackImpl extends AbstractService implements ICustome
     }
 
     @Override
-    public boolean editAudit(Long cuid, Integer status, String note) throws SQLException {
+    public boolean editAudit(Long cuid, Integer status, String note,String recorder) throws SQLException {
         try{
             Customer customer = customerDAO.findById(cuid);
-            System.out.println("service:" + customer);
             String newNote = customer.getNote() + "\n" + note ;
-            customerDAO.audit(cuid,status,newNote) ;
+            customerDAO.audit(cuid,status,newNote,recorder) ;
         } catch (Exception e) {
             return false ;
         }

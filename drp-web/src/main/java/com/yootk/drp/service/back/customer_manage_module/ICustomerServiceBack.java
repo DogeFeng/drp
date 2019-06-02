@@ -52,7 +52,8 @@ public interface ICustomerServiceBack {
      * @param cuid 认证的客户 id
      * @param status 认证状态
      * @param note
+     * @param recorder 审核者/记录者
      * @return
      */
-    public boolean editAudit(Long cuid,Integer status,String note) throws SQLException;
+    public boolean editAudit(Long cuid,Integer status,String note,String recorder) throws SQLException;
 }

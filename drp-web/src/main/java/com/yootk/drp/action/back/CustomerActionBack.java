@@ -140,30 +140,45 @@ public class CustomerActionBack extends AbstractAction {
         }
     }
 
+//    @RequestMapping("customer_record_input")
+//    public ModuleAndView addRecord(String title,CustomerRecord customerRecord){
+//        ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
+//        String note = customerRecord.getNote() ;
+//        customerRecord.setNote(title + "\n" + note);
+//        try {
+//            if(this.customerRecordServiceBack.add(customerRecord)){
+//                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"客户联系记录增加成功！");
+//                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/customer/customer_list.action");
+//            }else{
+//                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"客户联系记录增加失败！");
+//                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/customer/customer_list.action");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/customer/customer_list.action");
+//        }
+//        return mav;
+//    }
+
     @RequestMapping("customer_record_input")
-    public ModuleAndView addRecord(String title,CustomerRecord customerRecord){
-        ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
-        String note = customerRecord.getNote() ;
+    public void addRecord(String title,Long cuid,Long criid,String note){
+        CustomerRecord customerRecord = new CustomerRecord() ;
+        customerRecord.setCuid(cuid);
+        customerRecord.setCriid(criid);
         customerRecord.setNote(title + "\n" + note);
         try {
-            if(this.customerRecordServiceBack.add(customerRecord)){
-                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"客户联系记录增加成功！");
-                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/customer/customer_list.action");
-            }else{
-                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME,"客户联系记录增加失败！");
-                mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/customer/customer_list.action");
-            }
+            super.print(this.customerRecordServiceBack.add(customerRecord)) ;
+
         } catch (Exception e) {
             e.printStackTrace();
-            mav.add(AbstractAction.PATH_ATTRIBUTE_NAME,"/pages/back/admin/customer/customer_list.action");
         }
-        return mav;
     }
 
     @RequestMapping("customer_audit")
     public void editAudit(Long cuid,Integer status,String note){
+        String recorder = "yootk-market" ; //获取当前登录雇员的 mid
         try {
-            super.print(customerServiceBack.editAudit(cuid,status,note)) ;
+            super.print(customerServiceBack.editAudit(cuid,status,note,recorder)) ;
         } catch (SQLException e) {
             e.printStackTrace();
         }

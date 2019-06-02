@@ -12,14 +12,10 @@ $(function(){
 			loadData() ;
 			$("#customerRecordInfo").modal("toggle") ;
 			$("#table tr").remove();
-			$.getJSON("/pages/back/admin/customer/customer_input_cuid.action",{"cuid":cuid},function (data) {
-				$("#cuid").val(data) ;
-			})
 			$.getJSON("/pages/back/admin/customer/customer_record_list.action",{"cuid":cuid},function (data) {
 				member = data.member ;
 				list = data.list ;
 				for (x = 0; x < list.length; x++) {
-					$(criid).append("<option value='" + list[x].criid + "'>" + list[x].title + "</option>");
 					$("#table").append("<tr id='record-" + list[x].cuid + "'>" +
 						"<td class='text-center'>" + list[x].cdate + "</td>" +
 						"<td class='text-left'>" + member.name + "</td>" +

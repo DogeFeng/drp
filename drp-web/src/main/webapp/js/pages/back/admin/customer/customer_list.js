@@ -26,7 +26,6 @@ $(function(){
 				member = data.member ;
 				list = data.list ;
 				for (x = 0; x < list.length; x++) {
-					$(criid).append("<option value='" + list[x].criid + "'>" + list[x].title + "</option>");
 					$("#table").append("<tr id='record-" + list[x].cuid + "'>" +
 						"<td class='text-center'>" + list[x].cdate + "</td>" +
 						"<td class='text-left'>" + member.name + "</td>" +
@@ -49,6 +48,8 @@ $(function(){
 		$(this).on("click",function(){
 			cuid = this.id.split("-")[1] ;
 			$("#customerRecordInputInfo").modal("toggle") ;
+			$("#criid option:gt(0)").remove() ;
+			$("#cid option:eq(0)").prop("selected");
 			$.getJSON("/pages/back/admin/customer/customer_input_cuid.action",{"cuid":cuid},function (data) {
 				$("#cuid").val(data) ;
 			})
@@ -59,44 +60,51 @@ $(function(){
 			});
 		}) ;
 	}) ;
-	// $("#myform").validate({
-	// 	debug : true, // 取消表单的提交操作
-	// 	submitHandler : function(form) {
-	// 		// 发送ajax请求进行异步数据处理操作
-	// 		$("#customerRecordInputInfo").modal("toggle") ;
-	// 		operateAlert(true,"客户联系记录追加成功！","客户联系记录追加失败！") ;
-	// 	},
-	// 	errorPlacement : function(error, element) {
-	// 		$("#" + $(element).attr("id").replace(".", "\\.") + "Msg").append(error);
-	// 	},
-	// 	highlight : function(element, errorClass) {
-	// 		$(element).fadeOut(1,function() {
-	// 			$(element).fadeIn(1, function() {
-	// 				$("#" + $(element).attr("id").replace(".","\\.") + "Div").attr("class","form-group has-error");
-	// 			});
-	//
-	// 		})
-	// 	},
-	// 	unhighlight : function(element, errorClass) {
-	// 		$(element).fadeOut(1,function() {
-	// 			$(element).fadeIn(1,function() {
-	// 					$("#" + $(element).attr("id").replace(".","\\.") + "Div").attr("class","form-group has-success");
-	// 			});
-	// 		})
-	// 	},
-	// 	errorClass : "text-danger",
-	// 	rules : {
-	// 		"title" : {
-	// 			required : true
-	// 		} ,
-	// 		"criid" : {
-	// 			required : true
-	// 		} ,
-	// 		"note" : {
-	// 			required : true
-	// 		}
-	// 	}
-	// });
+	$("#myform").validate({
+		debug : true, // 取消表单的提交操作
+		submitHandler : function(form) {
+			// 发送ajax请求进行异步数据处理操作
+			$("#customerRecordInputInfo").modal("toggle") ;
+			recordtitle = $("#title").val() ;
+			customerid = $("#cuid").val() ;
+			recordnote = $("textarea").val() ;
+			customerRecordID = $("#criid").val() ;
+			$.get("/pages/back/admin/customer/customer_record_input.action",{"title":recordtitle,"cuid":customerid,"criid":customerRecordID,"note":recordnote},function (data) {
+				operateAlert(data,"客户联系记录追加成功！","客户联系记录追加失败！") ;
+			})
+
+		},
+		errorPlacement : function(error, element) {
+			$("#" + $(element).attr("id").replace(".", "\\.") + "Msg").append(error);
+		},
+		highlight : function(element, errorClass) {
+			$(element).fadeOut(1,function() {
+				$(element).fadeIn(1, function() {
+					$("#" + $(element).attr("id").replace(".","\\.") + "Div").attr("class","form-group has-error");
+				});
+
+			})
+		},
+		unhighlight : function(element, errorClass) {
+			$(element).fadeOut(1,function() {
+				$(element).fadeIn(1,function() {
+						$("#" + $(element).attr("id").replace(".","\\.") + "Div").attr("class","form-group has-success");
+				});
+			})
+		},
+		errorClass : "text-danger",
+		rules : {
+			"title" : {
+				required : true
+			} ,
+			"criid" : {
+				required : true
+			} ,
+			"note" : {
+				required : true
+			}
+		}
+	});
 }) ;
 function loadData() {	// 该函数名称一定要固定，不许修改
 	// 如果要想进行分页的处理列表前首先查询出部门编号
