@@ -12,8 +12,13 @@ import java.util.Set;
 
 public interface IDistribution_detailsDAO extends IBaseDAO<Long, Distribution_details> {
     public boolean doCreateByGid(Distribution_details vo) throws SQLException;
+    public boolean doCreateByCuid(Distribution_details vo) throws SQLException;
     public boolean doEditByGid(Distribution_details vo) throws SQLException;
     public Integer findByGid(Long gid) throws SQLException;
+
+    public boolean doEditByDsdid(Distribution_details vo) throws SQLException;
+
+    public Distribution_details findByDsdid(String outmid) throws Exception;
 
     /**
      * 根据仓库管理员查找出库信息

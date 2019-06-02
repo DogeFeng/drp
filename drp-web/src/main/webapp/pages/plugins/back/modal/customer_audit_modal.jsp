@@ -12,15 +12,16 @@
 				<div>
 					<form class="form-horizontal" action="" id="auditform" method="post">
 						<fieldset>
+							<input type="hidden" id="cuid" name="cuid">
 							<div class="form-group" id="auditDiv">
 								<!-- 定义表单提示文字 -->
-								<label class="col-md-3 control-label" for="audit">出库省份：</label>
+								<label class="col-md-3 control-label" for="audit">审核结果：</label>
 								<div class="col-md-5">
 									<select id="audit" name="audit" class="form-control">
 										<option value="">====== 请选择审核结果 ======</option>
 										<option value="1">通过</option>
-										<option value="2">拒绝</option>
-										<option value="3">修改</option>
+										<option value="0">拒绝</option>
+										<option value="2">修改</option>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->

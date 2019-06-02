@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface IDistribution_detailsService {
     public boolean add(Distribution_details vo) throws Exception;
-
+    public boolean addCuid(Distribution_details vo) throws Exception;
     /**
      * 根据用户编号查询出购物车之中的所有信息
      * @param mid 用户编号
@@ -35,4 +35,6 @@ public interface IDistribution_detailsService {
      * @throws Exception
      */
     public boolean deleteByMidAndGid(String mid, Set<Long> gids)throws Exception;
+
+
 }

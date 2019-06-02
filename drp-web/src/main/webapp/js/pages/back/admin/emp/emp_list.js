@@ -1,6 +1,6 @@
 $(function(){
 	$(selall).on("click",function(){
-		$("input[id^=eid-]").each(function(){
+		$("input[id^=mid-]").each(function(){
 			$(this).prop("checked",true) ;
 		}) ;
 	}) ;

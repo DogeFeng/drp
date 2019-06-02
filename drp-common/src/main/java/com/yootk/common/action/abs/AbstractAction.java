@@ -13,7 +13,7 @@ import java.util.UUID;
 public abstract class AbstractAction {
     public static final String PATH_ATTRIBUTE_NAME = "path" ;
     public static final String MSG_ATTRIBUTE_NAME = "msg" ;
-    private static final String PAGES_BASENAME = "com.yootk.mall.action.resource.Page" ;
+    private static final String PAGES_BASENAME = "com.yootk.drp.action.resource.Page" ;
     private static ResourceBundle pageResourceBundle ;
     static {
         try {

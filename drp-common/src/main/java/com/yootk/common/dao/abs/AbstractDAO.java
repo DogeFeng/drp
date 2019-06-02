@@ -52,6 +52,7 @@ public abstract class AbstractDAO {
         return all ;
     }
     public Long handleCount(String tableName) throws SQLException {
+        this.conn = DatabaseConnection.getConnection() ;
         String sql = "SELECT COUNT(*) FROM " + tableName ;
         this.pstmt = this.conn.prepareStatement(sql) ;
         ResultSet rs = this.pstmt.executeQuery() ;
@@ -72,6 +73,7 @@ public abstract class AbstractDAO {
     }
 
     public Long handleCount(String tableName,String column,String keyWord) throws SQLException {
+        this.conn = DatabaseConnection.getConnection() ;
         String sql = "SELECT COUNT(*) FROM " + tableName + " WHERE " + column + " LIKE ?" ;
         this.pstmt = this.conn.prepareStatement(sql) ;
         this.pstmt.setString(1,"%"+keyWord+"%");

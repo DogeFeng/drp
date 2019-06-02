@@ -1,6 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%!
-	public static final String CUSTOMER_ADD_URL = "" ;
+	public static final String CUSTOMER_ADD_URL = "/pages/back/admin/customer/customer_add.action" ;
 %>
 <html>
 <head>
@@ -34,24 +35,21 @@
 										placeholder="请输入客户姓名">
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
-								<div class="col-md-4" id="eidMsg"></div>
+								<div class="col-md-4" id="nameMsg"></div>
 							</div>
-							<div class="form-group" id="tidDiv">
+							<div class="form-group" id="csidDiv">
 								<!-- 定义表单提示文字 -->
-								<label class="col-md-3 control-label" for="tid">客户来源：</label>
+								<label class="col-md-3 control-label" for="csid">客户来源：</label>
 								<div class="col-md-5">
-									<select id="tid" name="tid" class="form-control">
+									<select id="csid" name="csid" class="form-control">
 										<option value="">====== 请选择客户信息来源 ======</option>
-										<option value="1">电话咨询</option>
-										<option value="2">上门访问</option>
-										<option value="3">广告渠道</option>
-										<option value="4">销售关系</option>
-										<option value="5">客户介绍</option>
-										<option value="6">其他</option> 
+										<c:forEach items="${allCSources}" var="entry">
+											<option value="${entry.key}">${entry.value}</option>
+										</c:forEach>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
-								<div class="col-md-4" id="tidMsg"></div>
+								<div class="col-md-4" id="csidMsg"></div>
 							</div>
 							<div class="form-group" id="phoneDiv">
 								<!-- 定义表单提示文字 -->
@@ -70,9 +68,9 @@
 								<div class="col-md-5">
 									<select id="pid" name="pid" class="form-control">
 										<option value="">====== 请选择所在省份 ======</option>
-										<option value="1">河北省</option>
-										<option value="2">山西部</option>
-										<option value="3">广东省</option>
+										<c:forEach items="${allProvinces}" var="entry">
+											<option value="${entry.key}">${entry.value}</option>
+										</c:forEach>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
@@ -83,10 +81,7 @@
 								<label class="col-md-3 control-label" for="cid">所在城市：</label>
 								<div class="col-md-5">
 									<select id="cid" name="cid" class="form-control">
-										<option value="">====== 请选择所在省份 ======</option>
-										<option value="1">石家庄</option>
-										<option value="2">沧州</option>
-										<option value="3">邯郸</option>
+										<option value="">====== 请选择所在城市 ======</option>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
@@ -103,19 +98,19 @@
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="addressMsg"></div>
 							</div>
-							<div class="form-group" id="levDiv">
+							<div class="form-group" id="ciidDiv">
 								<!-- 定义表单提示文字 -->
-								<label class="col-md-3 control-label" for="lev">客户重要性：</label>
+								<label class="col-md-3 control-label" for="ciid">客户重要性：</label>
 								<div class="col-md-5">
-									<select id="lev" name="lev" class="form-control">
+									<select id="ciid" name="ciid" class="form-control">
 										<option value="">====== 请选择客户重要性 ======</option>
-										<option value="1">潜在客户</option>
-										<option value="2">大单客户</option>
-										<option value="3">重要客户</option>
+										<c:forEach items="${allCItems}" var="entry">
+											<option value="${entry.key}">${entry.value}</option>
+										</c:forEach>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
-								<div class="col-md-4" id="levMsg"></div>
+								<div class="col-md-4" id="ciidMsg"></div>
 							</div>
 							<!-- 定义输入表单样式，其中id主要用于设置颜色样式 -->
 							<div class="form-group" id="noteDiv">

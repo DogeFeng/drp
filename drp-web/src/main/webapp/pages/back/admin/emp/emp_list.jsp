@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -5,7 +6,7 @@
 	<script type="text/javascript" src="js/pages/back/admin/emp/emp_list.js"></script>
 </head>
 <%!
-	public static final String EMP_EDIT_URL = "pages/back/admin/emp/emp_edit.jsp" ;
+	public static final String EMP_EDIT_PRE_URL = "pages/back/admin/emp/emp_edit_pre.action" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -40,22 +41,24 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach items="${allMembers}" var="member">
 						<tr>
-							<td class="text-center"><input type="checkbox" id="eid-1" value="1"></td>
+							<td class="text-center"><input type="checkbox" id="mid" value="${member.mid}"></td>
 							<td class="text-center">
-								<img src="images/nophoto.png" style="width:20px;"/>
+								<img src="http://111.230.131.204/drp/upload/${member.photo}" style="width:20px;"/>
 							</td> 
-							<td class="text-center">老李</td>
-							<td class="text-center">经理</td>
-							<td class="text-center">人事部</td>
-							<td class="text-center">2019-10-10</td>
-							<td class="text-center">3000</td>
-							<td class="text-center">13010109992</td>
+							<td class="text-center">${member.name}</td>
+							<td class="text-center">${allLevels[member.lid]}</td>
+							<td class="text-center">${allDepts[member.did]}</td>
+							<td class="text-center">${member.regdate}</td>
+							<td class="text-center">${member.sal}</td>
+							<td class="text-center">${member.phone}</td>
 							<td class="text-center">
-								<a type="button" class="btn btn-warning btn-xs" href="<%=EMP_EDIT_URL%>?eid=">
+								<a type="button" class="btn btn-warning btn-xs" href="<%=EMP_EDIT_PRE_URL%>?mid=${member.mid}">
 										<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</a>
 							</td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 				<div id="splitBarDiv" style="float:right">
