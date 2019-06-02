@@ -41,7 +41,7 @@ public class GoodsActionFront extends AbstractAction {
             session.removeAttribute("stid");
         }
         ModuleAndView mav = new ModuleAndView("goods_list.jsp") ;
-        PageUtil pu = new PageUtil("/pages/front/goods/goods_list.action","商品名称:name|商品单价:price");
+        PageUtil pu = new PageUtil("pages/front/goods/goods_list.action","商品名称:name|商品单价:price");
         try {
             mav.add(goodsServiceFront.findSubtypeIdGoods(stid,pu.getCurrentPage(),8,pu.getColumn(),pu.getKeyword(),1));
         } catch (Exception e) {

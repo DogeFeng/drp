@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%!
-	public static final String GOODS_ADD_URL = "/pages/back/admin/goods/goods_add.action" ;
+	public static final String GOODS_ADD_URL = "pages/back/admin/goods/goods_add.action" ;
 %>
 <html>
 <head>
