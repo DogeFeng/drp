@@ -118,8 +118,9 @@ function loadData() {	// 该函数名称一定要固定，不许修改
 	// 如果要想进行分页的处理列表前首先查询出部门编号
 	console.log("客户编号：" + cuid) ;
 	// $("#memberBasicInfo tr:gt(0)").remove() ; // 加载之前要进行原有数据删除
-	$.get("/pages/back/admin/customer/customer_record_count.action",{"cuid":cuid},function(data){
+	$.getJSON("/pages/back/admin/customer/customer_record_count.action",{"cuid":cuid},function(data){
 		createSplitBar(data) ;	// 创建分页控制项
+		console.log(data) ;
 	}) ;
 	$("#table tr").remove();
 	$.getJSON("/pages/back/admin/customer/customer_record_list.action",{"cuid":cuid,"currentPage":jsCommonCp,"lineSize":jsCommonLs},function (data) {

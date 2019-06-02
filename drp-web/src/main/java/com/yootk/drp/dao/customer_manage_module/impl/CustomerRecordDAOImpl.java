@@ -68,7 +68,10 @@ public class CustomerRecordDAOImpl extends AbstractDAO implements ICustomerRecor
     }
 
     @Override
-    public List<CustomerRecord> findAllById(Long cuid,Long currentPage,Integer lineSize) throws SQLException {
+    public List<CustomerRecord> findAllById(Long cuid, Long currentPage,Integer lineSize) throws SQLException {
+        System.out.println("cuid:" + cuid);
+        System.out.println("currentPage:" + currentPage);
+        System.out.println("lineSize:" + lineSize);
         super.conn = DatabaseConnection.getConnection() ;
         String sql = "SELECT crid,cmid,cdate,criid,cuid,note FROM customer_record WHERE cuid=" + cuid  + " LIMIT " + (currentPage-1) * lineSize + "," + lineSize;
         super.pstmt = super.conn.prepareStatement(sql) ;
