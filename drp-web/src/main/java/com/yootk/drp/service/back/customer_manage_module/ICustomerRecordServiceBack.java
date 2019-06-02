@@ -26,4 +26,11 @@ public interface ICustomerRecordServiceBack {
      * @return 客户沟通记录的 List 集合
      */
     public List<CustomerRecord> list(Long cuid,Long currentPage,Integer lineSize) throws SQLException;
+
+    /**
+     * 查询某客户联系记录数量
+     * @param cuid
+     * @return
+     */
+    public Long allCount(Long cuid) throws SQLException;
 }

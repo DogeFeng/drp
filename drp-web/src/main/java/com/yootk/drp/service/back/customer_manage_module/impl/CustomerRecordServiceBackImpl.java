@@ -45,4 +45,9 @@ public class CustomerRecordServiceBackImpl extends AbstractService implements IC
         return customerRecordDAO.findAllById(cuid,currentPage,lineSize) ;
     }
 
+    @Override
+    public Long allCount(Long cuid) throws SQLException {
+        return customerRecordDAO.getAllCount("cuid",cuid);
+    }
+
 }

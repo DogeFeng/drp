@@ -86,4 +86,15 @@ public class CustomerRecordDAOImpl extends AbstractDAO implements ICustomerRecor
         }
         return list ;
     }
+
+    @Override
+    public Long getAllCount(String column, Long aLong) throws SQLException {
+        String sql = "SELECT COUNT(crid) FROM customer_record WHERE " + column + "=" + aLong ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        ResultSet rs = super.pstmt.executeQuery();
+        if (rs.next()){
+            return rs.getLong(1) ;
+        }
+        return 0L ;
+    }
 }

@@ -6,6 +6,8 @@ $(function(){
 			mid = this.id.substring(4) ;
 			$("#memberInfo").modal("toggle") ;
 			$.getJSON("/pages/back/admin/customer/customer_list_member_modal.action", {"mid": mid}, function (data) {
+				url = "http://111.230.131.204/drp/upload/" + data.member.photo ;
+				$("img").attr("src", url) ;
 				$("#name").text(data.member.name) ;
 				$("#level").text(data.level) ;
 				$("#dept").text(data.dept) ;
@@ -21,19 +23,7 @@ $(function(){
 			cuid = this.id.split("-")[1] ;
 			loadData() ;
 			$("#customerRecordInfo").modal("toggle") ;
-			$("#table tr").remove();
-			$.getJSON("/pages/back/admin/customer/customer_record_list.action",{"cuid":cuid},function (data) {
-				member = data.member ;
-				list = data.list ;
-				for (x = 0; x < list.length; x++) {
-					$("#table").append("<tr id='record-" + list[x].cuid + "'>" +
-						"<td class='text-center'>" + list[x].cdate + "</td>" +
-						"<td class='text-left'>" + member.name + "</td>" +
-						"<td class='text-left'>" + member.phone + "</td>" +
-						"<td class='text-left'><pre class='pre-scrollable' style='width:700px;height: 60px'>" + list[x].note + "</pre></td>" +
-						"</tr>")
-				}
-			})
+
 		}) ;
 	}) ;
 	$("button[id^=out-]").each(function(){
@@ -110,5 +100,21 @@ function loadData() {	// 该函数名称一定要固定，不许修改
 	// 如果要想进行分页的处理列表前首先查询出部门编号
 	console.log("客户编号：" + cuid) ;
 	// $("#memberBasicInfo tr:gt(0)").remove() ; // 加载之前要进行原有数据删除
-	createSplitBar(10) ;	// 创建分页控制项
+	//createSplitBar(10) ;	// 创建分页控制项
+	$.get("/pages/back/admin/customer/customer_record_count.action"),{"cuid":cuid},function(data){
+		createSplitBar(data) ;	// 创建分页控制项
+	}
+	$("#table tr").remove();
+	$.getJSON("/pages/back/admin/customer/customer_record_list.action",{"cuid":cuid,"currentPage":jsCommonCp,"lineSize":jsCommonLs},function (data) {
+		member = data.member ;
+		list = data.list ;
+		for (x = 0; x < list.length; x++) {
+			$("#table").append("<tr id='record-" + list[x].cuid + "'>" +
+				"<td class='text-center'>" + list[x].cdate + "</td>" +
+				"<td class='text-left'>" + member.name + "</td>" +
+				"<td class='text-left'>" + member.phone + "</td>" +
+				"<td class='text-left'><pre class='pre-scrollable' style='width:700px;height: 60px'>" + list[x].note + "</pre></td>" +
+				"</tr>")
+		}
+	})
 }

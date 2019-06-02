@@ -110,17 +110,25 @@ public class CustomerActionBack extends AbstractAction {
     }
 
     @RequestMapping("customer_record_list")
-    public void listModal(Long cuid){
-
+    public void listModal(Long cuid,Long currentPage,Integer lineSize){
         try {
             Customer customer = customerServiceBack.getCustomer(cuid) ;
             Member member = empServiceBack.getEmp(customer.getRecorder()) ;
-            List<CustomerRecord> list = this.customerRecordServiceBack.list(cuid,1L,3) ;
+            List<CustomerRecord> list = this.customerRecordServiceBack.list(cuid,currentPage,lineSize) ;
             Map<String,Object> map = new HashMap<>() ;
             map.put("member",member) ;
             map.put("list",list) ;
             super.print(JSONObject.toJSONString(map));
             //super.print(JSONObject.toJSONString(this.customerRecordServiceBack.list(cuid,1L,3)));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("customer_record_count")
+    public void count(Long cuid){
+        try {
+            super.print(this.customerRecordServiceBack.allCount(cuid));
         } catch (SQLException e) {
             e.printStackTrace();
         }

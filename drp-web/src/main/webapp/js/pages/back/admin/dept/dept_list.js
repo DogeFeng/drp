@@ -21,6 +21,8 @@ $(function(){
 			console.log("雇员编号：" + mid) ;
 			$("#memberInfo").modal("toggle") ;
 			$.getJSON("/pages/back/admin/dept/dept_list_modal.action", {"mid": mid}, function (data) {
+				url = "http://111.230.131.204/drp/upload/" + data.member.photo ;
+				$("img").attr("src", url) ;
 				$("#name").text(data.member.name) ;
 				$("#level").text(data.level) ;
 				$("#dept").text(data.dept) ;
