@@ -25,6 +25,7 @@ public class MemberActionFront extends AbstractAction {
     @RequestMapping("/member_add")
     public ModuleAndView add(Member vo)throws Exception{
         ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp") ;
+        vo.setPassword(EncryptUtil.encode(vo.getPassword()));
         if(this.memberServiceFront.add(vo)){
             mav.add(AbstractAction.MSG_ATTRIBUTE_NAME, "用户注册成功！");
             mav.add(AbstractAction.PATH_ATTRIBUTE_NAME, "/member_login.action");

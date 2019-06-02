@@ -8,9 +8,10 @@ $(function(){
 	$(pid).on("change",function(){
 		val = $(this).val() ;
 		if (val != "") {
+			setAddressValue() ;
 			$("#cid option:gt(0)").remove(); // 清除已有的内容
 			$("#cid option:eq(0)").prop("selected") ;
-			setAddressValue() ;
+
 			$.get("pages/back/admin/city/city_list.action", {"pid": val}, function (data) {
 				for (x = 0; x < data.length; x++) {
 					$(cid).append("<option value='" + data[x].cid + "'>" + data[x].title + "</option>");

@@ -33,7 +33,7 @@
 						</tr>
 						<tr>
 							<td><strong>仓库类型：</strong></td>
-							<td></td>
+							<td>服饰</td>
 						</tr>
 						<tr>
 							<td><strong>备注信息：</strong></td>
