@@ -46,11 +46,18 @@ public class DistributionServiceImpl extends AbstractService implements IDistrib
         Set<Long> gids = this.distribution_detailsDAO.findAllByMid(mid).keySet();  //所有的商品编号
         List<Goods> allGoods = this.goodsDAO.findAllByGids(gids); //所有的商品信息
         Map<Long,Integer> details = this.distribution_detailsDAO.findAllByMid(mid);  //所有的详情信息
+        List<Goods> updateGoods = new ArrayList<>();
         double sum = 0.0;  //保存总价
         int gnum = 0;  //保存总量
         for(Goods good : allGoods){
             sum += good.getPrice() * details.get(good.getGid());
             gnum += details.get(good.getGid());
+            Goods goods = new Goods();
+            Long gid = good.getGid();
+            int stornum = good.getStornum() - details.get(good.getGid());
+            goods.setGid(gid);
+            goods.setStornum(stornum);
+            updateGoods.add(goods);
         }
         vo.setGnum(gnum);
         vo.setPrice(sum);
@@ -58,7 +65,9 @@ public class DistributionServiceImpl extends AbstractService implements IDistrib
         if(this.distributionDAO.doCreate(vo)){
             Long dsid = this.distributionDAO.findLastId();
             if(this.distribution_detailsDAO.doUpdateBatch(allGoods,1,dsid)){
-                return true;
+                if(this.goodsDAO.doUpdateBatch(updateGoods)){
+                    return true;
+                }
             }
         }
         return false;

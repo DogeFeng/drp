@@ -5,6 +5,7 @@ import com.yootk.drp.vo.Goods;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -74,4 +75,12 @@ public interface IGoodsDAO extends IBaseDAO<Long , Goods> {
     public List<Goods> findSplitFlagAndStid(Long stid ,Long currentPage, Integer lineSize, String column, String keyWord , int delflag) throws SQLException ;
     public List<Goods> findSplitFlagAndStid(Long stid ,Long currentPage, Integer lineSize , int delflag) throws SQLException ;
     public List<Goods> findAllByGids(Set<Long> gids) throws SQLException;
+
+    /**
+     * 创建出库单成功，修改对应商品库存数量
+     * @param
+     * @return
+     * @throws SQLException
+     */
+    public boolean doUpdateBatch(List<Goods> updateGoods) throws SQLException;
 }

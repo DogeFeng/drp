@@ -8,6 +8,7 @@ import com.yootk.drp.vo.Goods;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -208,5 +209,17 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
         sql.delete(sql.length()-1,sql.length()).append(")");
         super.pstmt = super.conn.prepareStatement(sql.toString());
         return super.handleResultToList(super.pstmt.executeQuery(),Goods.class);
+    }
+
+    @Override
+    public boolean doUpdateBatch(List<Goods> updateGoods) throws SQLException {
+        String sql = "UPDATE goods SET stornum=? WHERE gid=?";
+        super.pstmt = super.conn.prepareStatement(sql);
+        for(Goods good : updateGoods){
+            super.pstmt.setInt(1,good.getStornum());
+            super.pstmt.setLong(2,good.getGid());
+            super.pstmt.addBatch();
+        }
+        return super.isBatchSuccess(super.pstmt.executeBatch());
     }
 }
