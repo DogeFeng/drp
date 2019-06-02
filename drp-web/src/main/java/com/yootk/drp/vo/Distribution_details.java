@@ -12,6 +12,7 @@ public class Distribution_details implements Serializable {
     private Integer status;
     private Long wid;
     private String outmid;
+    private Long cuid;
 
     @Override
     public String toString() {
@@ -25,6 +26,7 @@ public class Distribution_details implements Serializable {
                 ", status=" + status +
                 ", wid=" + wid +
                 ", outmid='" + outmid + '\'' +
+                ", cuid=" + cuid +
                 '}';
     }
 
@@ -98,5 +100,13 @@ public class Distribution_details implements Serializable {
 
     public void setOutmid(String outmid) {
         this.outmid = outmid;
+    }
+
+    public Long getCuid() {
+        return cuid;
+    }
+
+    public void setCuid(Long cuid) {
+        this.cuid = cuid;
     }
 }

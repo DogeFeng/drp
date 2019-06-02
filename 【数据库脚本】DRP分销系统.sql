@@ -230,6 +230,7 @@ CREATE TABLE distribution (
 CREATE TABLE distribution_details (
 	dsdid	bigint	AUTO_INCREMENT ,
     dsid    bigint,
+    cuid    bigint,
 	gid 	bigint,
 	name	varchar(50) ,
 	num	int ,

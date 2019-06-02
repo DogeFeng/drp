@@ -74,7 +74,7 @@ public class WarehouseActionBack extends AbstractAction {
     @RequestMapping("warehouse_list")
     public ModuleAndView list(){
         ModuleAndView mav = new ModuleAndView("/pages/back/admin/warehouse/warehouse_list.jsp");
-        PageUtil pu = new PageUtil("/pages/back/admin/warehouse/warehouse_list.action","仓库名称:name|仓库地址:address|存储分类:wiid|");
+        PageUtil pu = new PageUtil("/pages/back/admin/warehouse/warehouse_list.action","仓库名称:name|仓库地址:address|");
         try {
             mav.add(this.warehouseServiceBack.list(pu.getColumn(),pu.getKeyword(),pu.getCurrentPage(),pu.getLineSize()));
         } catch (Exception e) {
@@ -111,9 +111,7 @@ public class WarehouseActionBack extends AbstractAction {
             if(fileName != null || fileName != warehouse.getPhoto()){
                 warehouse.setPhoto(fileName);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {}
         ModuleAndView mav = new ModuleAndView("/pages/plugins/forward.jsp");
         try {
             if(this.warehouseServiceBack.edit(warehouse)){

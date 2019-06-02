@@ -8,6 +8,8 @@ import com.yootk.drp.vo.Distribution;
 import com.yootk.drp.vo.Distribution_details;
 import com.yootk.drp.vo.Goods;
 
+import java.rmi.server.RemoteServer;
+import java.security.interfaces.RSAKey;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -39,11 +41,21 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
 
     @Override
     public boolean doCreateByGid(Distribution_details vo) throws SQLException {
-        String sql = "INSERT INTO distribution_details(gid,num,outmid)VALUES(?,?,?)";
+        String sql = "INSERT INTO distribution_details(gid,num,outmid,cuid)VALUES(?,?,?,?)";
         super.pstmt = super.conn.prepareStatement(sql);
         super.pstmt.setLong(1,vo.getGid());
         super.pstmt.setInt(2,vo.getNum());
         super.pstmt.setString(3,vo.getOutmid());
+        super.pstmt.setLong(4,vo.getCuid());
+        return super.pstmt.executeUpdate() > 0;
+    }
+
+    @Override
+    public boolean doCreateByCuid(Distribution_details vo) throws SQLException {
+        String sql = "INSERT INTO  distribution_details(cuid,outmid) VALUES (?,?)";
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setLong(1,vo.getCuid());
+        super.pstmt.setString(2,vo.getOutmid());
         return super.pstmt.executeUpdate() > 0;
     }
 
@@ -56,7 +68,16 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
         super.pstmt.setLong(3,vo.getGid());
         return super.pstmt.executeUpdate() > 0;
     }
-
+    @Override
+    public boolean doEditByDsdid(Distribution_details vo) throws SQLException {
+        String sql = "UPDATE distribution_details SET num=?,gid=? WHERE outmid=? AND dsdid=? AND dsid IS NULL ";
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setInt(1,vo.getNum());
+        super.pstmt.setLong(2,vo.getGid());
+        super.pstmt.setString(3,vo.getOutmid());
+        super.pstmt.setLong(4,vo.getDsdid());
+        return super.pstmt.executeUpdate() > 0;
+    }
     @Override
     public Integer findByGid(Long gid) throws SQLException {
         String sql = "SELECT num FROM distribution_details WHERE gid=? AND dsid IS NULL ";
@@ -67,6 +88,14 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
             return rs.getInt(1);
         }
         return null;
+    }
+
+    @Override
+    public Distribution_details findByDsdid(String outmid) throws Exception {
+        String sql = "SELECT dsdid,dsid,gid,name,num,price,status,wid,outmid,cuid FROM distribution_details WHERE outmid=?";
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setString(1,outmid);
+        return super.handleResultToVO(super.pstmt.executeQuery(),Distribution_details.class);
     }
 
     @Override
@@ -142,6 +171,7 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
         super.pstmt.setLong(1,aLong);
         return super.handleResultToVO(super.pstmt.executeQuery(),Distribution_details.class);
     }
+
 
     @Override
     public List<Distribution_details> findAll() throws SQLException {

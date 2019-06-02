@@ -13,7 +13,7 @@
 --%>
 <%
 	long currentPage = 1 ; // 当前所在页编号
-	int lineSize = 1 ; // 每页显示3行记录
+	int lineSize = 5 ; // 每页显示5行记录
 	long allRecorders = 0 ; // 总的记录数
 	long pageSize = 0 ; // 计算总页数
 	String url = null ;

@@ -35,7 +35,11 @@ public class DistributionActionBack extends AbstractAction {
             vo.setOutmid(super.getFrontUser());
         }
         try {
-            super.print(this.distribution_detailsService.add(vo));
+            if(vo.getCuid() != null){
+                super.print(this.distribution_detailsService.addCuid(vo));
+            }else{
+                super.print(this.distribution_detailsService.add(vo));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

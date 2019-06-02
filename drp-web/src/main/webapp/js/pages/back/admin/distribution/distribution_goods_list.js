@@ -108,7 +108,6 @@ $(function() {
 		$(this).on("click",function(){
 			var amount = parseInt($("#amount-" + gid).val()) ;	// 直接取得value属性
 			var stornum = parseInt($("#stornum-" + gid).text());
-			console.log(stornum);
 			if(amount < stornum){
 				$("#amount-" + gid).val(amount+1) ;
 				$("#allPrice").text(calSum()) ;

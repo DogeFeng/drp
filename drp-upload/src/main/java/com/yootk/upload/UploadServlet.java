@@ -20,7 +20,7 @@ public class UploadServlet extends HttpServlet {
     public static final long MAX_SIZE = 3145728L; // 表单允许的最大上传数量为3M
     public static final long FILE_MAX_SIZE = 1048576L ; // 表示单个文件允许上传的最大长度，本次为1M
     public static final String TEMP_DIR = "/tmp" ; // 设置临时的目录
-    public static final String UPLOAD_DIR = "/com/yootk/upload"; // 设置临时的目录
+    public static final String UPLOAD_DIR = "http://111.230.131.204/drp/upload.action"; // 设置临时的目录
     public static final String DEFAULT_ENCODING = "UTF-8" ; // 设置参数的接收编码
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
