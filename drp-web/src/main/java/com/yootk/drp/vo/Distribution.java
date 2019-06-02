@@ -12,6 +12,20 @@ public class Distribution implements Serializable {
     private Integer status;
     private String note;
 
+    @Override
+    public String toString() {
+        return "Distribution{" +
+                "dsid=" + dsid +
+                ", title='" + title + '\'' +
+                ", pid=" + pid +
+                ", cid=" + cid +
+                ", gnum=" + gnum +
+                ", price=" + price +
+                ", status=" + status +
+                ", note='" + note + '\'' +
+                '}';
+    }
+
     public Long getDsid() {
         return dsid;
     }

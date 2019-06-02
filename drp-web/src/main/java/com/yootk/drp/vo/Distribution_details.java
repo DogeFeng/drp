@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Distribution_details implements Serializable {
     private Long dsdid;
+    private Long dsid;
     private Long gid;
     private String name;
     private Integer num;
@@ -16,6 +17,7 @@ public class Distribution_details implements Serializable {
     public String toString() {
         return "Distribution_details{" +
                 "dsdid=" + dsdid +
+                ", dsid=" + dsid +
                 ", gid=" + gid +
                 ", name='" + name + '\'' +
                 ", num=" + num +
@@ -32,6 +34,14 @@ public class Distribution_details implements Serializable {
 
     public void setDsdid(Long dsdid) {
         this.dsdid = dsdid;
+    }
+
+    public Long getDsid() {
+        return dsid;
+    }
+
+    public void setDsid(Long dsid) {
+        this.dsid = dsid;
     }
 
     public Long getGid() {

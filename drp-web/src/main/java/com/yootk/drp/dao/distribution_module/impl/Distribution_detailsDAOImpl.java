@@ -15,8 +15,8 @@ import java.util.*;
 @Repository
 public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistribution_detailsDAO {
     @Override
-    public boolean doCreateBatch(List<Goods> allGoods,Integer status,Long dsid) throws Exception {
-        String sql = "UPDATE distribution_details SET name=?,price=?,status=?,dsid=? WHERE gid=?";
+    public boolean doUpdateBatch(List<Goods> allGoods,Integer status,Long dsid) throws SQLException {
+        String sql = "UPDATE distribution_details SET name=?,price=?,status=?,dsid=? WHERE gid=? AND dsid IS NULL";
         super.pstmt = super.conn.prepareStatement(sql);
         for(Goods good : allGoods){
             super.pstmt.setString(1,good.getName());
@@ -28,6 +28,15 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
         }
         return super.isBatchSuccess(super.pstmt.executeBatch());
     }
+
+    @Override
+    public List<Distribution_details> findAllByDsid(Long dsid) throws SQLException {
+        String sql = "SELECT dsdid,dsid,gid,name,num,price,status,wid,outmid FROM distribution_details WHERE dsid=?";
+        super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setLong(1,dsid);
+        return super.handleResultToList(super.pstmt.executeQuery(),Distribution_details.class);
+    }
+
     @Override
     public boolean doCreateByGid(Distribution_details vo) throws SQLException {
         String sql = "INSERT INTO distribution_details(gid,num,outmid)VALUES(?,?,?)";
@@ -40,7 +49,7 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
 
     @Override
     public boolean doEditByGid(Distribution_details vo) throws SQLException {
-        String sql = "UPDATE distribution_details SET num=?,outmid=? WHERE gid=?";
+        String sql = "UPDATE distribution_details SET num=? WHERE outmid=? AND gid=? AND dsid IS NULL ";
         super.pstmt = super.conn.prepareStatement(sql);
         super.pstmt.setInt(1,vo.getNum());
         super.pstmt.setString(2,vo.getOutmid());
@@ -50,7 +59,7 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
 
     @Override
     public Integer findByGid(Long gid) throws SQLException {
-        String sql = "SELECT num FROM distribution_details WHERE gid=?";
+        String sql = "SELECT num FROM distribution_details WHERE gid=? AND dsid IS NULL ";
         super.pstmt = super.conn.prepareStatement(sql);
         super.pstmt.setLong(1,gid);
         ResultSet rs = super.pstmt.executeQuery();
@@ -63,7 +72,7 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
     @Override
     public Map<Long, Integer> findAllByMid(String mid) throws SQLException {
         Map<Long,Integer> map = new HashMap<>();
-        String sql = "SELECT gid,num FROM distribution_details WHERE outmid = ?";
+        String sql = "SELECT gid,num FROM distribution_details WHERE outmid = ? AND dsid IS NULL ";
         super.pstmt = super.conn.prepareStatement(sql);
         super.pstmt.setString(1,mid);
         ResultSet rs = super.pstmt.executeQuery();
@@ -75,7 +84,7 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
 
     @Override
     public boolean doEditBatch(List<Distribution_details> details) throws SQLException {
-        String sql = "UPDATE distribution_details SET num=? WHERE outmid=? AND gid=?";
+        String sql = "UPDATE distribution_details SET num=? WHERE outmid=? AND gid=? AND dsid IS NULL";
         super.pstmt = super.conn.prepareStatement(sql);
         for(Distribution_details detail : details){
             super.pstmt.setInt(1, detail.getNum());
@@ -88,7 +97,7 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
 
     @Override
     public boolean doRemoveByMidAndGid(String mid, Set<Long> gids) throws SQLException {
-        StringBuffer sql = new StringBuffer("DELETE FROM distribution_details WHERE outmid=? AND gid IN (");
+        StringBuffer sql = new StringBuffer("DELETE FROM distribution_details WHERE outmid=? AND dsid IS NULL AND gid IN (");
         for(Long gid : gids){
             sql.append(gid + ",");
         }
@@ -98,18 +107,18 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
         return super.pstmt.executeUpdate() > 0;
     }
 
-    @Override
-    public Set<Long> getAllGids(String mid) throws SQLException {
-        Set<Long> gids = new HashSet<>();
-        String sql = "SELECT gid FROM distribution_details WHERE outmid=?";
-        super.pstmt = super.conn.prepareStatement(sql);
-        super.pstmt.setString(1,mid);
-        ResultSet rs = super.pstmt.executeQuery();
-        while (rs.next()){
-            gids.add(rs.getLong(1));
-        }
-        return gids;
-    }
+//    @Override
+//    public Set<Long> getAllGids(String mid) throws SQLException {
+//        Set<Long> gids = new HashSet<>();
+//        String sql = "SELECT gid FROM distribution_details WHERE outmid=? AND dsid IS NULL";
+//        super.pstmt = super.conn.prepareStatement(sql);
+//        super.pstmt.setString(1,mid);
+//        ResultSet rs = super.pstmt.executeQuery();
+//        while (rs.next()){
+//            gids.add(rs.getLong(1));
+//        }
+//        return gids;
+//    }
 
     @Override
     public boolean doCreate(Distribution_details distribution_details) throws SQLException {
@@ -128,9 +137,9 @@ public class Distribution_detailsDAOImpl extends AbstractDAO implements IDistrib
 
     @Override
     public Distribution_details findById(Long aLong) throws SQLException {
-        String sql = "SELECT dsdid,gid,name,num,price,status,wid,outmid FROM distribution_details WHERE gid=?";
-        super.pstmt.setLong(1,aLong);
+        String sql = "SELECT dsdid,dsid,gid,name,num,price,status,wid,outmid FROM distribution_details WHERE gid=? AND dsid IS NULL";
         super.pstmt = super.conn.prepareStatement(sql);
+        super.pstmt.setLong(1,aLong);
         return super.handleResultToVO(super.pstmt.executeQuery(),Distribution_details.class);
     }
 

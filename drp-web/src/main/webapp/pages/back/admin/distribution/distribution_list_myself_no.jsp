@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%!
-	public static final String DISTRIBUTION_EDIT_URL = "pages/back/admin/distribution/distribution_add.jsp" ;
-	public static final String DISTRIBUTION_LIST_DETAILS_URL = "pages/back/admin/distribution/distribution_list_details.jsp" ;
-	public static final String DISTRIBUTION_DELETE_URL = "" ;
+	public static final String DISTRIBUTION_EDIT_URL = "pages/back/admin/distribution/distribution_edit_pre.action" ;
+	public static final String DISTRIBUTION_LIST_DETAILS_URL = "pages/back/admin/distribution/distribution_list_details.action" ;
+	public static final String DISTRIBUTION_DELETE_URL = "pages/back/admin/distribution/distribution_editStatus.action" ;
 %>
 <html>
 <head>
@@ -42,25 +43,28 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th class="text-center" style="width:10%;">20001010</th> 
-							<td class="text-left">
-								<a href="<%=DISTRIBUTION_EDIT_URL%>?sid=1">
-									2017双十一衣帽入库
-								</a>
-							</td>
-							<td class="text-center">北京</td>
-							<td class="text-center">北京</td>
-							<td class="text-center">未提交</td>
-							<td class="text-center">100</td>
-							<td class="text-center">1000.77</td>
-							<td class="text-left">
-								<a href="<%=DISTRIBUTION_LIST_DETAILS_URL%>?sid=1" class="btn btn-warning btn-xs">
-									<span class="glyphicon glyphicon-th-list"></span>&nbsp;出库清单</a>
-								<a href="<%=DISTRIBUTION_DELETE_URL%>?sid=1" class="btn btn-danger btn-xs">
-									<span class="glyphicon glyphicon-remove"></span>&nbsp;取消申请</a>
-							</td>
-						</tr>
+						<c:forEach items="${allDistribution}" var="dist">
+							<tr>
+								<th class="text-center" style="width:10%;">${dist.dsid}</th>
+								<td class="text-left">
+									<a href="<%=DISTRIBUTION_EDIT_URL%>?dsid=${dist.dsid}">
+											${dist.title}
+									</a>
+								</td>
+								<td class="text-center">${allProvinces[dist.pid]}</td>
+								<td class="text-center">${allCitys[dist.cid]}</td>
+								<td class="text-center">${dist.status==1?"已提交":"未提交"}</td>
+								<td class="text-center">${dist.gnum}</td>
+								<td class="text-center">${dist.price}</td>
+								<td class="text-left">
+									<a href="<%=DISTRIBUTION_LIST_DETAILS_URL%>?dsid=${dist.dsid}" class="btn btn-warning btn-xs">
+										<span class="glyphicon glyphicon-th-list"></span>&nbsp;出库清单</a>
+									<a href="<%=DISTRIBUTION_DELETE_URL%>?dsid=${dist.dsid}&status=1" class="btn btn-success btn-xs">
+										<span class="glyphicon glyphicon-remove"></span>&nbsp;申请出库</a>
+								</td>
+							</tr>
+						</c:forEach>
+
 					</tbody>
 				</table>
 				<div id="splitBarDiv" style="float:right">

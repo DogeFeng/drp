@@ -71,7 +71,7 @@
 									<td class="text-center"><img src="http://111.230.131.204/drp/upload/${goods.photo}" style="width:30px;"></td>
 									<td class="text-left">${goods.name}</td>
 									<td class="text-center"><span id="price-${goods.gid}">${goods.price}</span></td>
-									<td class="text-center">${goods.stornum}</td>
+									<td class="text-center"><span id="stornum-${goods.gid}">${goods.stornum}</span></td>
 									<td class="text-center">
 										<button class="btn btn-primary" id="sub-${goods.gid}">-</button>
 										<input type="text" id="amount-${goods.gid}" name="amount-${goods.gid}" class="shopcar-form-control" size="4" maxlength="4" value="${details[goods.gid]}">

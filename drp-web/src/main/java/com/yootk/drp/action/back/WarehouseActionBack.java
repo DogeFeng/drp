@@ -41,7 +41,11 @@ public class WarehouseActionBack extends AbstractAction {
     @RequestMapping("warehouse_add")
     public ModuleAndView add(Warehouse warehouse,MultipartFile file){
 //        warehouse.setAdmin(super.getFrontUser());  //设置仓库管理员的用户编号
-        warehouse.setAdmin("chengcheng");
+        if(super.getFrontUser() == null){
+            warehouse.setAdmin("chengcheng");
+        }else{
+            warehouse.setAdmin(super.getFrontUser());
+        }
         try {
             String fileName = UploadFileToServer.upload(file,file.getContentType()) ;
             warehouse.setPhoto(fileName);
@@ -89,14 +93,7 @@ public class WarehouseActionBack extends AbstractAction {
         }
         return mav;
     }
-    @RequestMapping("warehouse_edit_preCity")
-    public void editPre(Long pid){
-        try {
-            super.print(JSONObject.toJSONString(this.cityService.preAddCity(pid)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
     @RequestMapping("warehouse_edit_show")
     public ModuleAndView editshow(Long wid){
         ModuleAndView mav = new ModuleAndView("/pages/back/admin/warehouse/warehouse_edit.jsp");

@@ -110,6 +110,9 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
 
     @Override
     public List<Goods> findAllByGids(Set<Long> gids) throws SQLException {
+        if(gids == null || gids.size() == 0){
+            return null;
+        }
         StringBuffer sql = new StringBuffer("SELECT gid,name,price,photo,stornum FROM goods WHERE gid IN(");
         for(Long gid : gids){
             sql.append(gid + ",");

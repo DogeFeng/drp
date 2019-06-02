@@ -1,5 +1,11 @@
 $(function() {
 	$("#allPrice").text(calSum()) ;
+	$(createBtn).on("click",function () {
+		if($(allPrice).text()=="0"){
+			operateAlert(false,"","请添加待出库商品！");
+			$(this).attr("href","/pages/back/admin/distribution/distribution_details_goods_list.action");
+		}
+	})
 	$("#selectAll").on("click",function(){
 		checkboxSelectAll('gid',this.checked) ;
 	}) ;
@@ -74,7 +80,6 @@ $(function() {
 				gidArray[foot ++] = $(this).val() ;
 			}
 		}) ;
-		console.log(data)
 		if (data == "") {   // 此时没有选中任何的内容
 			operateAlert(false,"","请先选择要删除的购物项！") ;
 		} else {
@@ -102,8 +107,12 @@ $(function() {
 		var gid = this.id.split("-")[1] ; // 取得商品ID数据
 		$(this).on("click",function(){
 			var amount = parseInt($("#amount-" + gid).val()) ;	// 直接取得value属性
-			$("#amount-" + gid).val(amount+1) ;
-			$("#allPrice").text(calSum()) ;
+			var stornum = parseInt($("#stornum-" + gid).text());
+			console.log(stornum);
+			if(amount < stornum){
+				$("#amount-" + gid).val(amount+1) ;
+				$("#allPrice").text(calSum()) ;
+			}
 		})
 	}) ;
 	$("button[id*=sub-]").each(function(){

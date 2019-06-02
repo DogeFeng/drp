@@ -40,13 +40,13 @@ public interface IDistribution_detailsDAO extends IBaseDAO<Long, Distribution_de
      */
     public boolean doRemoveByMidAndGid(String mid, Set<Long> gids) throws SQLException;
 
-    /**
-     * 根据仓库管理员编号查询所有的gid编号
-     * @param mid
-     * @return
-     * @throws SQLException
-     */
-    public Set<Long> getAllGids(String mid) throws SQLException;
+//    /**
+//     * 根据仓库管理员编号查询所有的gid编号
+//     * @param mid
+//     * @return
+//     * @throws SQLException
+//     */
+//    public Set<Long> getAllGids(String mid) throws SQLException;
 
     /**
      * 根据仓库管理员，取得商品详细信息，填入出库商品详情
@@ -54,5 +54,13 @@ public interface IDistribution_detailsDAO extends IBaseDAO<Long, Distribution_de
      * @return
      * @throws Exception
      */
-    public boolean doCreateBatch(List<Goods> allGoods,Integer status,Long dsid) throws Exception;
+    public boolean doUpdateBatch(List<Goods> allGoods,Integer status,Long dsid) throws SQLException;
+
+    /**
+     * 根据出库单号，查询出所有的出库详情单
+     * @param dsid 出库单号
+     * @return
+     * @throws SQLException
+     */
+    public List<Distribution_details> findAllByDsid(Long dsid) throws SQLException;
 }

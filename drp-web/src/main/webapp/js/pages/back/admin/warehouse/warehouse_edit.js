@@ -80,7 +80,7 @@ $(function(){
 			handleAddress();	// 处理地址
 			$("#cid option:gt(0)").remove(); // 清除已有的内容
 			$("#cid option:eq(0)").prop("selected");
-			$.get("/pages/back/admin/warehouse/warehouse_edit_preCity.action", {"pid": val}, function (data) {
+			$.get("/pages/back/admin/warehouse/warehouse_add_preCity.action", {"pid": val}, function (data) {
 				for (x = 0; x < data.length; x++) {
 					$(cid).append("<option value='" + data[x].cid + "'>" + data[x].title + "</option>");
 				}

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -24,23 +25,23 @@
 					<table class="table table-striped table-bordered table-hover">
 						<tr> 
 							<td style="width:150px;"><strong>出库标题：</strong></td>
-							<td>双13备货</td>
+							<td>${distribution.title}</td>
 						</tr>
 						<tr>
 							<td><strong>出库城市：</strong></td>
-							<td>北京市 北京市</td>
+							<td>${allProvinces[distribution.pid]}&nbsp;&nbsp;${allCitys[distribution.cid]}</td>
 						</tr>
 						<tr>
 							<td><strong>商品数量：</strong></td>
-							<td>223</td>
+							<td>${distribution.gnum}</td>
 						</tr>
 						<tr>
 							<td><strong>商品总价：</strong></td>
-							<td>￥223.23</td>
+							<td>￥${distribution.price}</td>
 						</tr>
 						<tr>
 							<td><strong>备注信息：</strong></td>
-							<td>我要上</td>
+							<td>${distribution.note}</td>
 						</tr>
 					</table>
 				</div>
@@ -57,14 +58,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr id="dettr-1" class="text-success">
-								<td class="text-left">100001</td>
-								<td class="text-left">衣服</td>
-								<td class="text-left">北京 北京 通州一号仓库</td>
-								<td class="text-center">50</td>
-								<td class="text-center">39.2</td>
-								<td class="text-center">200</td>
-							</tr>
+							<c:forEach items="${allDists}" var="dist">
+								<tr id="dettr-1" class="text-success">
+									<td class="text-left">${dist.gid}</td>
+									<td class="text-left">${dist.name}</td>
+									<td class="text-left">${allProvinces[distribution.pid]}&nbsp;&nbsp;${allCitys[distribution.cid]}</td>
+									<td class="text-center">${dist.num}</td>
+									<td class="text-center">${dist.price}</td>
+									<td class="text-center">${dist.num * dist.price}</td>
+								</tr>
+							</c:forEach>
+
 						</tbody>
 					</table>
 				</div>
