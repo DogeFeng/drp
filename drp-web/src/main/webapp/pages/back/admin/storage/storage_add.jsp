@@ -21,6 +21,7 @@
         <div class="panel panel-info">
             <div class="panel-heading">
                 <strong><span class="glyphicon glyphicon-user"></span>&nbsp;创建商品入库单</strong>
+
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="<%=STORAGE_ADD_URL%>" id="myform" method="post">
@@ -83,9 +84,9 @@
                             <div class="col-md-5">
                                 <select id="wid" name="wid" class="form-control">
                                     <option value="">====== 请选择要存储的仓库 ======</option>
-                                    <option value="1">北京通州仓库一号库</option>
-                                    <option value="2">北京通州仓库二号库</option>
-                                    <option value="3">北京通州仓库三号库</option>
+                                    <c:forEach items="${allWarehouses}" var="warehouse">
+                                    <option value="${warehouse.wid}">${warehouse.name}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <!-- 定义表单错误提示显示元素 -->

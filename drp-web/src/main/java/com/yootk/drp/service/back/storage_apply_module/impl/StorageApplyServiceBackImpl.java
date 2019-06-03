@@ -71,6 +71,7 @@ public class StorageApplyServiceBackImpl extends AbstractService implements ISto
         List<Witem> allWitems = this.witemDAO.findAll() ;
         map.put("allProvinces",allProvinces) ;
         map.put("allWitems",allWitems) ;
+        map.put("allWarehouses",this.warehouseDAO.findAll()) ;
         return map;
     }
 
@@ -84,6 +85,7 @@ public class StorageApplyServiceBackImpl extends AbstractService implements ISto
         Map<String,Object> map = new HashMap<>() ;
         map.put("allStorageApply",this.storageApplyDAO.findById(said)) ;
         map.put("allCitys",this.cityDAO.findAllProvince(this.storageApplyDAO.findByPid(said))) ;
+        map.put("allWitem",this.witemDAO.findAllMap()) ;
         return map;
 
     }
@@ -104,6 +106,7 @@ public class StorageApplyServiceBackImpl extends AbstractService implements ISto
             map.put("allRecorders",this.storageApplyDAO.getAllCount(column,keyWord)) ;
         }
         map.put("allWitems",this.witemDAO.findAllMap()) ;
+        map.put("allWarehouse",this.warehouseDAO.findAllMapWid()) ;
         return map;
     }
 

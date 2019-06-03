@@ -4,6 +4,7 @@ import com.yootk.common.dao.IBaseDAO;
 import com.yootk.drp.vo.Warehouse;
 
 import java.sql.SQLException;
+import java.util.Map;
 
 public interface IWareHouseDAO extends IBaseDAO<Long, Warehouse> {
     /**
@@ -13,4 +14,5 @@ public interface IWareHouseDAO extends IBaseDAO<Long, Warehouse> {
      * @throws SQLException
      */
     public Long getPid(Long wid) throws SQLException;
+    public Map<Long, String> findAllMapWid() throws SQLException ;
 }

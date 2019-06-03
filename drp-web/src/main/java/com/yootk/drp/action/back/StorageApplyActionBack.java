@@ -31,10 +31,10 @@ public class StorageApplyActionBack extends AbstractAction {
         apply.setAppmid("allen");
         try {
             if (this.storageApplyService.add(apply)) {
-                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME, "仓库增加成功！");
+                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME, "清单增加成功！");
                 mav.add(AbstractAction.PATH_ATTRIBUTE_NAME, "/pages/back/admin/storage/storage_add_pre.action");
             } else {
-                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME, "仓库增加失败！");
+                mav.add(AbstractAction.MSG_ATTRIBUTE_NAME, "清单增加失败！");
                 mav.add(AbstractAction.PATH_ATTRIBUTE_NAME, "/pages/back/admin/storage/storage_add_pre.action");
             }
         }catch (Exception e){

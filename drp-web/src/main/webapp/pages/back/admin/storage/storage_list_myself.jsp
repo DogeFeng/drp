@@ -47,7 +47,7 @@
 							<th class="text-center" style="width:10%;">${apply.said}</th>
 							<td class="text-left">
 								<a href="<%=STORAGE_EDIT_URL%>?said=${apply.said}">${apply.title}</a></td>
-							<td class="text-left">北京通州仓库一号库</td>
+							<td class="text-left">${allWarehouse[apply.wid]}</td>
 							<td class="text-center">${allWitems[apply.wiid]}</td>
 							<td class="text-center">${apply.status}</td>
 							<td class="text-center">100</td>

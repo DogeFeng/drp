@@ -18,7 +18,7 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<strong><span class="glyphicon glyphicon-list"></span>&nbsp;我的入库申请单</strong>
-				${allGoods}
+
 			</div>
 			<div class="panel-body">
 				<div>
@@ -33,7 +33,7 @@
 						</tr>
 						<tr>
 							<td><strong>仓库类型：</strong></td>
-							<td>服饰</td>
+							<td>${allWitem[allStorageApply.wiid]}</td>
 						</tr>
 						<tr>
 							<td><strong>备注信息：</strong></td>

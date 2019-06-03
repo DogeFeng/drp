@@ -6,7 +6,9 @@ import com.yootk.drp.vo.Warehouse;
 import com.yootk.drp.dao.warehouse_module.IWareHouseDAO ;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Repository
@@ -60,7 +62,9 @@ public class WarehouseDAOImpl extends AbstractDAO implements IWareHouseDAO {
 
     @Override
     public List<Warehouse> findAll() throws SQLException {
-        return null;
+        String sql = "SELECT wid,name,pid,cid,wiid,address,currnum,maximum,photo,note,admin,recorder FROM warehouse" ;
+        super.pstmt = super.conn.prepareStatement(sql) ;
+        return super.handleResultToList(super.pstmt.executeQuery(),Warehouse.class);
     }
 
     @Override
@@ -100,5 +104,17 @@ public class WarehouseDAOImpl extends AbstractDAO implements IWareHouseDAO {
             return rs.getLong(1);
         }
         return 0L;
+    }
+
+    @Override
+    public Map<Long, String> findAllMapWid() throws SQLException {
+        Map<Long,String > map = new HashMap<>();
+        String sql = "SELECT wid,name FROM warehouse";
+        super.pstmt = super.conn.prepareStatement(sql);
+        ResultSet rs = super.pstmt.executeQuery();
+        while (rs.next()){
+            map.put((long) rs.getInt(1),rs.getString(2));
+        }
+        return map;
     }
 }
