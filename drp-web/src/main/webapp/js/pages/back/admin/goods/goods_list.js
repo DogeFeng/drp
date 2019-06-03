@@ -16,15 +16,18 @@ $(function(){
 	$("span[id^=mid-]").each(function(){
 		$(this).on("click",function(){
 			mid = this.id.split("-")[1] ;
-			/*$.get("###", {"mid": mid}, function (data) {
-				var elem = $("#memberInfo table span") ;
-				elem[0].innerText = ;
-				elem[1].innerText = ;
-				elem[2].innerText = ;
-				elem[3].innerText = ;
-				elem[4].innerText = ;
-			}, "json");*/
 			$("#memberInfo").modal("toggle") ;
+			$.getJSON("pages/back/admin/customer/customer_list_member_modal.action", {"mid": mid}, function (data) {
+				url = "http://111.230.131.204/drp/upload/" + data.member.photo ;
+				$("img").attr("src", url) ;
+				$("#name").text(data.member.name) ;
+				$("#level").text(data.level) ;
+				$("#dept").text(data.dept) ;
+				$("#phone").text(data.member.phone) ;
+				$("#note").text(data.member.note) ;
+			}).fail(function () {
+				alert(2) ;
+			});
 		}) ;
 	}) ;
 })
