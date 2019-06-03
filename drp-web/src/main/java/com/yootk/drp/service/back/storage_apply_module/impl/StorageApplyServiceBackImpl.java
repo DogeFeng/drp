@@ -8,7 +8,7 @@ import com.yootk.drp.dao.goods_module.IGoodsDAO;
 import com.yootk.drp.dao.province_module.IProvinceDAO;
 import com.yootk.drp.dao.storage_apply_details_module.IStorageApplyDetailsDAO;
 import com.yootk.drp.dao.storageapply_module.IStorageApplyDAO;
-import com.yootk.drp.dao.warehouse_module.IWarehouseDAO;
+import com.yootk.drp.dao.warehouse_module.IWareHouseDAO;
 import com.yootk.drp.dao.witem_module.IWitemDAO;
 import com.yootk.drp.service.back.storage_apply_module.IStorageApplyServiceBack;
 import com.yootk.drp.vo.*;
@@ -22,7 +22,7 @@ public class StorageApplyServiceBackImpl extends AbstractService implements ISto
     @Autowired
     private IWitemDAO witemDAO ;
     @Autowired
-    private IWarehouseDAO warehouseDAO ;
+    private IWareHouseDAO warehouseDAO ;
     @Autowired
     private IStorageApplyDAO storageApplyDAO ;
     @Autowired

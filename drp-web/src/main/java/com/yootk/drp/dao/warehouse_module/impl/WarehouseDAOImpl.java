@@ -2,24 +2,15 @@ package com.yootk.drp.dao.warehouse_module.impl;
 
 import com.yootk.common.annotation.Repository;
 import com.yootk.common.dao.abs.AbstractDAO;
-<<<<<<< HEAD
-import com.yootk.drp.dao.warehouse_module.IWareHouseDAO;
-=======
-import com.yootk.drp.dao.warehouse_module.IWarehouseDAO;
->>>>>>> 231dad6d6a9d78fd649045199b527270b2fdbbfb
 import com.yootk.drp.vo.Warehouse;
-
+import com.yootk.drp.dao.warehouse_module.IWareHouseDAO ;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
 @Repository
-<<<<<<< HEAD
 public class WarehouseDAOImpl extends AbstractDAO implements IWareHouseDAO {
-=======
-public class WarehouseDAOImpl extends AbstractDAO implements IWarehouseDAO{
->>>>>>> 231dad6d6a9d78fd649045199b527270b2fdbbfb
     @Override
     public boolean doCreate(Warehouse warehouse) throws SQLException {
         String sql = "INSERT INTO warehouse(name,pid,cid,wiid,address,currnum,maximum,photo,note,admin) VALUES(?,?,?,?,?,?,?,?,?,?)";
