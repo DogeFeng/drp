@@ -7,7 +7,7 @@
 	<script type="text/javascript" src="bootstrap/tinymce/tinymce.min.js"></script>
 </head>
 <%!
-	public static final String NEWS_ADD_URL = "pages/back/news/add.action" ;
+	public static final String NEWS_ADD_URL = "" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">

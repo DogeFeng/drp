@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <head>
 	<jsp:include page="/pages/plugins/basepath.jsp"/>
@@ -6,8 +7,8 @@
 </head>
 <%!
 	public static final String STORAGE_SUBMIT_URL = "" ;
-	public static final String STORAGE_EDIT_URL = "pages/back/admin/storage/storage_edit.jsp" ;
-	public static final String STORAGE_LIST_DETAILS_URL = "pages/back/admin/storage/storage_list_details.jsp" ;
+	public static final String STORAGE_EDIT_URL = "pages/back/admin/storage/storage_edit_pre.action" ;
+	public static final String STORAGE_LIST_DETAILS_URL = "pages/back/admin/storage/storage_list_show.action" ;
 	public static final String STORAGE_DELETE_URL = "" ;
 %>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -41,23 +42,25 @@
 						</tr>
 					</thead>
 					<tbody>
+                        <c:forEach items="${allStorageApplies}" var="apply">
 						<tr>
-							<th class="text-center" style="width:10%;">20001010</th> 
+							<th class="text-center" style="width:10%;">${apply.said}</th>
 							<td class="text-left">
-								<a href="<%=STORAGE_EDIT_URL%>?sid=1">2017双十一衣帽入库</a></td>
+								<a href="<%=STORAGE_EDIT_URL%>?said=${apply.said}">${apply.title}</a></td>
 							<td class="text-left">北京通州仓库一号库</td>
-							<td class="text-center">服装衣帽</td>
-							<td class="text-center">未提交</td>
+							<td class="text-center">${allWitems[apply.wiid]}</td>
+							<td class="text-center">${apply.status}</td>
 							<td class="text-center">100</td>
 							<td class="text-left">
-								<a href="<%=STORAGE_SUBMIT_URL%>?sid=1" class="btn btn-primary btn-xs">
+								<a href="<%=STORAGE_SUBMIT_URL%>?said=${apply.said}" class="btn btn-primary btn-xs">
 									<span class="fa fa-rocket"></span>&nbsp;提交申请</a>
-								<a href="<%=STORAGE_LIST_DETAILS_URL%>?sid=1" class="btn btn-warning btn-xs">
+								<a href="<%=STORAGE_LIST_DETAILS_URL%>?said=${apply.said}" class="btn btn-warning btn-xs">
 									<span class="fa fa-th-list"></span>&nbsp;入库清单</a>
-								<a href="<%=STORAGE_DELETE_URL%>?sid=1" class="btn btn-danger btn-xs">
+								<a href="<%=STORAGE_DELETE_URL%>?said=${apply.said}" class="btn btn-danger btn-xs">
 									<span class="glyphicon glyphicon-trash"></span>&nbsp;删除申请</a>
 							</td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 				<div id="splitBarDiv" style="float:right">

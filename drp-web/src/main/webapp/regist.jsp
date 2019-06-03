@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="js/regist.js"></script>
 </head>
 <%!
-	public static final String REGIST_URL = "" ;
+	public static final String REGIST_URL = "member_add.action" ;
 %>
 <body class="back">
 	<div class="container contentback">
@@ -25,13 +25,13 @@
 						<form class="form-horizontal" action="<%=REGIST_URL%>" id="myform" method="post">
 							<fieldset>
 								<!-- 定义输入表单样式，其中id主要用于设置颜色样式 -->
-								<div class="form-group" id="idDiv"> 
+									<div class="form-group" id="idDiv">
 									<!-- 定义表单提示文字 -->
-									<label class="col-md-3 control-label" for="id">注册ID：</label>
+									<label class="col-md-3 control-label" for="mid">注册ID：</label>
 									<div class="col-md-5">
 										<!-- 定义表单输入组件 -->
-										<input type="text" id="id" name="id" class="form-control"
-											placeholder="用户名 / 邮箱 / 手机">
+										<input type="text" id="mid" name="mid" class="form-control"
+											placeholder="用户名 / 邮箱 / 手机" value="">
 									</div>
 									<!-- 定义表单错误提示显示元素 -->
 									<div class="col-md-4" id="idMsg"></div>
@@ -42,7 +42,7 @@
 									<div class="col-md-5">
 										<!-- 定义表单输入组件 -->
 										<input type="password" id="password" name="password" class="form-control"
-											placeholder="请输入登录密码">
+											placeholder="请输入登录密码" value="">
 									</div>
 									<!-- 定义表单错误提示显示元素 -->
 									<div class="col-md-4" id="passwordMsg"></div>
@@ -53,7 +53,7 @@
 									<div class="col-md-5">
 										<!-- 定义表单输入组件 -->
 										<input type="password" id="conf" name="conf" class="form-control"
-											placeholder="请重复输入密码">
+											placeholder="请重复输入密码" value="">
 									</div>
 									<!-- 定义表单错误提示显示元素 -->
 									<div class="col-md-4" id="confMsg"></div>

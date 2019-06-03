@@ -18,29 +18,31 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<strong><span class="glyphicon glyphicon-list"></span>&nbsp;我的入库申请单</strong>
+				${allGoods}
 			</div>
 			<div class="panel-body">
 				<div>
 					<table class="table table-striped table-bordered table-hover">
 						<tr> 
 							<td style="width:150px;"><strong>入库标题：</strong></td>
-							<td>双13备货</td>
+							<td>${allStorageApply.title}</td>
 						</tr>
 						<tr>
 							<td><strong>存入仓库名称：</strong></td>
-							<td>北京市 北京市 通州一号仓库</td>
+							<td>北京通州第一仓库</td>
 						</tr>
 						<tr>
 							<td><strong>仓库类型：</strong></td>
-							<td>衣帽服饰</td>
+							<td>服饰</td>
 						</tr>
 						<tr>
 							<td><strong>备注信息：</strong></td>
-							<td>我要上</td>
+							<td>${allStorageApply.note}</td>
 						</tr>
 						<tr>
 							<td><strong>入库操作：</strong></td>
 							<td>
+								<input type="hidden" name="said" id="said" value="${allStorageApply.said}">
 								<button id="addbut" class="btn btn-danger btn-xs">
 										<span class="glyphicon glyphicon-edit"></span>&nbsp;追加商品</button>
 							</td>
@@ -67,6 +69,7 @@
 								<td><input type="text" id="price-1" value="39.2" maxlength="8" size="8"/></td>
 								<td><input type="text" id="weight-1" value="200g" maxlength="8" size="8"/></td>
 								<td>
+									<input type="hidden" name="said" id="said" value="${allStorageApply.said}">
 									<button id="save-1" class="btn btn-primary btn-xs">
 										<span class="glyphicon glyphicon-edit"></span>&nbsp;保存</button>
 									<button id="remove-1" class="btn btn-danger btn-xs">

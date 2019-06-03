@@ -1,10 +1,14 @@
 package com.yootk.drp.dao.goods_module.impl;
 
+<<<<<<< HEAD
 import com.yootk.common.annotation.Repository;
+=======
+>>>>>>> 231dad6d6a9d78fd649045199b527270b2fdbbfb
 import com.yootk.common.dao.abs.AbstractDAO;
 import com.yootk.drp.dao.goods_module.IGoodsDAO;
 import com.yootk.drp.vo.Goods;
 
+<<<<<<< HEAD
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -34,10 +38,22 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
         super.pstmt.setString(10 , goods.getRecorder());
         super.pstmt.setInt(11 , goods.getDelflag());
         return super.pstmt.executeUpdate() > 0;
+=======
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
+    @Override
+    public boolean doCreate(Goods goods) throws SQLException {
+        return false;
+>>>>>>> 231dad6d6a9d78fd649045199b527270b2fdbbfb
     }
 
     @Override
     public boolean doEdit(Goods goods) throws SQLException {
+<<<<<<< HEAD
         String sql = "UPDATE goods SET name=?,wiid=?,stid=?,price=?,weight=?,photo=?,note=?,lastin=?,stornum=?,recorder=?,delflag=? WHERE gid=? " ;
         super.pstmt = super.conn.prepareStatement(sql) ;
         super.pstmt.setString(1 , goods.getName());
@@ -53,6 +69,9 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
         super.pstmt.setInt(11 , goods.getDelflag());
         super.pstmt.setLong(12 , goods.getGid());
         return super.pstmt.executeUpdate() > 0 ;
+=======
+        return false;
+>>>>>>> 231dad6d6a9d78fd649045199b527270b2fdbbfb
     }
 
     @Override
@@ -61,6 +80,7 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
     }
 
     @Override
+<<<<<<< HEAD
     public List<Goods> findLinkName(String name) throws SQLException {
         String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE name LIKE ?" ;
         super.pstmt = super.conn.prepareStatement(sql) ;
@@ -74,6 +94,10 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
         super.pstmt = super.conn.prepareStatement(sql) ;
         super.pstmt.setLong(1 , aLong);
         return super.handleResultToVO(super.pstmt.executeQuery() , Goods.class);
+=======
+    public Goods findById(Long aLong) throws SQLException {
+        return null;
+>>>>>>> 231dad6d6a9d78fd649045199b527270b2fdbbfb
     }
 
     @Override
@@ -102,6 +126,7 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
     }
 
     @Override
+<<<<<<< HEAD
     public List<Goods> findAllFlag(int delflag) throws SQLException {
         String sql = " SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag FROM goods WHERE delflag=? " ;
         super.pstmt = super.conn.prepareStatement(sql) ;
@@ -222,4 +247,16 @@ public class GoodsDAOImpl extends AbstractDAO implements IGoodsDAO {
         }
         return super.isBatchSuccess(super.pstmt.executeBatch());
     }
+=======
+    public List<Goods> findAllByGids(Set<Long> gids) throws SQLException {
+        StringBuffer sql = new StringBuffer("SELECT gid,name,price,weight,stornum FROM goods WHERE IN(") ;
+        for(Long gid : gids){
+            sql.append(gid).append(",") ;
+        }
+        sql.delete(sql.length() -1 ,sql.length()).append(")") ;
+        List<Goods> all = new ArrayList<>() ;
+        super.pstmt = super.conn.prepareStatement(sql.toString()) ;
+        return super.handleResultToList(super.pstmt.executeQuery(),Goods.class);
+    }
+>>>>>>> 231dad6d6a9d78fd649045199b527270b2fdbbfb
 }

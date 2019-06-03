@@ -27,10 +27,12 @@ $(function(){
         },
         errorClass : "text-danger",
         messages : {
-            "id" : "此用户名已经被注册过了，请进行更换！"
+            "mid" : {
+                remote : "该用户名已存在，请更换新的用户名！"
+            }
         } ,
         rules : {
-            "id" : {
+            "mid" : {
                 required : true
             },
             "password" : {
