@@ -24,7 +24,7 @@
         <javassist.version>3.22.0-CR2</javassist.version>
         <fileupload.version>1.4</fileupload.version>
         <httpclient.version>4.5.8</httpclient.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <httpmime.version>4.5.8</httpmime.version>
         <spring.version>5.1.7.RELEASE</spring.version>
 
