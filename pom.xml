@@ -26,7 +26,7 @@
         <httpclient.version>4.5.8</httpclient.version>
         <commons-io.version>2.6</commons-io.version>
         <httpmime.version>4.5.8</httpmime.version>
-        <spring.version>5.1.7.RELEASE</spring.version>
+        <spring.version>5.2.22.RELEASE</spring.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
